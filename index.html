@@ -29,436 +29,247 @@
   }
 
   * { box-sizing: border-box; }
-
   html, body { margin: 0; padding: 0; }
-
   body {
     background: var(--paper);
     color: var(--ink);
     font-family: "Inter", system-ui, -apple-system, sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 16px; line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
-
   a { color: inherit; }
-
   ::selection { background: var(--gold-soft); }
 
   /* ---------- Masthead ---------- */
-  .masthead {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 54px 28px 22px;
-  }
+  .masthead { max-width: 1080px; margin: 0 auto; padding: 54px 28px 22px; }
   .eyebrow {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin: 0 0 12px;
+    font-size: 12px; font-weight: 600; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--gold); margin: 0 0 12px;
   }
   .masthead h1 {
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-weight: 500;
-    font-size: clamp(40px, 6vw, 64px);
-    line-height: 1.02;
-    letter-spacing: .005em;
-    color: var(--navy);
-    margin: 0;
+    font-weight: 500; font-size: clamp(40px, 6vw, 64px);
+    line-height: 1.02; letter-spacing: .005em; color: var(--navy); margin: 0;
   }
-  .masthead .lede {
-    margin: 14px 0 0;
-    max-width: 52ch;
-    color: var(--slate);
-    font-size: 16px;
-  }
+  .masthead .lede { margin: 14px 0 0; max-width: 52ch; color: var(--slate); font-size: 16px; }
 
   /* ---------- Tab navigation (the "barre") ---------- */
   .nav-wrap {
-    position: sticky;
-    top: 0;
-    z-index: 20;
+    position: sticky; top: 0; z-index: 20;
     background: rgba(250,248,243,.86);
     backdrop-filter: saturate(180%) blur(10px);
     border-bottom: 1px solid var(--line);
   }
-  .nav-inner {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 0 28px;
-  }
+  .nav-inner { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
   .tablist {
-    display: flex;
-    gap: 4px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    display: flex; gap: 2px; overflow-x: auto;
+    scrollbar-width: none; -ms-overflow-style: none;
   }
   .tablist::-webkit-scrollbar { display: none; }
-
   .tab {
-    appearance: none;
-    background: none;
-    border: 0;
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: .01em;
-    color: var(--slate);
-    padding: 18px 16px 16px;
-    white-space: nowrap;
-    cursor: pointer;
-    position: relative;
-    transition: color .2s ease;
+    appearance: none; background: none; border: 0; font-family: inherit;
+    font-size: 14px; font-weight: 600; letter-spacing: .01em; color: var(--slate);
+    padding: 16px 14px 14px; white-space: nowrap; cursor: pointer;
+    position: relative; transition: color .2s ease;
   }
   .tab:hover { color: var(--navy); }
   .tab .tab-sub {
-    display: block;
-    font-size: 10.5px;
-    font-weight: 500;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--slate-light);
-    margin-top: 2px;
+    display: block; font-size: 10px; font-weight: 500; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--slate-light); margin-top: 2px;
   }
   .tab::after {
-    content: "";
-    position: absolute;
-    left: 12px; right: 12px; bottom: 0;
-    height: 2px;
-    background: var(--gold);
-    transform: scaleX(0);
-    transform-origin: center;
-    transition: transform .26s cubic-bezier(.2,.7,.2,1);
-    border-radius: 2px 2px 0 0;
+    content: ""; position: absolute; left: 11px; right: 11px; bottom: 0; height: 2px;
+    background: var(--gold); transform: scaleX(0); transform-origin: center;
+    transition: transform .26s cubic-bezier(.2,.7,.2,1); border-radius: 2px 2px 0 0;
   }
   .tab[aria-selected="true"] { color: var(--navy); }
   .tab[aria-selected="true"]::after { transform: scaleX(1); }
-  .tab:focus-visible {
-    outline: 2px solid var(--navy);
-    outline-offset: -4px;
-    border-radius: 6px;
-  }
+  .tab:focus-visible { outline: 2px solid var(--navy); outline-offset: -4px; border-radius: 6px; }
 
   /* ---------- Main / panels ---------- */
-  main {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 40px 28px 96px;
-  }
-
+  main { max-width: 1080px; margin: 0 auto; padding: 40px 28px 96px; }
   .panel { display: none; animation: fade .32s ease both; }
   .panel.is-active { display: block; }
-  @keyframes fade {
-    from { opacity: 0; transform: translateY(6px); }
-    to   { opacity: 1; transform: none; }
-  }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
   /* Course header */
   .course-head {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 20px;
-    padding-bottom: 22px;
-    border-bottom: 1px solid var(--line);
-    margin-bottom: 30px;
+    display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
+    gap: 18px; padding-bottom: 22px; border-bottom: 1px solid var(--line); margin-bottom: 26px;
   }
   .course-head .id {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin: 0 0 6px;
+    font-size: 12px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--gold); margin: 0 0 6px;
   }
   .course-head h2 {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-weight: 500;
-    font-size: clamp(30px, 4.6vw, 44px);
-    line-height: 1.05;
-    color: var(--navy);
-    margin: 0;
+    font-family: "Cormorant Garamond", Georgia, serif; font-weight: 500;
+    font-size: clamp(30px, 4.6vw, 44px); line-height: 1.05; color: var(--navy); margin: 0;
   }
-  .course-head .desc {
-    margin: 10px 0 0;
-    color: var(--slate);
-    max-width: 56ch;
+  .course-head .desc { margin: 12px 0 0; color: var(--slate); max-width: 62ch; }
+  .strand {
+    flex-shrink: 0; font-size: 11px; font-weight: 600; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--navy);
+    background: #fff; border: 1px solid var(--line-strong); border-radius: 999px;
+    padding: 7px 14px;
   }
 
-  /* Level indicator (signature motif) */
-  .level {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
+  /* Overview / outcomes blocks */
+  .prose-block {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 22px 24px; margin-bottom: 22px;
   }
-  .level .marks { display: flex; gap: 5px; }
-  .level .mk {
-    width: 3px; height: 22px;
-    border-radius: 2px;
-    background: var(--line-strong);
+  .prose-block h3 {
+    font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; font-size: 22px;
+    color: var(--navy); margin: 0 0 12px;
   }
-  .level .mk.on { background: var(--gold); }
-  .level .label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--slate);
+  .prose-block p { margin: 0 0 12px; color: var(--ink); }
+  .prose-block p:last-child { margin-bottom: 0; }
+  .outcomes { margin: 0; padding-left: 22px; color: var(--ink); }
+  .outcomes li { margin-bottom: 8px; }
+  .note {
+    margin-top: 14px; font-size: 13px; color: var(--slate);
+    border-left: 3px solid var(--gold); padding-left: 12px; font-style: italic;
   }
-  .level.foundational .mk { background: var(--gold); opacity: .9; }
 
-  /* Toolbar: search + folder link */
+  /* Toolbar */
   .toolbar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 26px;
+    display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+    justify-content: space-between; margin: 6px 0 24px;
   }
-  .search {
-    position: relative;
-    flex: 1 1 260px;
-    max-width: 380px;
-  }
+  .search { position: relative; flex: 1 1 260px; max-width: 380px; }
   .search input {
-    width: 100%;
-    font: inherit;
-    font-size: 14.5px;
-    color: var(--ink);
-    background: var(--card);
-    border: 1px solid var(--line-strong);
-    border-radius: 999px;
-    padding: 11px 16px 11px 40px;
-    transition: border-color .2s ease, box-shadow .2s ease;
+    width: 100%; font: inherit; font-size: 14.5px; color: var(--ink);
+    background: var(--card); border: 1px solid var(--line-strong); border-radius: 999px;
+    padding: 11px 16px 11px 40px; transition: border-color .2s ease, box-shadow .2s ease;
   }
   .search input::placeholder { color: var(--slate-light); }
-  .search input:focus {
-    outline: none;
-    border-color: var(--navy);
-    box-shadow: 0 0 0 3px rgba(0,46,93,.10);
-  }
+  .search input:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px rgba(0,46,93,.10); }
   .search svg {
-    position: absolute;
-    left: 14px; top: 50%;
-    transform: translateY(-50%);
-    width: 16px; height: 16px;
-    color: var(--slate-light);
-    pointer-events: none;
+    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+    width: 16px; height: 16px; color: var(--slate-light); pointer-events: none;
   }
 
   .btn {
-    appearance: none;
-    font: inherit;
-    font-size: 13.5px;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 999px;
-    padding: 10px 18px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
+    appearance: none; font: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer;
+    border-radius: 999px; padding: 10px 18px; display: inline-flex; align-items: center; gap: 8px;
+    text-decoration: none; border: 1px solid transparent;
     transition: background .2s ease, color .2s ease, border-color .2s ease, transform .1s ease;
-    border: 1px solid transparent;
   }
   .btn:active { transform: translateY(1px); }
   .btn-primary { background: var(--navy); color: #fff; }
   .btn-primary:hover { background: var(--navy-deep); }
-  .btn-ghost {
-    background: transparent;
-    color: var(--navy);
-    border-color: var(--line-strong);
-  }
+  .btn-ghost { background: transparent; color: var(--navy); border-color: var(--line-strong); }
   .btn-ghost:hover { border-color: var(--navy); background: #fff; }
   .btn svg { width: 15px; height: 15px; }
 
   /* Section label */
   .section-label {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-weight: 600;
-    font-size: 24px;
-    color: var(--navy);
-    margin: 38px 0 16px;
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
+    font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; font-size: 25px;
+    color: var(--navy); margin: 34px 0 14px; display: flex; align-items: baseline; gap: 12px;
   }
   .section-label .count {
-    font-family: "Inter", sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: .04em;
-    color: var(--slate-light);
+    font-family: "Inter", sans-serif; font-size: 12px; font-weight: 600;
+    letter-spacing: .04em; color: var(--slate-light);
   }
-  .panel > .section-label:first-of-type { margin-top: 0; }
+  .subsection-label {
+    font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--slate); margin: 22px 0 12px; padding-left: 10px;
+    border-left: 3px solid var(--gold);
+  }
 
-  /* Document cards */
-  .doc-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 16px;
+  /* Expandable cards (accordion) */
+  .cards { display: flex; flex-direction: column; gap: 10px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: var(--shadow); overflow: hidden; transition: box-shadow .2s ease, border-color .2s ease;
   }
-  .doc {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 20px 20px 18px;
-    box-shadow: var(--shadow);
-    display: flex;
-    flex-direction: column;
-    transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+  .card:hover { box-shadow: var(--shadow-lift); border-color: var(--line-strong); }
+  .card-head {
+    width: 100%; background: none; border: 0; font-family: inherit; cursor: pointer;
+    display: flex; align-items: center; gap: 14px; text-align: left;
+    padding: 16px 18px; transition: background .15s ease;
   }
-  .doc:hover {
-    box-shadow: var(--shadow-lift);
-    transform: translateY(-2px);
-    border-color: var(--line-strong);
+  .card-head:hover { background: #FCFBF8; }
+  .card-head:focus-visible { outline: 2px solid var(--navy); outline-offset: -3px; border-radius: 10px; }
+  .card-tag {
+    flex-shrink: 0; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--slate); background: var(--gold-soft); border-radius: 6px; padding: 4px 8px;
   }
-  .doc .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    font-size: 10.5px;
-    font-weight: 600;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--slate);
-    margin-bottom: 12px;
+  .card-title {
+    flex: 1; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600;
+    font-size: 20px; line-height: 1.2; color: var(--navy);
   }
-  .doc .badge .dot {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: var(--gold);
+  .chevron {
+    flex-shrink: 0; width: 18px; height: 18px; color: var(--slate-light);
+    transition: transform .26s ease;
   }
-  .doc h3 {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-weight: 600;
-    font-size: 22px;
-    line-height: 1.15;
-    color: var(--navy);
-    margin: 0 0 6px;
-  }
-  .doc .doc-desc {
-    color: var(--slate);
-    font-size: 14px;
-    margin: 0 0 16px;
-    flex: 1;
-  }
-  .doc .meta {
-    font-size: 12px;
-    color: var(--slate-light);
-    margin-bottom: 14px;
-  }
-  .doc .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .card.open .chevron { transform: rotate(180deg); }
 
-  .preview-frame {
-    margin-top: 14px;
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    overflow: hidden;
-    height: 0;
-    opacity: 0;
-    transition: height .3s ease, opacity .3s ease;
+  .card-body-wrap {
+    display: grid; grid-template-rows: 0fr;
+    transition: grid-template-rows .28s ease;
   }
-  .preview-frame.open { height: 360px; opacity: 1; }
-  .preview-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .card.open .card-body-wrap { grid-template-rows: 1fr; }
+  .card-body-inner { overflow: hidden; }
+  .card-body {
+    padding: 2px 18px 20px; border-top: 1px solid var(--line);
+    margin: 0 0 0; color: var(--ink);
+  }
+  .card-body .lead { white-space: pre-line; margin: 14px 0 0; font-size: 14.5px; line-height: 1.7; }
+  .card-meta { margin-top: 14px; font-size: 13.5px; }
+  .card-meta .k {
+    display: inline-block; font-weight: 600; color: var(--navy);
+    letter-spacing: .02em; margin-right: 6px;
+  }
+  .card-actions { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
 
-  /* Video library (Essential Exercises) */
-  .vid-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
+  /* Video area inside a card */
+  .vid-frame {
+    margin-top: 14px; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden;
+    background: var(--navy); position: relative; max-width: 560px;
   }
-  .vid {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: box-shadow .2s ease, transform .2s ease;
-  }
-  .vid:hover { box-shadow: var(--shadow-lift); transform: translateY(-2px); }
-  .vid .frame {
-    aspect-ratio: 16 / 9;
-    background: var(--navy);
-    position: relative;
-    overflow: hidden;
-  }
-  .vid .frame iframe { width: 100%; height: 100%; border: 0; display: block; }
-  .vid .soon {
-    position: absolute; inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background:
-      radial-gradient(120% 120% at 50% 0%, #013a73 0%, var(--navy) 55%, var(--navy-deep) 100%);
+  .vid-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .vid-soon {
+    position: absolute; inset: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 8px;
+    background: radial-gradient(120% 120% at 50% 0%, #013a73 0%, var(--navy) 55%, var(--navy-deep) 100%);
     color: #cdd8e6;
   }
-  .vid .soon svg { width: 30px; height: 30px; opacity: .7; }
-  .vid .soon span {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .16em;
-    text-transform: uppercase;
+  .vid-soon svg { width: 28px; height: 28px; opacity: .7; }
+  .vid-soon span { font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+
+  /* Document preview iframe (Drive) */
+  .preview-frame {
+    margin-top: 14px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
+    height: 0; opacity: 0; transition: height .3s ease, opacity .3s ease;
   }
-  .vid .vid-body { padding: 16px 18px 18px; }
-  .vid h4 {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-weight: 600;
-    font-size: 21px;
-    color: var(--navy);
-    margin: 0 0 4px;
-  }
-  .vid .vid-focus { font-size: 13.5px; color: var(--slate); margin: 0; }
+  .preview-frame.open { height: 380px; opacity: 1; }
+  .preview-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
 
   /* Empty state */
   .empty {
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--slate);
-    border: 1px dashed var(--line-strong);
-    border-radius: var(--radius);
-    display: none;
+    text-align: center; padding: 56px 20px; color: var(--slate);
+    border: 1px dashed var(--line-strong); border-radius: var(--radius); display: none;
   }
   .empty.show { display: block; }
   .empty .e-title {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 24px;
-    color: var(--navy);
-    margin-bottom: 4px;
+    font-family: "Cormorant Garamond", Georgia, serif; font-size: 24px; color: var(--navy); margin-bottom: 4px;
   }
-
   .hidden { display: none !important; }
 
   /* Footer */
-  footer {
-    border-top: 1px solid var(--line);
-    margin-top: 40px;
-  }
+  footer { border-top: 1px solid var(--line); margin-top: 40px; }
   .footer-inner {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 28px;
-    font-size: 12.5px;
-    color: var(--slate-light);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px 18px;
-    justify-content: space-between;
+    max-width: 1080px; margin: 0 auto; padding: 28px; font-size: 12.5px; color: var(--slate-light);
+    display: flex; flex-wrap: wrap; gap: 6px 18px; justify-content: space-between;
   }
 
   @media (max-width: 560px) {
     .masthead { padding-top: 38px; }
     .course-head { align-items: flex-start; }
+    .card-title { font-size: 18px; }
   }
-
   @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; }
   }
@@ -469,12 +280,12 @@
   <header class="masthead">
     <p class="eyebrow">Department of Dance · Brigham Young University</p>
     <h1>Ballet Curriculum</h1>
-    <p class="lede">Instructor resource hub. Open the current course documents and reference videos for each level, all in one place.</p>
+    <p class="lede">Instructor resource hub. Open the current course materials, reference exercises, and videos for each level, all in one place.</p>
   </header>
 
   <div class="nav-wrap">
     <div class="nav-inner">
-      <div class="tablist" role="tablist" aria-label="Curriculum levels" id="tablist"></div>
+      <div class="tablist" role="tablist" aria-label="Curriculum courses" id="tablist"></div>
     </div>
   </div>
 
@@ -491,261 +302,466 @@
 /* ============================================================================
    ║  CURRICULUM DATA  —  EDIT EVERYTHING HERE                                ║
    ============================================================================
-   This single object holds every tab, document, and video. A non-developer
-   can update the site by editing the text and links below. You never need to
-   touch the layout or styling code.
+   One object holds every tab. A non-developer can update the site by editing
+   the text and links below; you never touch the layout code.
 
-   HOW TO ADD A DOCUMENT LINK
-   --------------------------
-   1. In Google Drive, open the file → Share → set access (e.g. "Anyone in BYU
-      with the link can view", or share with your instructor group).
-   2. Copy the link. It looks like:
-        https://drive.google.com/file/d/THE_FILE_ID/view?usp=sharing
-   3. Paste it as the `url` for a document below.
+   EACH COURSE supports:
+     code        short label shown on the tab (e.g. "D190")
+     tabSub      tiny line under the tab label (e.g. "Beginning")
+     title       full course title shown in the header
+     strand      pill shown top-right of the header (e.g. "Technique 1")
+     blurb       one or two sentences under the title
+     overview    (optional) array of paragraphs -> "Course Overview" block
+     outcomes    (optional) array of bullet strings -> "Learning Outcomes" block
+     outcomesNote(optional) italic note under the outcomes
+     folderUrl   (optional) Google Drive FOLDER link -> "Open course folder" button
+     sections    array of { name, sub?, cards:[ ... ] }
 
-   HOW TO LINK A WHOLE COURSE FOLDER (optional, lowest maintenance)
-   ----------------------------------------------------------------
-   Set `folderUrl` for a course to its Drive folder link:
-        https://drive.google.com/drive/folders/THE_FOLDER_ID
-   Leave it as "" to hide the "Open course folder" button.
-
-   HOW TO ADD A VIDEO (Essential Exercises tab)
-   --------------------------------------------
-   Paste ANY normal share link into `videoUrl` — the player appears automatically.
-   Supported: YouTube, Vimeo, or a Google Drive video link. Examples:
-        "https://www.youtube.com/watch?v=XXXXXXXX"
-        "https://vimeo.com/123456789"
-        "https://drive.google.com/file/d/THE_FILE_ID/view"
-   Leave `videoUrl` as "" to show a tasteful "Video coming soon" placeholder.
-
-   NOTE: Course titles below are PLACEHOLDERS — replace them with your official
-   titles. The "updated" dates and descriptions are samples too.
+   EACH CARD (an expandable accordion) supports any of:
+     title       required
+     tag         (optional) small category/type chip
+     body        (optional) description text; use \n for line breaks, "• " for bullets
+     counts      (optional) tempo / counts line
+     focus       (optional) technique-focus line
+     driveUrl    (optional) Google Drive FILE link -> "Open in Drive" button + Preview
+     videoUrl    (optional) paste a YouTube / Vimeo / Drive link to embed a player.
+                 Set it to "" (empty) to show a "Video coming soon" placeholder.
+                 Omit the field entirely if the card has no video at all.
    ========================================================================== */
 
 const CURRICULUM = [
 
-  /* ---------- ESSENTIAL EXERCISES (documents + video library) ---------- */
+  /* ============================ ESSENTIAL EXERCISES ======================== */
   {
-    id: "Essential Exercises",
-    tabLabel: "Essential",
-    tabSub: "Foundation",
-    title: "Essential Exercises",
-    level: 0,                         // 0 = foundational (applies across all levels)
-    desc: "The core vocabulary and technique standards that carry through every level. Reference documents plus a growing video library demonstrating each exercise.",
+    code: "Essential", tabSub: "Exercises", title: "Essential Exercises",
+    strand: "Foundation", level: 0,
+    blurb: "The core vocabulary and technique standards that carry through every level. Reference documents plus a growing video library demonstrating each exercise.",
     folderUrl: "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
-    documents: [
-      { title: "Foundational Vocabulary", type: "Reference", updated: "May 2026",
-        desc: "Master list of essential ballet terminology with definitions.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-      { title: "Technique Standards", type: "Reference", updated: "Apr 2026",
-        desc: "Alignment, placement, and execution benchmarks shared across courses.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-      { title: "Counts & Musicality Guide", type: "Music/Counts", updated: "Mar 2026",
-        desc: "Standard tempos and counting conventions for barre and center work.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-    ],
-    // Video library — organized by the classic class structure.
-    videoCategories: [
-      {
-        name: "Barre",
-        exercises: [
-          { name: "Plié", focus: "Demi and grand plié in all five positions.",
-            // Sample video below demonstrates the working player. Replace with your own.
-            videoUrl: "https://www.youtube.com/watch?v=aqz-KE-bpKQ" },
-          { name: "Tendu", focus: "Battement tendu, en croix.", videoUrl: "" },
-          { name: "Dégagé", focus: "Battement dégagé / jeté, accent out and in.", videoUrl: "" },
-          { name: "Rond de jambe", focus: "À terre, en dehors and en dedans.", videoUrl: "" },
-          { name: "Frappé", focus: "Single and double, with relevé.", videoUrl: "" },
-          { name: "Fondu", focus: "Battement fondu through cou-de-pied.", videoUrl: "" },
-          { name: "Grand battement", focus: "Front, side, and back with control.", videoUrl: "" },
-        ]
-      },
-      {
-        name: "Center",
-        exercises: [
-          { name: "Adagio", focus: "Développé, promenade, and sustained balance.", videoUrl: "" },
-          { name: "Port de bras", focus: "Carriage of the arms and épaulement.",
-            videoUrl: "https://www.youtube.com/watch?v=aqz-KE-bpKQ" },
-          { name: "Pirouette", focus: "En dehors from fourth and fifth.", videoUrl: "" },
-        ]
-      },
-      {
-        name: "Allegro",
-        exercises: [
-          { name: "Échappé", focus: "Sauté to second and fourth.", videoUrl: "" },
-          { name: "Assemblé", focus: "Dessus and dessous.", videoUrl: "" },
-          { name: "Jeté", focus: "Petit jeté with clean landings.", videoUrl: "" },
-        ]
-      },
-      {
-        name: "Grand Allegro",
-        exercises: [
-          { name: "Grand jeté", focus: "Full split leap traveling on the diagonal.", videoUrl: "" },
-          { name: "Tour jeté", focus: "Grand jeté en tournant.", videoUrl: "" },
-        ]
-      },
+    sections: [
+      { name: "Reference Documents", cards: [
+        { title: "Foundational Vocabulary", tag: "Reference",
+          body: "Master list of essential ballet terminology with definitions.",
+          driveUrl: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
+        { title: "Technique Standards", tag: "Reference",
+          body: "Alignment, placement, and execution benchmarks shared across courses.",
+          driveUrl: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
+      ]},
+      { name: "Barre", cards: [
+        { title: "Plié", tag: "Barre",
+          body: "Bending of the knees in 1st, 2nd, 4th, and 5th positions. Includes demi and grand plié, often combined with port de bras.",
+          counts: "3/4 or 4/4 · 32–64 counts",
+          focus: "Maintain turnout from the hips, keep heels down in demi-plié, move continuously.",
+          // Sample (Creative Commons) clip demonstrates the working player. Replace with your own.
+          videoUrl: "https://www.youtube.com/watch?v=aqz-KE-bpKQ" },
+        { title: "Tendu", tag: "Barre",
+          body: "Brushing the foot along the floor to a point and closing back to 1st or 5th.",
+          counts: "2/4 or 4/4 · 32 counts",
+          focus: "Lead with the heel going forward and the toe coming back; articulate through the metatarsals.",
+          videoUrl: "" },
+        { title: "Dégagé", tag: "Barre",
+          body: "Battement dégagé / jeté — a brushed accent off the floor, out and in.",
+          counts: "2/4 · brisk",
+          focus: "Crisp dynamic; the energy of dégagé feeds petit allegro.",
+          videoUrl: "" },
+        { title: "Rond de jambe à terre", tag: "Barre",
+          body: "Circular movement of the leg on the floor, en dehors and en dedans.",
+          counts: "3/4 · 32 counts", focus: "Stable pelvis, maximal rotation in the hip socket.",
+          videoUrl: "" },
+        { title: "Frappé", tag: "Barre",
+          body: "Strike from a wrapped sur le cou-de-pied to à la seconde, single and double.",
+          counts: "2/4", focus: "Sharp, articulate strike; quiet supporting side.",
+          videoUrl: "" },
+        { title: "Fondu", tag: "Barre",
+          body: "Battement fondu through cou-de-pied — a single sustained melting movement.",
+          counts: "3/4 · adagio", focus: "Both knees bend and stretch together.",
+          videoUrl: "" },
+        { title: "Grand battement", tag: "Barre",
+          body: "High brush of the working leg, front, side, and back.",
+          counts: "2/4 or polonaise", focus: "Height comes from the brush, not from lifting the hip.",
+          videoUrl: "" },
+      ]},
+      { name: "Center", cards: [
+        { title: "Adagio", tag: "Center",
+          body: "Développé, promenade, and sustained balance.",
+          counts: "3/4 · adagio", focus: "Strength through the standing side; seamless transitions.",
+          videoUrl: "" },
+        { title: "Port de bras", tag: "Center",
+          body: "Carriage of the arms through the classical positions, with épaulement.",
+          counts: "3/4 · 16–32 counts", focus: "Support the arms from the back; lifted chest without rib flare.",
+          videoUrl: "https://www.youtube.com/watch?v=aqz-KE-bpKQ" },
+        { title: "Pirouette en dehors", tag: "Center",
+          body: "A turn outward on one leg from fourth or fifth.",
+          counts: "3/4 or 4/4", focus: "Coordinated arms and a sharp, consistent spot.",
+          videoUrl: "" },
+      ]},
+      { name: "Allegro", cards: [
+        { title: "Échappé sauté", tag: "Allegro", body: "Jumped change to second and fourth.",
+          counts: "2/4", focus: "Full point in the air; controlled demi-plié landing.", videoUrl: "" },
+        { title: "Assemblé", tag: "Allegro", body: "Dessus and dessous.",
+          counts: "2/4", focus: "Brush and gather; land simultaneously in fifth.", videoUrl: "" },
+        { title: "Jeté", tag: "Allegro", body: "Petit jeté with clean landings.",
+          counts: "2/4", focus: "Spring from the floor; arrive on a controlled cou-de-pied.", videoUrl: "" },
+      ]},
+      { name: "Grand Allegro", cards: [
+        { title: "Grand jeté", tag: "Grand Allegro", body: "Full split leap traveling on the diagonal.",
+          counts: "3/4", focus: "Brush the front leg straight; reach the split at the height of the jump.", videoUrl: "" },
+        { title: "Tour jeté", tag: "Grand Allegro", body: "Grand jeté en tournant.",
+          counts: "3/4", focus: "Pass the legs closely; land squarely in arabesque.", videoUrl: "" },
+      ]},
     ]
   },
 
-  /* ---------- D-COURSES (documents only) ---------- */
+  /* ================================ D190 ================================== */
+  /* Fully populated from the D190 Curriculum Rewrite (with Sample Class).     */
   {
-    id: "D190", tabLabel: "D190", tabSub: "Level 1", title: "Beginning Ballet",
-    level: 1, desc: "Foundations of classical technique. Replace this with your official D190 course description.",
+    code: "D190", tabSub: "Beginning", title: "Non-Major Beginning Ballet",
+    strand: "Beginning · Non-major", level: 1,
+    blurb: "Introductory ballet technique for students with little to no prior training: beginning vocabulary, alignment, coordination, musicality, and studio practice. Dance majors with limited ballet experience may also begin here.",
     folderUrl: "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
-    documents: [
-      { title: "Course Syllabus", type: "Syllabus", updated: "Jan 2026",
-        desc: "Schedule, grading, attendance, and learning outcomes.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-      { title: "Barre & Center Exercise List", type: "Exercise List", updated: "Jan 2026",
-        desc: "Sequence of exercises taught this term, in order.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-      { title: "Assessment Rubric", type: "Assessment", updated: "Feb 2026",
-        desc: "Criteria for the mid-term and final technique evaluations.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
+    overview: [
+      "Instruction at this level emphasizes the acquisition of basic ballet technique, supported by proper alignment through the core, back, and pelvis; muscular engagement of turnout; focused alignment of the hips, knees, ankles, and feet; musicality; dynamic quality in movement; and clear, engaged port de bras. Instructors should use simple exercises that build progressively toward these goals. Most barre exercises should face the barre until students show enough postural organization, muscular engagement, and alignment to work safely with one hand.",
+      "In the center, arm work should stay simple, coordinated, and supportive of correct alignment — demi-seconde, hands on shoulders, hands on hips, or fifth en bas. More advanced arm coordination is introduced gradually, as students can maintain placement and coordination. Dedicated port de bras exercises may move through positions that are still developing; there the goal is to introduce artistry, arm placement, and coordinated movement rather than to expect full mastery.",
+      "When appropriate, hands on the shoulders is preferable to hands on hips, as it encourages upper-body engagement and builds strength through the back, shoulders, and arms. Toward the end of the semester, fifth en bas, fifth en avant, fifth en haut, and second positions may be used more consistently.",
+    ],
+    outcomes: [
+      "Demonstrate poised, organized beginning ballet placement — basic alignment through the core, back, pelvis, hips, knees, ankles, and feet.",
+      "Apply foundational technique in level-appropriate barre and center exercises, including beginning turnout, weight transfer, coordination, and simple port de bras positions.",
+      "Move musically and rhythmically within a defined phrase, with developing clarity, control, and dynamic quality.",
+      "Use basic French ballet vocabulary and respond to simple spatial directions — straight line, circle, and diagonal.",
+      "Practice ballet etiquette and professionalism through consistent studio preparation, dress code, hair requirements, respectful participation, and responsiveness to instruction.",
+      "Reflect on technical, personal, and spiritual growth developed through beginning ballet study.",
+    ],
+    outcomesNote: "Refer to the official D190 Course Syllabus for the most current Course Learning Outcomes, as those may be revised more frequently than this curriculum document.",
+    sections: [
+      { name: "Class Structure", cards: [
+        { title: "Possible Order of Class — Early to Mid-Semester (50 min)", tag: "Guide",
+          body:
+"BARRE\n" +
+"• Warm-up / cross training\n" +
+"• Demi-plié at the barre\n" +
+"• Battement tendu from first position\n" +
+"• Battement tendu with demi-plié\n" +
+"• Battement dégagé (to save time, reuse the tendu combination as dégagé)\n" +
+"• Ronds de jambe à terre (possibly incorporating retiré)\n" +
+"• Sur le cou-de-pied / battement frappé preparation\n" +
+"• Grand battement\n" +
+"• Adage: retirés or battement relevé lent / dégagé en l'air (omit if covered in ronds de jambe)\n" +
+"• Relevé / sauté / pirouette preparation\n\n" +
+"CENTRE\n" +
+"• Port de bras\n" +
+"• Battement tendu (repeat barre exercise)\n" +
+"• Grand battement (possibly repeat barre exercise)\n" +
+"• Petit adage / adage\n" +
+"• Pirouette preparation (repeat barre exercise without relevé)\n" +
+"• Sautés (2 to 2)\n" +
+"• Glissade / assemblé preparation\n" +
+"• Locomotor / across the floor" },
+        { title: "Pedagogical Approach", tag: "Guide",
+          body:
+"Emphasize basic technique built on alignment through the core, back, and pelvis; engaged turnout; aligned hips, knees, ankles, and feet; musicality; dynamic quality; and clear port de bras.\n\n" +
+"Most barre work faces the barre until students can safely work with one hand. Keep center arms simple (demi-seconde, hands on shoulders, hands on hips, fifth en bas). Hands on the shoulders is generally preferable to hands on hips, as it encourages upper-body engagement and back strength." },
+      ]},
+
+      { name: "Exercises", cards: [
+        { title: "1. Cross Training / Floor Work", tag: "Conditioning",
+          body:
+"Instructor-created, simple, targeted exercises to address noted weaknesses. Possible options:\n" +
+"• Quadruped kneeling with simple arm coordination for scapular stability\n" +
+"• Simple abdominal strength — e.g. (from Susan Brooker) lying on the back, flex the feet and curl the upper body off the floor to look at the toes; hold, then lower with control\n" +
+"• Seated foot-progression exercises\n" +
+"• Plank holds\n" +
+"• PBT / Pilates exercises for certified instructors\n" +
+"Additional resources are in the Ballet Area Cross Training video link distributed by the Ballet Area Coordinator." },
+        { title: "2. Foot Progressions", tag: "Barre",
+          body:
+"Teach seated first, then speed up, then progress to standing — parallel, then first position. Focus on one of three objectives:\n" +
+"• Hip / knee / ankle / foot alignment (when pointed, the tops of the toes keep contact with the floor)\n" +
+"• Stretching the dorsal line of the foot\n" +
+"• Using the foot in jumping (toes release from the floor; toes come under when leaving the floor)\n" +
+"May continue through the semester, but can be phased out by midterm." },
+        { title: "3. Demi & Grand Plié", tag: "Barre",
+          body:
+"In demi-plié, emphasize the work of the turnout — knees press back behind the pinkie toe — deep enough that the knees pass the toes at the bottom. Grand plié in 1st and 2nd may be introduced only after mastery of the demi-plié; the pelvis should not drop below the level of the knees in full flexion.\n\n" +
+"Options:\n" +
+"• Marcia's demi-plié facing the barre (#18, p. 23)\n" +
+"• Simple demi-pliés in 1st, 2nd, and 5th\n" +
+"• Simple relevé may be added (as in Marcia's)\n" +
+"• Forward bends (straight back), cambré side, and cambré derrière may come by end of semester if ready — not required, and never at the expense of foundational mastery." },
+        { title: "4. Battement Tendu", tag: "Barre",
+          body:
+"Develops articulation and intrinsic foot strength, quick ankle action, straight legs with active feet, and clear accents out and in; prepares for dégagé and petit allegro. Sequencing varies by system; one ABT NTC-based progression:\n" +
+"• Introduce from first devant, then à la seconde, then derrière\n" +
+"• Simple alternating timings: tendu devant (1), close (2), other foot (3–4); then tendu (1), hold (2–3), close (4); then tendu (1), hold (2), close slowly (3–4); then tendu (1), close slowly (2–4)\n" +
+"• Apply the same timings à la seconde and derrière as readiness allows\n" +
+"Later combine with demi-plié or relevé — e.g. battement soutenu en croix; closing in demi-plié; beginning in plié and straightening on the extension." },
+        { title: "5. Battement Dégagé", tag: "Barre",
+          body:
+"Simple combinations with holds in first (or fifth). Examples:\n" +
+"• Dégagé à la seconde (+), close first (1), hold (2); repeat ×3; repeat all other leg — moderate tempo\n" +
+"• From fifth: dégagé devant, hold (1–2), close fifth (3–4); repeat en croix; then with battement soutenu\n" +
+"Dynamic quality relates directly to petit allegro, so achieving the right energy takes precedence over adding vocabulary." },
+        { title: "6. Rond de Jambe à Terre", tag: "Barre",
+          body: "Taught in quarter-circles first, then building to full ronds de jambe en dehors and en dedans." },
+        { title: "7–8. Sur le Cou-de-pied & Battement Frappé", tag: "Barre",
+          body: "Introduce the wrapped sur le cou-de-pied position and battement frappé striking to à la seconde. (A full frappé combination appears in the Sample Class below.)" },
+        { title: "9. Battement Fondu", tag: "Barre",
+          body:
+"Progression:\n" +
+"• Lift the foot to cou-de-pied\n" +
+"• Fondu, lift to cou-de-pied, close to straight legs\n" +
+"• Lift to cou-de-pied, fondu, straighten both legs to tendu devant\n" +
+"• Full fondu cou-de-pied to tendu devant" },
+        { title: "10. Grand Battement", tag: "Barre",
+          body:
+"• First à la quatrième devant / en avant from first: point devant (1), lift to grand battement (2), step en avant (3), close first (4); repeat other side\n" +
+"• Then à la quatrième derrière / en arrière\n" +
+"• Next omit the stepping: point devant (1), lift (2), point (3), close first (4)\n" +
+"• Then introduce à la seconde\n" +
+"• Lastly, the second timing from fifth position" },
+        { title: "Linking Steps", tag: "Center",
+          body:
+"• Simple weight transfer (sways) — en avant / en arrière, then de côté\n" +
+"• Chassé (glissé movements)\n" +
+"• Grapevine and simple pas de bourrée appropriate to the level\n" +
+"• Structured temps lié — e.g. Vaganova temps lié à terre from first: demi-plié (1), extend tendu devant staying in plié (2), step en avant to tendu derrière (3), close first (4); repeat other side" },
+        { title: "Port de Bras", tag: "Center",
+          body: "Marcia's (#2, p. 27); Cecchetti 1st and 3rd (p. 44)." },
+        { title: "Adage", tag: "Adagio",
+          body:
+"• Retiré positions, first withdrawing from an extended tendu à la quatrième: tendu devant (1), retiré devant (2), point to tendu (3), close first (4); repeat à la seconde; then from fifth\n" +
+"• Cecchetti third arabesque\n" +
+"• Dégagé en l'air\n" +
+"• Slow, controlled walking en diagonal with a poised finish" },
+        { title: "Turning Movements", tag: "Center",
+          body:
+"• Exercises to develop spotting\n" +
+"• Follow the Progressions of Study for Petit and Grand Pirouettes (p. 67)\n" +
+"• Simple turning de suite — e.g. bourrée turns with hands on the shoulders\n" +
+"• Demi-détourné" },
+        { title: "Allegro", tag: "Allegro",
+          body:
+"• Preparation for pas de chat (PAPI): from first/fifth — retiré (1), place second (2), other leg retiré (3), close (4)\n" +
+"• Balletic polka / AIAP polka prep\n" +
+"• Changement de pieds; soubresaut\n" +
+"• Échappé sauté à la seconde changé (1st → 2nd, then 5th → 2nd)\n" +
+"• Temps levé, two feet to two feet (sautés in positions)\n" +
+"• Glissade prep (#15, p. 22); assemblé prep (#3, p. 20)\n" +
+"• Marcia's lunge for jumps (#2, p. 41); penguin jumps (#5, p. 41)\n" +
+"• Royal Ballet allegro prep (#9, p. 42), lunges (#10, p. 42), warm-up jump (#24, p. 39), down-and-ups (#18, p. 37), bouncing sautés (#16, p. 37)\n" +
+"• Relevé sauté (#20, p. 23); spring pointes and spring heels; progressing to ordinary jetés" },
+        { title: "Dancing Movement (Across the Floor)", tag: "Locomotor",
+          body:
+"Add some or all to technique class — not necessarily the final exam — to build coordination, movement pathways, dimension, direction, and musical appreciation:\n" +
+"• Walking; running; ballet runs ending in posé (e.g. run and step forward into arabesque à terre with Cecchetti 3rd arms)\n" +
+"• Gallops / traveling chassé (en avant through quatrième devant, de côté through seconde)\n" +
+"• Skips; marches; trots; pony trots (progressing to pas de chat)\n" +
+"• Codified chassé; polka; modified mazurka; polonaise\n" +
+"• Simple pas de basque (not the rond de jambe version); balancé; step en manège" },
+      ]},
+
+      { name: "Sample Class", sub: "Early to Mid-Semester · 50 minutes · 2× / week", cards: [
+        { title: "Barre · Foot Progressions (Warm-up)", tag: "Barre",
+          counts: "2/4 Slow March (moderate)",
+          body:
+"Facing the barre, 6th position; arms prepare to the barre.\n" +
+"1–2  Right foot to half-pointe, hold\n" +
+"3–4  Right foot to pointed toe, hold\n" +
+"5–6  Right foot to half-pointe, hold\n" +
+"7–8  Lower heel to 6th\n" +
+"1–8  Repeat left\n" +
+"1–4 / 5–8  Repeat right, then left, half-time\n" +
+"1–2  Demi-plié in 6th  ·  3–4  Relevé  ·  5–6  Demi-plié in 6th  ·  7–8  Stretch knees\n" +
+"Repeat all beginning on the left." },
+        { title: "Barre · Demi-plié", tag: "Barre",
+          counts: "4/4 Adagio (plié) Pavane",
+          body: "Facing the barre, 1st position; arms prepare to the barre.\nMarcia's demi-plié in 1st, 2nd, 5th, and the other 5th." },
+        { title: "Barre · Battement Tendu", tag: "Barre",
+          counts: "Moderate",
+          body:
+"Facing the barre, 1st position.\n" +
+"1–2  Tendu devant, right (arrive with energy and stay)\n" +
+"3–4  Close to first (arrive with energy and stay)\n" +
+"5–8, 1–8  Repeat en croix  ·  Repeat all on left\n\n" +
+"Nearer mid-semester (one hand / fifth position), add:\n" +
+"1–2  Tendu devant with plié on the supporting leg  ·  3–4  Close to first  ·  5–8, 1–8  Repeat en croix" },
+        { title: "Barre · Battement Dégagé", tag: "Barre",
+          body:
+"Same combination as battement tendu; quicker dégagés may be added through à la seconde. For example:\n" +
+"+1–2  Dégagé à la seconde (+), close first (1), hold (2)\n" +
+"+3–8  Repeat ×3  ·  1–8  Repeat all with the other leg" },
+        { title: "Barre · Ronds de Jambe", tag: "Barre",
+          body:
+"From first, facing the barre.\n" +
+"1  Tendu devant  ·  2–3  Carry to à la seconde  ·  4  Close to first\n" +
+"5–8  Demi-rond de jambe en dehors, seconde to derrière\n" +
+"1–4  Full rond de jambe en dehors: F(1) S(2) B(3), close first (4)\n" +
+"5–6  Relevé with straight knees  ·  7–8  Lower to first\n" +
+"— or — 5–6 tendu à la seconde, retiré devant  ·  7–8 point to tendu, close first\n" +
+"Repeat left. En dedans may be incorporated as needed." },
+        { title: "Barre · Battement Frappé", tag: "Barre",
+          body:
+"From first; hands on the barre; prepare to wrapped sur le cou-de-pied.\n" +
+"1  Strike to à la seconde  ·  2–3  Hold  ·  4  Return to sur le cou-de-pied  ·  5–8  Repeat (continue)\n" +
+"1–2  Point to tendu à la seconde  ·  3–4  Close to first  ·  5–8  Prepare the left side\n" +
+"Repeat all on the other side." },
+        { title: "Barre · Grand Battement", tag: "Barre",
+          counts: "Polonaise",
+          body:
+"From first; one hand on the barre, working arm across the chest to the opposite shoulder.\n" +
+"Grand battement devant → tendu devant → close first  ·  4–6 hold in first\n" +
+"Repeat devant; repeat à la seconde; repeat devant; repeat à la seconde\n" +
+"1–3  Battement soutenu à la seconde  ·  4–6  Close to sous-sus devant\n" +
+"1–3  Demi-détourné (1–2), demi-plié in fifth (3)  ·  4–6  Tendu à la seconde, close first\n" +
+"Repeat all on the other side." },
+        { title: "Barre · Adage", tag: "Adagio",
+          body:
+"From first; one hand to the barre, working arm across the chest.\n" +
+"1–2  Dégagé en l'air devant  ·  3  Lower to tendu devant  ·  4  Close first\n" +
+"5–6  Dégagé en l'air seconde  ·  7  Lower to tendu seconde  ·  8  Fouetté à terre en dedans to face the barre, ending tendu derrière\n" +
+"1–2  Dégagé en l'air derrière  ·  3  Lower to tendu derrière  ·  4  Demi-plié in tendu derrière\n" +
+"5  Close to sous-sus  ·  6  ¼ demi-détourné  ·  7  Demi-plié in fifth  ·  8  Slide front foot to first with straight knees\n" +
+"Repeat all on the other side." },
+        { title: "Barre · Relevé / Sauté / Pirouette Preparation", tag: "Barre",
+          body:
+"Begin fifth, right leg derrière; arms prepare to the barre.\n" +
+"1–2  Demi-plié in fifth  ·  3–4  Tendu à la seconde in demi-plié  ·  5–6  Sous-sus devant  ·  7  Demi-plié in fifth  ·  8  Stretch knees\n" +
+"Repeat other side, then both sides again.\n" +
+"Then execute with assemblé dessus — continuing from the sous-sus, or restarting with jumps." },
+        { title: "Centre · Port de Bras", tag: "Center",
+          body:
+"Cecchetti 1st and 3rd port de bras, en face in fifth.\n" +
+"1–4  Cecchetti 1st  ·  5–8  Repeat (×4 total)\n" +
+"Cecchetti 3rd ×4.\n" +
+"Insert a change of legs in the last 4 counts to begin the other side, or stop the music to change." },
+        { title: "Centre · Battement Tendu", tag: "Center",
+          body: "Repeat the same exercise as battement tendu at the barre, en face." },
+        { title: "Centre · Grand Battement", tag: "Center",
+          counts: "Polonaise",
+          body:
+"As at the barre with slight alteration:\n" +
+"Tendu devant → grand battement devant → lower to tendu devant  ·  4–6 close first and hold\n" +
+"Repeat devant; repeat à la seconde; repeat all on the other side." },
+        { title: "Centre · Adage", tag: "Adagio",
+          body:
+"As at the barre, with port de bras that coordinates upper and lower body.\n" +
+"1–8  Same as barre\n" +
+"1–3  Dégagé en l'air derrière, lower to tendu derrière (3)\n" +
+"4  Fouetté à terre en dehors to tendu à la seconde\n" +
+"5–6  Temps lié de côté through second, tendu à la seconde other side  ·  7–8  Close first, prepare arms\n" +
+"Repeat all on the other side." },
+        { title: "Centre · Pirouette Preparation", tag: "Center",
+          body:
+"From first.\n" +
+"1–2  Tendu à la seconde, retiré devant  ·  3–4  Tendu à la seconde, close first  ·  5–8  Repeat\n" +
+"1  Tendu à la seconde  ·  2–4  Demi-plié in second, hold  ·  5–6  Retiré devant, hold  ·  7–8  Tendu à la seconde, close first\n" +
+"Repeat at least 2× through each side." },
+        { title: "Centre · Warm-up Jump / Sautés", tag: "Allegro",
+          body:
+"From first.\n" +
+"1  Tendu à la seconde, right  ·  2  Lunge onto the right (right plié, left straight)\n" +
+"3–4  Keeping the right plié, draw the left to first demi-plié  ·  5  Relevé in first  ·  6  Demi-plié in first\n" +
+"+7  Sauté in first, land in demi-plié  ·  8  Stretch knees\n" +
+"Repeat left, then both sides again." },
+        { title: "Centre · Allegro 2 (Bouncing Sautés)", tag: "Allegro",
+          body:
+"From first (adjusted from Royal Ballet's Bouncing Sautés).\n" +
+"1–4  Four demi-pliés in first, progressively deeper\n" +
+"+5–6  Sauté in first (+5), hold demi-plié (6)  ·  7–8  Stretch knees  ·  Repeat ×2\n" +
+"1–4  Tendu to à la seconde  ·  5–8  Lower heel, prepare to repeat in second position." },
+        { title: "Centre · Glissade / Assemblé", tag: "Allegro",
+          body: "Repeat the same exercise as at the barre." },
+        { title: "Centre · Locomotor / Across the Floor", tag: "Locomotor",
+          body: "Polka step en diagonal, en avant through quatrième devant." },
+      ]},
     ]
   },
-  {
-    id: "D290", tabLabel: "D290", tabSub: "Level 2", title: "Intermediate Ballet",
-    level: 2, desc: "Building strength, coordination, and musicality. Replace with your official D290 description.",
-    folderUrl: "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
-    documents: [
-      { title: "Course Syllabus", type: "Syllabus", updated: "Jan 2026",
-        desc: "Schedule, grading, attendance, and learning outcomes.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-      { title: "Exercise Progressions", type: "Exercise List", updated: "Feb 2026",
-        desc: "Intermediate barre and center combinations.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-      { title: "Music & Counts", type: "Music/Counts", updated: "Feb 2026",
-        desc: "Tempos and counts for each combination.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-      { title: "Assessment Rubric", type: "Assessment", updated: "Feb 2026",
-        desc: "Evaluation criteria for the term.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-    ]
-  },
-  {
-    id: "D291", tabLabel: "D291", tabSub: "Level 2", title: "Intermediate Ballet — Pointe",
-    level: 2, desc: "Pointe technique and strengthening. Replace with your official D291 description.",
-    folderUrl: "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
-    documents: [
-      { title: "Course Syllabus", type: "Syllabus", updated: "Jan 2026",
-        desc: "Schedule, grading, attendance, and learning outcomes.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-      { title: "Pointe Exercise List", type: "Exercise List", updated: "Feb 2026",
-        desc: "Progression of pointe work from barre to center.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-      { title: "Pointe Readiness Checklist", type: "Assessment", updated: "Jan 2026",
-        desc: "Strength and alignment prerequisites before center pointe.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-    ]
-  },
-  {
-    id: "D293", tabLabel: "D293", tabSub: "Level 2", title: "Intermediate Ballet — Variations",
-    level: 2, desc: "Classical repertoire and variations. Replace with your official D293 description.",
-    folderUrl: "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
-    documents: [
-      { title: "Course Syllabus", type: "Syllabus", updated: "Jan 2026",
-        desc: "Schedule, grading, attendance, and learning outcomes.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-      { title: "Variation Assignments", type: "Choreography", updated: "Mar 2026",
-        desc: "Assigned classical variations with source notes.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-      { title: "Music & Counts", type: "Music/Counts", updated: "Mar 2026",
-        desc: "Counts and recordings for each variation.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-    ]
-  },
-  {
-    id: "D390", tabLabel: "D390", tabSub: "Level 3", title: "Advanced Ballet",
-    level: 3, desc: "Refinement of technique, speed, and artistry. Replace with your official D390 description.",
-    folderUrl: "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
-    documents: [
-      { title: "Course Syllabus", type: "Syllabus", updated: "Jan 2026",
-        desc: "Schedule, grading, attendance, and learning outcomes.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-      { title: "Advanced Combinations", type: "Exercise List", updated: "Feb 2026",
-        desc: "Center adagio, turns, and allegro combinations.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-      { title: "Assessment Rubric", type: "Assessment", updated: "Feb 2026",
-        desc: "Advanced-level evaluation criteria.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-    ]
-  },
-  {
-    id: "D391", tabLabel: "D391", tabSub: "Level 3", title: "Advanced Ballet — Pointe",
-    level: 3, desc: "Advanced pointe and variations. Replace with your official D391 description.",
-    folderUrl: "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
-    documents: [
-      { title: "Course Syllabus", type: "Syllabus", updated: "Jan 2026",
-        desc: "Schedule, grading, attendance, and learning outcomes.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-      { title: "Advanced Pointe List", type: "Exercise List", updated: "Feb 2026",
-        desc: "Center pointe combinations and variations.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-      { title: "Music & Counts", type: "Music/Counts", updated: "Feb 2026",
-        desc: "Tempos and counts for pointe combinations.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-    ]
-  },
-  {
-    id: "D490", tabLabel: "D490", tabSub: "Level 4", title: "Advanced Ballet — Performance",
-    level: 4, desc: "Performance preparation and professional readiness. Replace with your official D490 description.",
-    folderUrl: "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
-    documents: [
-      { title: "Course Syllabus", type: "Syllabus", updated: "Jan 2026",
-        desc: "Schedule, grading, attendance, and learning outcomes.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-      { title: "Repertoire & Casting", type: "Choreography", updated: "Apr 2026",
-        desc: "Performance repertoire, casting, and rehearsal notes.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-      { title: "Performance Rubric", type: "Assessment", updated: "Mar 2026",
-        desc: "Artistry and technique criteria for performance evaluation.",
-        url: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-    ]
-  },
+
+  /* ======================= REMAINING COURSES (placeholders) =============== */
+  /* Same card structure as D190 — replace the placeholder cards with real    */
+  /* content and Drive links as it becomes available.                         */
+  makeCourse("D290", "Beginning", "Accelerated Beginning Ballet", "Beginning · Accelerated",
+    "An accelerated path through beginning technique for students progressing quickly. Replace this with the official D290 description."),
+  makeCourse("D291", "Technique 1", "Ballet Technique 1", "Technique 1",
+    "First course in the major technique sequence. Replace with the official D291 description."),
+  makeCourse("D293", "Technique 2", "Ballet Technique 2", "Technique 2",
+    "Continued technique development. Replace with the official D293 description."),
+  makeCourse("D390", "Technique 3", "Ballet Technique 3", "Technique 3",
+    "Intermediate–advanced technique. Replace with the official D390 description."),
+  makeCourse("D391", "Technique 4", "Ballet Technique 4", "Technique 4",
+    "Advanced technique and artistry. Replace with the official D391 description."),
+  makeCourse("D392", "Pointe 1", "Ballet Pointe 1", "Pointe 1",
+    "Introduction to pointe technique. Replace with the official D392 description."),
+  makeCourse("D393", "Pointe 2", "Ballet Pointe 2", "Pointe 2",
+    "Continued pointe technique. Replace with the official D393 description."),
+  makeCourse("D398", "Company", "Theatre Ballet Studio Company", "Theatre · Company",
+    "Studio company repertoire, rehearsal, and performance. Replace with the official D398 description."),
+  makeCourse("D490", "Technique 5", "Ballet Technique 5", "Technique 5",
+    "Pre-professional technique. Replace with the official D490 description."),
+  makeCourse("D494", "Pointe/Var.", "Ballet Pointe / Variations", "Pointe · Variations",
+    "Advanced pointe work and classical variations. Replace with the official D494 description."),
+  makeCourse("D498", "Theatre", "Theatre Ballet", "Theatre Ballet",
+    "Performance and repertoire. Replace with the official D498 description."),
 ];
+
+/* Helper that builds a placeholder course with the standard sections.
+   Delete this and write the course out in full (like D190) when you add content. */
+function makeCourse(code, tabSub, title, strand, blurb) {
+  return {
+    code, tabSub, title, strand,
+    blurb,
+    folderUrl: "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
+    sections: [
+      { name: "Course Materials", cards: [
+        { title: "Course Syllabus", tag: "Syllabus",
+          body: "Schedule, grading, attendance, and learning outcomes.",
+          driveUrl: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
+        { title: "Exercise List", tag: "Exercise List",
+          body: "Sequence of exercises and combinations taught this term.",
+          driveUrl: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
+        { title: "Assessment Rubric", tag: "Assessment",
+          body: "Criteria for technique evaluations.",
+          driveUrl: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
+      ]},
+    ]
+  };
+}
 
 /* ============================================================================
    ║  APP LOGIC  —  no need to edit below this line                          ║
    ========================================================================== */
 
-// Color-codes the small dot on each document badge by type (purely cosmetic).
 const TYPE_COLOR = {
-  "Syllabus":     "#002E5D",
-  "Exercise List":"#9C7C36",
-  "Assessment":   "#7A6A8A",
-  "Music/Counts": "#3F7A6E",
-  "Choreography": "#A85B4B",
-  "Reference":    "#5B6470",
+  "Syllabus": "#002E5D", "Exercise List": "#9C7C36", "Assessment": "#7A6A8A",
+  "Music/Counts": "#3F7A6E", "Choreography": "#A85B4B", "Reference": "#5B6470",
+  "Barre": "#9C7C36", "Center": "#3F7A6E", "Adagio": "#7A6A8A",
+  "Allegro": "#A85B4B", "Grand Allegro": "#A85B4B", "Conditioning": "#5B6470",
+  "Locomotor": "#3F7A6E", "Guide": "#002E5D", "Pointe": "#A85B4B",
 };
 
-// Turn any normal share link into an embeddable URL.
 function toEmbedUrl(url) {
   if (!url) return "";
-  try {
-    // YouTube
-    let m = url.match(/(?:youtube\.com\/(?:watch\?v=|shorts\/)|youtu\.be\/)([\w-]{6,})/);
-    if (m) return "https://www.youtube.com/embed/" + m[1];
-    // Vimeo
-    m = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
-    if (m) return "https://player.vimeo.com/video/" + m[1];
-    // Google Drive file
-    m = url.match(/drive\.google\.com\/file\/d\/([\w-]+)/);
-    if (m) return "https://drive.google.com/file/d/" + m[1] + "/preview";
-  } catch (e) {}
-  return url; // assume already embeddable
+  let m = url.match(/(?:youtube\.com\/(?:watch\?v=|shorts\/)|youtu\.be\/)([\w-]{6,})/);
+  if (m) return "https://www.youtube.com/embed/" + m[1];
+  m = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+  if (m) return "https://player.vimeo.com/video/" + m[1];
+  m = url.match(/drive\.google\.com\/file\/d\/([\w-]+)/);
+  if (m) return "https://drive.google.com/file/d/" + m[1] + "/preview";
+  return url;
 }
-
-// Derive a Drive /preview URL from a file link (for inline document preview).
 function drivePreview(url) {
   const m = (url || "").match(/drive\.google\.com\/file\/d\/([\w-]+)/);
   return m ? "https://drive.google.com/file/d/" + m[1] + "/preview" : "";
 }
-
 function el(tag, cls, html) {
   const n = document.createElement(tag);
   if (cls) n.className = cls;
   if (html != null) n.innerHTML = html;
+  return n;
+}
+function txt(tag, cls, text) {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
   return n;
 }
 
@@ -755,113 +771,151 @@ const ICONS = {
   folder: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h6a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>',
   eye: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>',
   film: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16M17 4v16M3 9h4M3 15h4M17 9h4M17 15h4"/></svg>',
+  chevron: '<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>',
 };
 
 const tablist = document.getElementById("tablist");
 const mainEl = document.getElementById("main");
 const panels = {};
 
-// Build a single document card.
-function buildDoc(doc) {
-  const card = el("article", "doc");
-  card.dataset.search = (doc.title + " " + doc.type + " " + doc.desc).toLowerCase();
+// Build one expandable card.
+function buildCard(card) {
+  const wrap = el("article", "card");
+  wrap.dataset.search = ((card.title || "") + " " + (card.tag || "") + " " + (card.body || "")).toLowerCase();
 
-  const dotColor = TYPE_COLOR[doc.type] || "var(--gold)";
-  card.appendChild(el("div", "badge",
-    '<span class="dot" style="background:' + dotColor + '"></span>' + doc.type));
-  card.appendChild(el("h3", null, doc.title));
-  card.appendChild(el("p", "doc-desc", doc.desc));
-  if (doc.updated) card.appendChild(el("p", "meta", "Updated " + doc.updated));
-
-  const actions = el("div", "actions");
-  const open = el("a", "btn btn-primary", "Open in Drive " + ICONS.external);
-  open.href = doc.url; open.target = "_blank"; open.rel = "noopener";
-  actions.appendChild(open);
-
-  const previewUrl = drivePreview(doc.url);
-  if (previewUrl) {
-    const toggle = el("button", "btn btn-ghost", ICONS.eye + " Preview");
-    const frame = el("div", "preview-frame");
-    toggle.addEventListener("click", () => {
-      const isOpen = frame.classList.toggle("open");
-      toggle.innerHTML = isOpen ? (ICONS.eye + " Hide preview") : (ICONS.eye + " Preview");
-      if (isOpen && !frame.dataset.loaded) {
-        const f = el("iframe");
-        f.src = previewUrl; f.loading = "lazy";
-        f.setAttribute("allow", "autoplay");
-        frame.appendChild(f);
-        frame.dataset.loaded = "1";
-      }
-    });
-    actions.appendChild(toggle);
-    card.appendChild(actions);
-    card.appendChild(frame);
-  } else {
-    card.appendChild(actions);
+  const head = el("button", "card-head");
+  head.type = "button";
+  head.setAttribute("aria-expanded", "false");
+  if (card.tag) {
+    const tag = txt("span", "card-tag", card.tag);
+    const c = TYPE_COLOR[card.tag];
+    if (c) tag.style.color = c;
+    head.appendChild(tag);
   }
-  return card;
+  head.appendChild(txt("span", "card-title", card.title));
+  head.appendChild(el("span", null, ICONS.chevron));
+
+  const bodyWrap = el("div", "card-body-wrap");
+  const inner = el("div", "card-body-inner");
+  const body = el("div", "card-body");
+
+  if (card.body) body.appendChild(txt("div", "lead", card.body));
+  if (card.counts) {
+    const m = el("div", "card-meta");
+    m.appendChild(txt("span", "k", "Counts"));
+    m.appendChild(txt("span", null, card.counts));
+    body.appendChild(m);
+  }
+  if (card.focus) {
+    const m = el("div", "card-meta");
+    m.appendChild(txt("span", "k", "Focus"));
+    m.appendChild(txt("span", null, card.focus));
+    body.appendChild(m);
+  }
+
+  // Video area
+  if (Object.prototype.hasOwnProperty.call(card, "videoUrl")) {
+    const frame = el("div", "vid-frame");
+    const embed = toEmbedUrl(card.videoUrl);
+    if (embed) {
+      const f = el("iframe");
+      f.dataset.src = embed; f.loading = "lazy";
+      f.setAttribute("allowfullscreen", "");
+      f.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture");
+      frame.appendChild(f);
+    } else {
+      frame.appendChild(el("div", "vid-soon", ICONS.film + "<span>Video coming soon</span>"));
+    }
+    body.appendChild(frame);
+  }
+
+  // Drive actions
+  if (card.driveUrl) {
+    const actions = el("div", "card-actions");
+    const open = el("a", "btn btn-primary", "Open in Drive " + ICONS.external);
+    open.href = card.driveUrl; open.target = "_blank"; open.rel = "noopener";
+    actions.appendChild(open);
+    const previewUrl = drivePreview(card.driveUrl);
+    if (previewUrl) {
+      const toggle = el("button", "btn btn-ghost", ICONS.eye + " Preview");
+      const pf = el("div", "preview-frame");
+      toggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isOpen = pf.classList.toggle("open");
+        toggle.innerHTML = isOpen ? (ICONS.eye + " Hide preview") : (ICONS.eye + " Preview");
+        if (isOpen && !pf.dataset.loaded) {
+          const f = el("iframe"); f.src = previewUrl; f.loading = "lazy";
+          pf.appendChild(f); pf.dataset.loaded = "1";
+        }
+      });
+      actions.appendChild(toggle);
+      body.appendChild(actions);
+      body.appendChild(pf);
+    } else {
+      body.appendChild(actions);
+    }
+  }
+
+  inner.appendChild(body);
+  bodyWrap.appendChild(inner);
+  wrap.appendChild(head);
+  wrap.appendChild(bodyWrap);
+
+  head.addEventListener("click", () => {
+    const open = wrap.classList.toggle("open");
+    head.setAttribute("aria-expanded", open ? "true" : "false");
+    // Lazy-load video iframe only when first opened
+    if (open) {
+      const f = wrap.querySelector("iframe[data-src]");
+      if (f && !f.src) f.src = f.dataset.src;
+    }
+  });
+
+  return wrap;
 }
 
-// Build a single video tile (Essential Exercises).
-function buildVideo(ex) {
-  const card = el("article", "vid");
-  card.dataset.search = (ex.name + " " + ex.focus).toLowerCase();
-
-  const frame = el("div", "frame");
-  const embed = toEmbedUrl(ex.videoUrl);
-  if (embed) {
-    const f = el("iframe");
-    f.src = embed; f.loading = "lazy";
-    f.setAttribute("allowfullscreen", "");
-    f.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture");
-    frame.appendChild(f);
-  } else {
-    frame.appendChild(el("div", "soon", ICONS.film + "<span>Video coming soon</span>"));
-  }
-  card.appendChild(frame);
-
-  const body = el("div", "vid-body");
-  body.appendChild(el("h4", null, ex.name));
-  body.appendChild(el("p", "vid-focus", ex.focus));
-  card.appendChild(body);
-  return card;
-}
-
-// Build one full course panel.
 function buildPanel(course) {
   const panel = el("section", "panel");
   panel.setAttribute("role", "tabpanel");
 
-  // Header with level indicator
+  // Header
   const head = el("div", "course-head");
   const left = el("div");
-  left.appendChild(el("p", "id", course.id === course.title ? "Foundational" : course.id));
-  left.appendChild(el("h2", null, course.title));
-  left.appendChild(el("p", "desc", course.desc));
+  left.appendChild(txt("p", "id", course.code === course.title ? "Foundational" : course.code));
+  left.appendChild(txt("h2", null, course.title));
+  if (course.blurb) left.appendChild(txt("p", "desc", course.blurb));
   head.appendChild(left);
-
-  const lvl = el("div", "level" + (course.level === 0 ? " foundational" : ""));
-  let marks = "";
-  for (let i = 1; i <= 4; i++) {
-    const on = course.level === 0 || i <= course.level ? " on" : "";
-    marks += '<span class="mk' + on + '"></span>';
-  }
-  lvl.innerHTML = '<span class="marks">' + marks + '</span><span class="label">' +
-    (course.level === 0 ? "All levels" : "Level " + course.level) + '</span>';
-  head.appendChild(lvl);
+  if (course.strand) head.appendChild(txt("span", "strand", course.strand));
   panel.appendChild(head);
 
-  // Toolbar: search + optional folder button
+  // Overview
+  if (course.overview && course.overview.length) {
+    const block = el("div", "prose-block");
+    block.appendChild(txt("h3", null, "Course Overview"));
+    course.overview.forEach(p => block.appendChild(txt("p", null, p)));
+    panel.appendChild(block);
+  }
+  // Outcomes
+  if (course.outcomes && course.outcomes.length) {
+    const block = el("div", "prose-block");
+    block.appendChild(txt("h3", null, "Learning Outcomes"));
+    const ul = el("ul", "outcomes");
+    course.outcomes.forEach(o => ul.appendChild(txt("li", null, o)));
+    block.appendChild(ul);
+    if (course.outcomesNote) block.appendChild(txt("div", "note", course.outcomesNote));
+    panel.appendChild(block);
+  }
+
+  // Toolbar
   const toolbar = el("div", "toolbar");
   const search = el("div", "search");
   const input = el("input");
   input.type = "search";
-  input.placeholder = "Search " + (course.level === 0 ? "documents and videos…" : "documents…");
+  input.placeholder = "Search " + course.title + "…";
   input.setAttribute("aria-label", "Search within " + course.title);
   search.innerHTML = ICONS.search;
   search.appendChild(input);
   toolbar.appendChild(search);
-
   if (course.folderUrl) {
     const fld = el("a", "btn btn-ghost", ICONS.folder + " Open course folder");
     fld.href = course.folderUrl; fld.target = "_blank"; fld.rel = "noopener";
@@ -869,47 +923,42 @@ function buildPanel(course) {
   }
   panel.appendChild(toolbar);
 
-  // Documents section
-  const docCount = course.documents ? course.documents.length : 0;
-  panel.appendChild(el("h3", "section-label",
-    "Documents <span class=\"count\">" + docCount + "</span>"));
-  const docGrid = el("div", "doc-grid");
-  (course.documents || []).forEach(d => docGrid.appendChild(buildDoc(d)));
-  panel.appendChild(docGrid);
-
-  // Video library (Essential Exercises only)
-  if (course.videoCategories) {
-    course.videoCategories.forEach(cat => {
-      panel.appendChild(el("h3", "section-label",
-        cat.name + " <span class=\"count\">" + cat.exercises.length + "</span>"));
-      const grid = el("div", "vid-grid");
-      cat.exercises.forEach(ex => grid.appendChild(buildVideo(ex)));
-      panel.appendChild(grid);
-    });
-  }
+  // Sections
+  (course.sections || []).forEach(section => {
+    const label = el("h3", "section-label",
+      section.name + ' <span class="count">' + section.cards.length + "</span>");
+    panel.appendChild(label);
+    if (section.sub) panel.appendChild(txt("div", "subsection-label", section.sub));
+    const cards = el("div", "cards");
+    section.cards.forEach(c => cards.appendChild(buildCard(c)));
+    panel.appendChild(cards);
+  });
 
   // Empty state
   const empty = el("div", "empty",
     '<div class="e-title">Nothing matches your search</div>' +
-    '<div>Try a different word, or clear the search to see everything.</div>');
+    "<div>Try a different word, or clear the search to see everything.</div>");
   panel.appendChild(empty);
 
-  // Wire up search within this panel
+  // Search behavior
   input.addEventListener("input", () => {
     const q = input.value.trim().toLowerCase();
     let anyVisible = false;
-    panel.querySelectorAll(".doc, .vid").forEach(card => {
+    panel.querySelectorAll(".card").forEach(card => {
       const match = !q || card.dataset.search.includes(q);
       card.classList.toggle("hidden", !match);
       if (match) anyVisible = true;
     });
-    // Hide section labels + grids that have no visible cards
     panel.querySelectorAll(".section-label").forEach(label => {
-      let grid = label.nextElementSibling;
-      if (grid && (grid.classList.contains("doc-grid") || grid.classList.contains("vid-grid"))) {
-        const visible = grid.querySelectorAll(".doc:not(.hidden), .vid:not(.hidden)").length;
+      let node = label.nextElementSibling;
+      // skip optional subsection label
+      if (node && node.classList.contains("subsection-label")) node = node.nextElementSibling;
+      if (node && node.classList.contains("cards")) {
+        const visible = node.querySelectorAll(".card:not(.hidden)").length;
         label.classList.toggle("hidden", visible === 0);
-        grid.classList.toggle("hidden", visible === 0);
+        node.classList.toggle("hidden", visible === 0);
+        const sub = label.nextElementSibling;
+        if (sub && sub.classList.contains("subsection-label")) sub.classList.toggle("hidden", visible === 0);
       }
     });
     empty.classList.toggle("show", !anyVisible);
@@ -924,7 +973,7 @@ CURRICULUM.forEach((course, i) => {
   tab.setAttribute("role", "tab");
   tab.id = "tab-" + i;
   tab.setAttribute("aria-selected", i === 0 ? "true" : "false");
-  tab.innerHTML = course.tabLabel + '<span class="tab-sub">' + course.tabSub + "</span>";
+  tab.innerHTML = course.code + '<span class="tab-sub">' + (course.tabSub || "") + "</span>";
   tab.addEventListener("click", () => selectTab(i));
   tab.addEventListener("keydown", e => {
     if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
@@ -951,10 +1000,10 @@ function selectTab(i) {
     document.getElementById("tab-" + j).setAttribute("aria-selected", isActive ? "true" : "false");
     panels[j].classList.toggle("is-active", isActive);
   });
-  // Re-trigger the fade by re-adding the class
   panels[i].style.animation = "none";
   void panels[i].offsetWidth;
   panels[i].style.animation = "";
+  document.getElementById("tab-" + i).scrollIntoView({ inline: "nearest", block: "nearest" });
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 </script>

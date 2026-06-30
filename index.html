@@ -5,17 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYU Ballet Curriculum Reference</title>
     
+    <!-- Fonts: Playfair Display (Serif) and Inter (Sans-Serif) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- React & ReactDOM -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     
+    <!-- Babel for JSX -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
+    <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
             theme: {
@@ -34,11 +39,11 @@
         }
     </script>
     <style>
+        /* Smooth scrolling and base transitions */
         html { scroll-behavior: smooth; }
         .tab-transition { transition: all 0.3s ease; }
         .accordion-content { transition: max-height 0.3s ease-in-out, opacity 0.3s ease; overflow: hidden; }
-        /* Preserve line breaks in text */
-        .whitespace-pre-line { white-space: pre-line; }
+        .whitespace-pre-line { white-space: pre-line; } /* Allows \n in text to render as line breaks */
     </style>
 </head>
 <body class="bg-warmGray text-gray-800 font-sans antialiased">
@@ -46,185 +51,289 @@
 
     <script type="text/babel">
         // ============================================================================
-        // 🩰 CURRICULUM DATA
-        // Updated with D190 Rewrite Content
+        // 🩰 CURRICULUM DATA 
         // ============================================================================
         const CURRICULUM_DATA = [
             {
-                id: "d190-overview",
-                tabTitle: "D190: Overview",
-                courseNumber: "D190",
-                title: "Course Overview & Outcomes",
-                level: "Beginner",
-                description: "D190 is the introductory ballet technique course offered at BYU. [cite: 3] It is designed for students with little to no prior ballet training and provides a foundation in beginning ballet vocabulary, alignment, coordination, musicality, and professional studio practice. [cite: 4] Students in dance degree programs who have limited ballet experience may also begin at this level. [cite: 5]",
+                id: "essential",
+                tabTitle: "Essential Exercises",
+                courseNumber: "Core Foundation",
+                title: "Essential Ballet Vocabulary",
+                level: "All Levels",
+                description: "The foundational exercises that recur across all levels of the curriculum.",
                 objectives: [
-                    "Demonstrate poised, organized beginning ballet placement, including basic alignment through the core, back, pelvis, hips, knees, ankles, and feet. [cite: 20]",
-                    "Apply foundational ballet technique in level-appropriate barre and center exercises, including beginning turnout, weight transfer, coordination, and simple port de bras positions. [cite: 21]",
-                    "Move musically and rhythmically within a defined musical phrase, showing developing clarity, control, and dynamic quality. [cite: 22]",
-                    "Use basic French ballet vocabulary and respond to simple spatial directions, including movement in a straight line, circle, and diagonal. [cite: 23]",
-                    "Practice appropriate ballet etiquette and professionalism through consistent studio preparation, dress code, hair requirements, respectful participation, and responsiveness to instruction. [cite: 24]",
-                    "Reflect on technical, personal, and spiritual growth developed through beginning ballet study. [cite: 25]"
+                    "Establish correct postural alignment and placement.",
+                    "Develop articulation of the feet and legs.",
+                    "Understand the connection between breath, musicality, and movement.",
+                    "Build stamina and precision in fundamental positions."
                 ],
                 exercises: [
                     {
-                        category: "Center",
-                        name: "Pedagogical Guidelines",
-                        description: "Instruction should emphasize basic technique, proper alignment, muscular engagement of turnout, and clear port de bras. [cite: 6, 7, 8] Most barre exercises should face the barre until postural organization is sufficient. [cite: 9] In the center, arm work should remain simple (demi-seconde, hands on shoulders, hands on hips, or fifth en bas). [cite: 10, 11]",
-                        counts: "N/A",
-                        focus: "Hands on shoulders is preferable to hands on hips to develop back strength. [cite: 15]",
-                        videoUrl: ""
-                    }
-                ]
-            },
-            {
-                id: "d190-order",
-                tabTitle: "Class Order",
-                courseNumber: "D190",
-                title: "Possible Order of Class",
-                level: "Early to mid-semester",
-                description: "A recommended progression for a 50-minute class early to mid-semester. [cite: 26, 27]",
-                objectives: [],
-                exercises: [
+                        category: "Barre",
+                        name: "Plié",
+                        description: "Bending of the knees in 1st, 2nd, 4th, and 5th positions. Includes demi and grand plié, often combined with port de bras.",
+                        counts: "3/4 or 4/4, 32-64 counts",
+                        focus: "Maintain turn-out from the hips, keep heels on the floor in demi-plié, and ensure smooth, continuous movement.",
+                        videoUrl: "" 
+                    },
                     {
                         category: "Barre",
-                        name: "Barre Sequence",
-                        description: "1. Warm-up/Cross Training [cite: 29]\n2. Demi-plié at the barre [cite: 30]\n3. Battement Tendu from first position [cite: 31]\n4. Battement Tendu with demi-plié [cite: 32]\n5. Battement Dégagé [cite: 33]\n6. Ronds de jambes à terre [cite: 34]\n7. Sur le cou-de-pied/battement frappé prep [cite: 35]\n8. Grand Battement [cite: 36]\n9. Adage [cite: 37]\n10. Relevé/Sauté/Pirouette Preparation [cite: 38]",
-                        counts: "Various",
-                        focus: "Establish foundational technique facing the barre until students safely work with one hand. [cite: 9]",
+                        name: "Tendu",
+                        description: "Brushing the foot along the floor to a point, extending from the instep and toes, closing back to 1st or 5th position.",
+                        counts: "2/4 or 4/4, 32 counts",
+                        focus: "Lead with the heel going forward and the toe going back. Articulate fully through the metatarsals.",
                         videoUrl: ""
                     },
                     {
                         category: "Center",
-                        name: "Centre Sequence",
-                        description: "1. Port de bras [cite: 40]\n2. Battement Tendu [cite: 41]\n3. Grand Battement [cite: 42]\n4. Petit Adage/Adage [cite: 43]\n5. Pirouette Preparation [cite: 44]\n6. Sautés (2 to 2) [cite: 45]\n7. Glissade/Assemblé preparation [cite: 46]",
-                        counts: "Various",
-                        focus: "Keep arm work simple, coordinated, and supportive of correct alignment. [cite: 10]",
-                        videoUrl: ""
-                    },
-                    {
-                        category: "Petit Allegro", 
-                        name: "Locomotor / Across the Floor",
-                        description: "Movement across the floor to build coordination. [cite: 47]",
-                        counts: "Various",
-                        focus: "Practice simple spatial directions, including movement in a straight line, circle, and diagonal. [cite: 23]",
+                        name: "Port de Bras",
+                        description: "Carriage of the arms through the classical positions, often involving épaulement and movement of the upper body.",
+                        counts: "3/4 (Adagio tempo), 16-32 counts",
+                        focus: "Support the arms from the back, maintaining a lifted chest without rib flaring. Soft, expressive hands.",
                         videoUrl: ""
                     }
                 ]
             },
             {
-                id: "d190-library",
-                tabTitle: "Exercise Library",
-                courseNumber: "D190",
-                title: "Curriculum Exercises",
-                level: "Full List",
-                description: "Detailed breakdowns of specific exercises and techniques for the D190 level. [cite: 48]",
-                objectives: [],
+                id: "d190",
+                tabTitle: "D190",
+                courseNumber: "Dance 190",
+                title: "Ballet Technique 1",
+                level: "Beginner",
+                description: "D190 is the introductory ballet technique course offered at BYU. It is designed for students with little to no prior ballet training and provides a foundation in beginning ballet vocabulary, alignment, coordination, musicality, and professional studio practice. Students in dance degree programs who have limited ballet experience may also begin at this level.",
+                objectives: [
+                    "Demonstrate poised, organized beginning ballet placement, including basic alignment through the core, back, pelvis, hips, knees, ankles, and feet.",
+                    "Apply foundational ballet technique in level-appropriate barre and center exercises, including beginning turnout, weight transfer, coordination, and simple port de bras positions.",
+                    "Move musically and rhythmically within a defined musical phrase, showing developing clarity, control, and dynamic quality.",
+                    "Use basic French ballet vocabulary and respond to simple spatial directions, including movement in a straight line, circle, and diagonal.",
+                    "Practice appropriate ballet etiquette and professionalism through consistent studio preparation, dress code, respectful participation, and responsiveness to instruction.",
+                    "Reflect on technical, personal, and spiritual growth developed through beginning ballet study."
+                ],
                 exercises: [
+                    {
+                        category: "Course Guidelines",
+                        name: "Pedagogical Approach",
+                        description: "Instruction at this level should emphasize the acquisition of basic ballet technique, supported by proper alignment through the core, back, and pelvis; muscular engagement of turnout; focused alignment of the hips, knees, ankles, and feet; musicality; and clear port de bras.\n\nMost barre exercises should face the barre until students demonstrate sufficient postural organization to safely work with one hand. In the center, arm work should remain simple (demi-seconde, hands on shoulders, hands on hips, or fifth en bas).",
+                        counts: "N/A",
+                        focus: "Hands on the shoulders is preferable to hands on hips, as it encourages upper-body engagement and back strength.",
+                        videoUrl: ""
+                    },
+                    {
+                        category: "Course Guidelines",
+                        name: "Possible Order of Class (50 Min)",
+                        description: "BARRE:\n1. Warm-up/Cross Training\n2. Demi-plié at the barre\n3. Battement Tendu from first position\n4. Battement Tendu with demi-plié\n5. Battement Dégagé\n6. Ronds de jambes à terre\n7. Sur le cou-de-pied/battement frappé prep\n8. Grand Battement\n9. Adage (Retirés or dégagé en l'air)\n10. Relevé/Sauté/Pirouette Preparation\n\nCENTRE:\n1. Port de bras\n2. Battement Tendu (repeat barre)\n3. Grand Battement\n4. Petit Adage/Adage\n5. Pirouette Preparation\n6. Sautés (2 to 2)\n7. Glissade/Assemblé preparation\n8. Locomotor/Across the floor",
+                        counts: "Early to mid-semester",
+                        focus: "Use simple exercises that build progressively toward core alignment and coordination goals.",
+                        videoUrl: ""
+                    },
                     {
                         category: "Barre",
                         name: "1. Cross Training & 2. Foot Progressions",
-                        description: "Targeted exercises like quadruped kneeling, abdominal strength, and seated foot progressions. [cite: 49, 51, 52, 55] Foot progressions teach hip, knee, and ankle alignment, and stretch the dorsal line. [cite: 61, 62, 63]",
+                        description: "CROSS TRAINING:\nTargeted exercises for weaknesses: quadruped kneeling, abdominal strength (curling upper body to look at toes), plank holds, or PBT/Pilates exercises.\n\nFOOT PROGRESSIONS:\nTeach seated, speed up, then progress to standing (parallel, then 1st). Teaches hip, knee, ankle, and foot alignment, and the use of the foot in jumping movements (toes release from the floor).",
                         counts: "N/A",
-                        focus: "Address weaknesses in technique; teach use of foot in jumping. [cite: 50, 64]",
+                        focus: "Address specific weaknesses. Develop articulation and strength in the dorsal line of the foot.",
                         videoUrl: ""
                     },
                     {
                         category: "Barre",
                         name: "3. Demi and Grand Plié",
-                        description: "Simple demi-pliés in 1st, 2nd, and 5th. [cite: 74] Grand plié in 1st and 2nd introduced only after mastery of demi-plié. [cite: 70]",
+                        description: "Simple demi-pliés in 1st, 2nd, and 5th. Grand plié in 1st and 2nd positions may be introduced in D190, but only after mastery of the demi-plié. Possible to add simple relevé in combinations. Forward bends and cambré may be added by the end of the semester if ready.",
                         counts: "N/A",
-                        focus: "Knees pressing back behind the pinkie toe. Pelvis should not drop below knees in grand plié. [cite: 68, 71]",
+                        focus: "Emphasize knees pressing back behind the pinkie toe in demi-plié. In grand plié, the pelvis should not drop below the level of the knees in full flexion.",
                         videoUrl: ""
                     },
                     {
                         category: "Barre",
                         name: "4. Battement Tendu & 5. Battement Dégagé",
-                        description: "Develops articulation of feet. Introduce from 1st position devant, then seconde, then derrière. [cite: 78, 80, 84] Dégagé includes simple combinations with holds in first or fifth positions. [cite: 98]",
+                        description: "BATTEMENT TENDU: Introduce from 1st position devant, then à la seconde, then derrière. Begin with simple alternating leg patterns, holding on counts, progressing to closing slowly. Later combine with simple demi-plié or relevé.\n\nBATTEMENT DÉGAGÉ: Simple combinations with holds in first or fifth positions. Executed at a moderate tempo.",
                         counts: "Varies",
-                        focus: "Quick action through ankle, straight legs. Obtaining desired energy in dégagé takes precedence over adding vocabulary. [cite: 80, 106]",
+                        focus: "Develop articulation and intrinsic strength of the feet. Obtaining the desired energy in the battement dégagé takes precedence over adding vocabulary.",
+                        videoUrl: ""
+                    },
+                    {
+                        category: "Barre",
+                        name: "6-10. Rond de jambe, Frappé, Fondu & Grand Battement",
+                        description: "ROND DE JAMBE: Taught in 1/4 circles first.\nFONDU: Lift to cou-de-pied, fondu and close, progress to straightening both legs to tendu devant, then full fondu.\nGRAND BATTEMENT: Executed devant/en avant from 1st with stepping motion. Then derrière/en arrière. Next omit the stepping motion. Lastly, introduce à la seconde and from 5th.",
+                        counts: "Varies",
+                        focus: "Build articulation, coordination, and muscular control.",
                         videoUrl: ""
                     },
                     {
                         category: "Center",
-                        name: "10. Port de Bras & 11. Adage",
-                        description: "Cecchetti 1st and 3rd port de bras. [cite: 134] Adage includes retiré positions, Cecchetti third arabesque position, and slow controlled walking en diagonal. [cite: 136, 141, 143]",
-                        counts: "Adagio",
-                        focus: "Introduce artistry, arm placement, and coordinated movement patterns. [cite: 14]",
+                        name: "9. Linking Steps & 10. Port de Bras",
+                        description: "LINKING STEPS: Simple transfer of weight (sways), chassé, grapevine, simple pas de bourrée, and structured temps lié (e.g., Vaganova temps lié à terre from 1st).\n\nPORT DE BRAS: Cecchetti 1st and 3rd.",
+                        counts: "N/A",
+                        focus: "Coordination of weight transfer and building dimension and direction.",
                         videoUrl: ""
                     },
                     {
-                        category: "Petit Allegro",
+                        category: "Adagio",
+                        name: "11. Adage & 12. Turning Movements",
+                        description: "ADAGE: Retiré positions withdrawing from an extended battement tendu. Cecchetti third arabesque position. Dégagé en l'air. Slow, controlled walking en diagonal.\n\nTURNING: Exercises to develop spotting. Simple turning de suite in center (bourrée turns with hands on shoulders). Demi-détourné.",
+                        counts: "Adagio / Varies",
+                        focus: "Balance, poised transitions, and developing a sharp, consistent spot.",
+                        videoUrl: ""
+                    },
+                    {
+                        category: "Allegro",
                         name: "13. Allegro & 14. Dancing Movement",
-                        description: "Sautés, Changement de pieds, Soubresaut, Échappé, Glissade/Assemblé prep. [cite: 154, 155, 156, 159, 160] Dancing movement includes walking, running, skips, marches, gallops, chassé. [cite: 171, 174, 175, 178, 179]",
+                        description: "ALLEGRO: Prep for pas de chat, balletic polka, changement, soubresaut, échappé sauté à la seconde changé, temps levé, glissade/assemblé prep, spring pointes.\n\nDANCING MOVEMENT: Walking, running, skips, gallops, marches, trots, chassé, balancé. (For building movement coordination, not necessarily for final exams).",
                         counts: "Allegro / Varies",
-                        focus: "Building movement coordination, dimension, direction, and musical appreciation. [cite: 173]",
+                        focus: "Building movement coordination, comprehension of pathways, dimension, direction, and musical appreciation.",
+                        videoUrl: ""
+                    },
+                    {
+                        category: "Sample Class",
+                        name: "Sample Barre Sequence",
+                        description: "1. Warm-up: Foot Progressions (Facing barre, 6th pos, half pointe to pointed toe).\n2. Demi-plié at the barre (Facing barre, 1st pos, Marcia's demi-plié).\n3. Battement Tendu & Dégagé from 1st (Arrive with energy and stay).\n4. Ronds de jambes & Battement Frappé (Strike to seconde, hold, return).\n5. Grand Battement (Executed to a polonaise).\n6. Adage (Dégagé en l'air, fouetté à terre en dedans).\n7. Relevé/Sauté/Pirouette Preparation (From 5th, plié, tendu seconde, sous-sus).",
+                        counts: "Various (Slow March, Adagio Pavane, Polonaise)",
+                        focus: "Early to mid-semester pacing. Emphasize continuous movement and establishing alignment.",
+                        videoUrl: ""
+                    },
+                    {
+                        category: "Sample Class",
+                        name: "Sample Center Sequence",
+                        description: "1. Port de bras (Cecchetti 1st and 3rd facing en face).\n2. Battement Tendu & Grand Battement (Repeat barre exercises).\n3. Adage (Temps lié de côté through 2nd).\n4. Pirouette Preparation (From 1st, tendu to retiré).\n5. Warm-up Jump/Sautés (Lunges, sautés in 1st).\n6. Allegro 2 (Bouncing sautés getting progressively deeper).\n7. Locomotor (Polka step en diagonal).",
+                        counts: "Various",
+                        focus: "Utilize port de bras positions that emphasize coordination of the upper and lower body.",
                         videoUrl: ""
                     }
                 ]
             },
             {
-                id: "d190-sample",
-                tabTitle: "Sample Class",
-                courseNumber: "D190",
-                title: "Sample Class Breakdown",
-                level: "50 Minutes, 2x week",
-                description: "A specific, timed sample class plan for early to mid-semester. [cite: 192, 193]",
-                objectives: [],
+                id: "d290",
+                tabTitle: "D290",
+                courseNumber: "Dance 290",
+                title: "Ballet Technique 2",
+                level: "Intermediate I",
+                description: "Progression of basic technique with increased focus on coordination, speed, and complex combinations.",
+                objectives: [
+                    "Increase strength and stability on one leg.",
+                    "Incorporate épaulement into center combinations.",
+                    "Develop phrasing and musicality in adagio and allegro."
+                ],
                 exercises: [
                     {
                         category: "Barre",
-                        name: "Foot Progressions (Warm-up)",
-                        description: "Facing the barre, 6th position. [cite: 196]\nRight foot to half pointe (1-2), pointed toe (3-4), half pointe (5-6), lower heel (7-8). Repeat left. [cite: 197, 198, 199, 200, 201]\nDemi-plié in 6th, relevé, stretch knees. [cite: 204, 205, 206, 207]",
-                        counts: "2/4 Slow March (Moderate) [cite: 195]",
-                        focus: "Alignment and foot articulation.",
-                        videoUrl: ""
-                    },
-                    {
-                        category: "Barre",
-                        name: "Demi-plié at the barre",
-                        description: "Facing the barre, 1st position. [cite: 210] \nMarcia’s demi-plié in 1st, 2nd, 5th, and other 5th. [cite: 211]",
-                        counts: "4/4 Adagio (Plié) Pavane [cite: 209]",
-                        focus: "Continuous movement and turnout.",
-                        videoUrl: ""
-                    },
-                    {
-                        category: "Barre",
-                        name: "Battement Tendu from 1st & Dégagé",
-                        description: "Tendu devant (1-2), close first (3-4), repeat en croix. [cite: 214, 215, 216]\nDégagé: à la seconde (+), close first (1), hold (2), repeat x3. [cite: 226, 227]",
-                        counts: "Varies",
-                        focus: "Arrive with energy and stay. [cite: 214]",
-                        videoUrl: ""
-                    },
-                    {
-                        category: "Barre",
-                        name: "Ronds de jambes & Frappé",
-                        description: "Tendu devant (1), carry to seconde (2-3), close first (4). Full rond de jambe en dehors. [cite: 231, 232, 233, 235]\nFrappé: Strike to seconde (1), hold (2-3), return to sur le cou-de-pied (4). [cite: 247, 248, 249]",
-                        counts: "Varies",
-                        focus: "Rotation and crisp strikes.",
+                        name: "Rond de Jambe à Terre",
+                        description: "Circular movement of the leg on the floor, both en dehors and en dedans.",
+                        counts: "3/4, 32 counts",
+                        focus: "Keep the pelvis stable. Maximize rotation in the hip socket.",
                         videoUrl: ""
                     },
                     {
                         category: "Center",
-                        name: "Port de bras & Adage",
-                        description: "Cecchetti 1st and 3rd port de bras facing en face in fifth position. [cite: 305, 306, 310]\nCenter adage includes dégagé en l'air and fouetté à terre. [cite: 330, 331]",
-                        counts: "Adagio",
-                        focus: "Instructors should utilize port de bras positions that emphasize coordination of the upper and lower body. [cite: 328]",
+                        name: "Pirouette en Dehors",
+                        description: "A turn outward on one leg, originating from 4th or 5th position.",
+                        counts: "3/4 or 4/4",
+                        focus: "Strong coordination of the arms and a sharp, consistent spot.",
                         videoUrl: ""
-                    },
-                    {
-                        category: "Petit Allegro",
-                        name: "Warm-up Jump & Allegro 2",
-                        description: "Lunge to battement tendu leg, pull to first demi-plié, relevé, sauté. [cite: 350, 352, 354, 356]\nAllegro 2: 4 demi-pliés getting progressively deeper, sauté in first, hold. [cite: 362, 363]",
-                        counts: "Allegro",
-                        focus: "Use of demi-plié for safe landing.",
-                        videoUrl: ""
-                    },
+                    }
+                ]
+            },
+            {
+                id: "d291",
+                tabTitle: "D291",
+                courseNumber: "Dance 291",
+                title: "Ballet Technique 2B",
+                level: "Intermediate II",
+                description: "Continued intermediate study, preparing students for advanced vocabulary.",
+                objectives: ["Refine transitions.", "Increase allegro stamina."],
+                exercises: [
                     {
                         category: "Grand Allegro",
-                        name: "Locomotor / Across the Floor",
-                        description: "Polka step en diagonal, en avant through quatrième devant. [cite: 370, 371]",
-                        counts: "Polka",
-                        focus: "Spatial awareness and dynamic travel.",
+                        name: "Grand Jeté",
+                        description: "A large leap from one foot to the other.",
+                        counts: "3/4",
+                        focus: "Brush the front leg straight, achieve a split in the air.",
+                        videoUrl: ""
+                    }
+                ]
+            },
+            {
+                id: "d293",
+                tabTitle: "D293",
+                courseNumber: "Dance 293",
+                title: "Pointe Work 1",
+                level: "Intermediate Pointe",
+                description: "Introduction to pointe technique for those who have achieved necessary strength.",
+                objectives: ["Develop ankle strength.", "Learn proper articulation in pointe shoes."],
+                exercises: [
+                    {
+                        category: "Pointe",
+                        name: "Relevé in 1st and 2nd",
+                        description: "Rising to full pointe from demi-plié.",
+                        counts: "4/4",
+                        focus: "Roll fully through the box of the shoe.",
+                        videoUrl: ""
+                    }
+                ]
+            },
+            {
+                id: "d390",
+                tabTitle: "D390",
+                courseNumber: "Dance 390",
+                title: "Ballet Technique 3",
+                level: "Advanced I",
+                description: "Advanced technique focusing on artistry, complex beats, and sustained adagio.",
+                objectives: ["Master complex petit allegro.", "Develop artistic expression."],
+                exercises: [
+                    {
+                        category: "Petit Allegro",
+                        name: "Assemblé Battu",
+                        description: "An assemblé with a beat before landing.",
+                        counts: "2/4",
+                        focus: "Beat from the top of the thighs, land simultaneously.",
+                        videoUrl: ""
+                    }
+                ]
+            },
+            {
+                id: "d391",
+                tabTitle: "D391",
+                courseNumber: "Dance 391",
+                title: "Ballet Technique 3B",
+                level: "Advanced II",
+                description: "Refinement of advanced skills.",
+                objectives: ["Execute multiple turns.", "Perform extended grand allegro."],
+                exercises: [
+                    {
+                        category: "Grand Allegro",
+                        name: "Tour Jeté",
+                        description: "Grand jeté entrelacé.",
+                        counts: "3/4",
+                        focus: "Pass the legs closely in the air, land squarely in arabesque.",
+                        videoUrl: ""
+                    }
+                ]
+            },
+            {
+                id: "d490",
+                tabTitle: "D490",
+                courseNumber: "Dance 490",
+                title: "Ballet Technique 4",
+                level: "Pre-Professional",
+                description: "Pinnacle of the technique sequence. Focus on professional pacing, style, and virtuosity.",
+                objectives: [
+                    "Demonstrate professional-level stamina and technique.",
+                    "Quickly internalize and execute complex choreography.",
+                    "Display mature artistic nuance and stylistic adaptability."
+                ],
+                exercises: [
+                    {
+                        category: "Center",
+                        name: "Fouetté Rond de Jambe en Tournant",
+                        description: "A series of consecutive turns on one leg, propelled by a whipping motion of the working leg.",
+                        counts: "2/4 (Coda tempo)",
+                        focus: "Maintain core stability, coordinate the plié and relevé with the opening and closing of the working leg.",
+                        videoUrl: ""
+                    },
+                    {
+                        category: "Adagio",
+                        name: "Grand Adagio Complex",
+                        description: "Extended sequence incorporating promenades, penché, and multiple pirouettes.",
+                        counts: "Adagio (flexible)",
+                        focus: "Sustain strength through the lower back, seamless transitions between extensions.",
                         videoUrl: ""
                     }
                 ]
@@ -237,6 +346,7 @@
 
         const { useState, useMemo } = React;
 
+        // --- Exercise Card Component ---
         const ExerciseCard = ({ exercise }) => {
             const [isOpen, setIsOpen] = useState(false);
 
@@ -262,6 +372,7 @@
                             <p className="text-sm"><span className="font-semibold text-gray-900">Tempo/Counts:</span> {exercise.counts}</p>
                             <p className="text-sm leading-relaxed"><span className="font-semibold text-gray-900">Technique Focus:</span> {exercise.focus}</p>
                             
+                            {/* Video Placeholder */}
                             <div className="mt-4 p-4 bg-gray-50 border border-dashed border-gray-300 rounded flex items-center justify-center">
                                 {exercise.videoUrl ? (
                                     <a href={exercise.videoUrl} target="_blank" className="text-blue-600 hover:underline text-sm font-medium flex items-center gap-2">
@@ -277,21 +388,25 @@
             );
         };
 
+        // --- Main Course View Component ---
         const CourseView = ({ course }) => {
             const [searchTerm, setSearchTerm] = useState('');
 
+            // Extract unique categories and filter exercises
             const filteredExercises = course.exercises.filter(ex => 
-                ex.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                ex.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 ex.description.toLowerCase().includes(searchTerm.toLowerCase())
             );
             
+            // Group filtered exercises by category
             const groupedExercises = filteredExercises.reduce((acc, ex) => {
                 if (!acc[ex.category]) acc[ex.category] = [];
                 acc[ex.category].push(ex);
                 return acc;
             }, {});
 
-            const categoryOrder = ["Barre", "Center", "Adagio", "Petit Allegro", "Allegro", "Grand Allegro", "Pointe"];
+            // Standard ballet category order (including the new custom ones for D190)
+            const categoryOrder = ["Course Guidelines", "Barre", "Center", "Adagio", "Petit Allegro", "Allegro", "Grand Allegro", "Pointe", "Sample Class"];
             const sortedCategories = Object.keys(groupedExercises).sort((a, b) => {
                 let indexA = categoryOrder.indexOf(a);
                 let indexB = categoryOrder.indexOf(b);
@@ -303,6 +418,7 @@
             return (
                 <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6 animate-fade-in">
                     
+                    {/* Header Section */}
                     <header className="mb-10 text-center sm:text-left">
                         <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
                             <h2 className="text-3xl font-serif font-bold text-byuNavy">{course.title}</h2>
@@ -311,9 +427,10 @@
                             </span>
                         </div>
                         <p className="text-gray-600 text-lg">{course.courseNumber}</p>
-                        <p className="mt-4 text-gray-700">{course.description}</p>
+                        <p className="mt-4 text-gray-700 leading-relaxed">{course.description}</p>
                     </header>
 
+                    {/* Objectives Section */}
                     {course.objectives && course.objectives.length > 0 && (
                         <section className="mb-10 bg-white p-6 rounded-lg shadow-sm border border-gray-200">
                             <h3 className="text-xl font-serif font-semibold text-byuNavy mb-4 border-b border-gray-100 pb-2">Learning Objectives</h3>
@@ -323,6 +440,7 @@
                         </section>
                     )}
 
+                    {/* Search & Filter */}
                     <div className="mb-8">
                         <div className="relative">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -332,7 +450,7 @@
                             </div>
                             <input 
                                 type="text" 
-                                placeholder="Search sections..." 
+                                placeholder="Search exercises by name or description..." 
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-byuNavyLight focus:border-byuNavyLight sm:text-sm shadow-sm transition-colors"
@@ -340,7 +458,10 @@
                         </div>
                     </div>
 
+                    {/* Exercise Library grouped by Category */}
                     <section>
+                        <h3 className="text-2xl font-serif font-semibold text-byuNavy mb-6">Course Material & Exercises</h3>
+                        
                         {sortedCategories.length === 0 ? (
                             <p className="text-gray-500 italic text-center py-8">No content found matching "{searchTerm}".</p>
                         ) : (
@@ -362,17 +483,20 @@
             );
         };
 
+        // --- Main App Component ---
         const App = () => {
             const [activeTabId, setActiveTabId] = useState(CURRICULUM_DATA[0].id);
             const activeCourse = CURRICULUM_DATA.find(c => c.id === activeTabId);
 
             return (
                 <div className="min-h-screen flex flex-col">
+                    {/* Top Navigation */}
                     <nav className="bg-byuNavy text-white shadow-md sticky top-0 z-50">
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                             <div className="flex items-center justify-between h-16 border-b border-white/10">
                                 <h1 className="font-serif text-xl font-bold tracking-wide">BYU Dance | Ballet</h1>
                             </div>
+                            {/* Tabs */}
                             <div className="flex overflow-x-auto hide-scrollbar py-1">
                                 <div className="flex space-x-1">
                                     {CURRICULUM_DATA.map((course) => (
@@ -393,10 +517,12 @@
                         </div>
                     </nav>
 
+                    {/* Main Content Area */}
                     <main className="flex-grow">
                         {activeCourse ? <CourseView course={activeCourse} /> : <p className="text-center mt-20">Course data not found.</p>}
                     </main>
                     
+                    {/* Footer */}
                     <footer className="bg-white border-t border-gray-200 mt-12 py-6 text-center text-sm text-gray-500">
                         <p>&copy; {new Date().getFullYear()} Brigham Young University Dance Department</p>
                         <p className="mt-1 text-xs">Curriculum Reference Tool</p>
@@ -405,21 +531,9 @@
             );
         };
 
+        // Render the app
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
-
-    <style>
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-            animation: fadeIn 0.4s ease-out;
-        }
-    </style>
 </body>
 </html>

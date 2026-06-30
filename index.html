@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BYU Ballet Curriculum Reference</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        byuNavy: '#002E5D', // Official BYU Navy
+                        byuNavyLight: '#00438b',
+                        warmGray: '#f8f9fa',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth scrolling and base transitions */
+        html { scroll-behavior: smooth; }
+        .tab-transition { transition: all 0.3s ease; }
+        .accordion-content { transition: max-height 0.3s ease-in-out, opacity 0.3s ease; overflow: hidden; }
+    </style>
+</head>
+<body class="bg-warmGray text-gray-800 font-sans antialiased">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // ============================================================================
+        // 🩰 CURRICULUM DATA (EDIT THIS SECTION)
+        // Instructors: Update this array to change tabs, objectives, and exercises.
+        // ============================================================================
+        const CURRICULUM_DATA = [
+            {
+                id: "essential",
+                tabTitle: "Essential Exercises",
+                courseNumber: "Core Foundation",
+                title: "Essential Ballet Vocabulary",
+                level: "All Levels",
+                description: "The foundational exercises that recur across all levels of the curriculum.",
+                objectives: [
+                    "Establish correct postural alignment and placement.",
+                    "Develop articulation of the feet and legs.",
+                    "Understand the connection between breath, musicality, and movement.",
+                    "Build stamina and precision in fundamental positions."
+                ],
+                exercises: [
+                    {
+                        category: "Barre",
+                        name: "Plié",
+                        description: "Bending of the knees in 1st, 2nd, 4th, and 5th positions. Includes demi and grand plié, often combined with port de bras.",
+                        counts: "3/4 or 4/4, 32-64 counts",
+                        focus: "Maintain turn-out from the hips, keep heels on the floor in demi-plié, and ensure smooth, continuous movement without pausing at the bottom.",
+                        videoUrl: "" // Add URL here later, e.g., "https://youtube.com/..."
+                    },
+                    {
+                        category: "Barre",
+                        name: "Tendu",
+                        description: "Brushing the foot along the floor to a point, extending from the instep and toes, closing back to 1st or 5th position.",
+                        counts: "2/4 or 4/4, 32 counts",
+                        focus: "Lead with the heel going forward and the toe going back. Articulate fully through the metatarsals.",
+                        videoUrl: ""
+                    },
+                    {
+                        category: "Center",
+                        name: "Port de Bras",
+                        description: "Carriage of the arms through the classical positions, often involving épaulement and movement of the upper body.",
+                        counts: "3/4 (Adagio tempo), 16-32 counts",
+                        focus: "Support the arms from the back, maintaining a lifted chest without rib flaring. Soft, expressive hands.",
+                        videoUrl: ""
+                    }
+                ]
+            },
+            {
+                id: "d190",
+                tabTitle: "D190",
+                courseNumber: "Dance 190",
+                title: "Ballet Technique 1",
+                level: "Beginner",
+                description: "Introduction to classical ballet technique, emphasizing alignment, basic vocabulary, and spatial awareness.",
+                objectives: [
+                    "Demonstrate basic turn-out and fundamental positions of the arms and feet.",
+                    "Execute basic barre exercises with proper alignment.",
+                    "Perform simple center combinations including basic allegro."
+                ],
+                exercises: [
+                    {
+                        category: "Barre",
+                        name: "Dégagé",
+                        description: "Similar to tendu, but the foot brushes slightly off the floor.",
+                        counts: "2/4, 32 counts",
+                        focus: "Sharp, energetic action on the way out, controlled close.",
+                        videoUrl: ""
+                    },
+                    {
+                        category: "Petit Allegro",
+                        name: "Sauté",
+                        description: "Simple jumps in 1st and 2nd position.",
+                        counts: "2/4, 16 counts",
+                        focus: "Roll through the feet upon landing to ensure a safe, silent landing in demi-plié.",
+                        videoUrl: ""
+                    }
+                ]
+            },
+            {
+                id: "d290",
+                tabTitle: "D290",
+                courseNumber: "Dance 290",
+                title: "Ballet Technique 2",
+                level: "Intermediate I",
+                description: "Progression of basic technique with increased focus on coordination, speed, and complex combinations.",
+                objectives: [
+                    "Increase strength and stability on one leg.",
+                    "Incorporate épaulement into center combinations.",
+                    "Develop phrasing and musicality in adagio and allegro."
+                ],
+                exercises: [
+                    {
+                        category: "Barre",
+                        name: "Rond de Jambe à Terre",
+                        description: "Circular movement of the leg on the floor, both en dehors and en dedans.",
+                        counts: "3/4, 32 counts",
+                        focus: "Keep the pelvis stable. Maximize rotation in the hip socket.",
+                        videoUrl: ""
+                    },
+                    {
+                        category: "Center",
+                        name: "Pirouette en Dehors",
+                        description: "A turn outward on one leg, originating from 4th or 5th position.",
+                        counts: "3/4 or 4/4",
+                        focus: "Strong coordination of the arms and a sharp, consistent spot.",
+                        videoUrl: ""
+                    }
+                ]
+            },
+            {
+                id: "d291",
+                tabTitle: "D291",
+                courseNumber: "Dance 291",
+                title: "Ballet Technique 2B",
+                level: "Intermediate II",
+                description: "Continued intermediate study, preparing students for advanced vocabulary.",
+                objectives: ["Refine transitions.", "Increase allegro stamina."],
+                exercises: [
+                    {
+                        category: "Grand Allegro",
+                        name: "Grand Jeté",
+                        description: "A large leap from one foot to the other.",
+                        counts: "3/4",
+                        focus: "Brush the front leg straight, achieve a split in the air.",
+                        videoUrl: ""
+                    }
+                ]
+            },
+            {
+                id: "d293",
+                tabTitle: "D293",
+                courseNumber: "Dance 293",
+                title: "Pointe Work 1",
+                level: "Intermediate Pointe",
+                description: "Introduction to pointe technique for those who have achieved necessary strength.",
+                objectives: ["Develop ankle strength.", "Learn proper articulation in pointe shoes."],
+                exercises: [
+                    {
+                        category: "Pointe",
+                        name: "Relevé in 1st and 2nd",
+                        description: "Rising to full pointe from demi-plié.",
+                        counts: "4/4",
+                        focus: "Roll fully through the box of the shoe.",
+                        videoUrl: ""
+                    }
+                ]
+            },
+            {
+                id: "d390",
+                tabTitle: "D390",
+                courseNumber: "Dance 390",
+                title: "Ballet Technique 3",
+                level: "Advanced I",
+                description: "Advanced technique focusing on artistry, complex beats, and sustained adagio.",
+                objectives: ["Master complex petit allegro.", "Develop artistic expression."],
+                exercises: [
+                    {
+                        category: "Petit Allegro",
+                        name: "Assemblé Battu",
+                        description: "An assemblé with a beat before landing.",
+                        counts: "2/4",
+                        focus: "Beat from the top of the thighs, land simultaneously.",
+                        videoUrl: ""
+                    }
+                ]
+            },
+            {
+                id: "d391",
+                tabTitle: "D391",
+                courseNumber: "Dance 391",
+                title: "Ballet Technique 3B",
+                level: "Advanced II",
+                description: "Refinement of advanced skills.",
+                objectives: ["Execute multiple turns.", "Perform extended grand allegro."],
+                exercises: [
+                    {
+                        category: "Grand Allegro",
+                        name: "Tour Jeté",
+                        description: "Grand jeté entrelacé.",
+                        counts: "3/4",
+                        focus: "Pass the legs closely in the air, land squarely in arabesque.",
+                        videoUrl: ""
+                    }
+                ]
+            },
+            {
+                id: "d490",
+                tabTitle: "D490",
+                courseNumber: "Dance 490",
+                title: "Ballet Technique 4",
+                level: "Pre-Professional",
+                description: "Pinnacle of the technique sequence. Focus on professional pacing, style, and virtuosity.",
+                objectives: [
+                    "Demonstrate professional-level stamina and technique.",
+                    "Quickly internalize and execute complex choreography.",
+                    "Display mature artistic nuance and stylistic adaptability."
+                ],
+                exercises: [
+                    {
+                        category: "Center",
+                        name: "Fouetté Rond de Jambe en Tournant",
+                        description: "A series of consecutive turns on one leg, propelled by a whipping motion of the working leg.",
+                        counts: "2/4 (Coda tempo)",
+                        focus: "Maintain core stability, coordinate the plié and relevé with the opening and closing of the working leg.",
+                        videoUrl: ""
+                    },
+                    {
+                        category: "Adagio",
+                        name: "Grand Adagio Complex",
+                        description: "Extended sequence incorporating promenades, penché, and multiple pirouettes.",
+                        counts: "Adagio (flexible)",
+                        focus: "Sustain strength through the lower back, seamless transitions between extensions.",
+                        videoUrl: ""
+                    }
+                ]
+            }
+        ];
+
+        // ============================================================================
+        // ⚛️ REACT COMPONENTS
+        // ============================================================================
+
+        const { useState, useMemo } = React;
+
+        // --- Exercise Card Component ---
+        const ExerciseCard = ({ exercise }) => {
+            const [isOpen, setIsOpen] = useState(false);
+
+            return (
+                <div className="bg-white rounded-lg shadow-sm border border-gray-200 mb-3 overflow-hidden">
+                    <button 
+                        onClick={() => setIsOpen(!isOpen)} 
+                        className="w-full text-left px-5 py-4 flex justify-between items-center hover:bg-gray-50 focus:outline-none transition-colors"
+                    >
+                        <h4 className="font-serif text-lg text-byuNavy font-semibold">{exercise.name}</h4>
+                        <span className="text-gray-400">
+                            {isOpen ? (
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7"></path></svg>
+                            ) : (
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                            )}
+                        </span>
+                    </button>
+                    
+                    {isOpen && (
+                        <div className="px-5 pb-5 pt-2 border-t border-gray-100 text-gray-700 space-y-4">
+                            <p className="text-sm leading-relaxed"><span className="font-semibold text-gray-900">Description:</span> {exercise.description}</p>
+                            <p className="text-sm"><span className="font-semibold text-gray-900">Tempo/Counts:</span> {exercise.counts}</p>
+                            <p className="text-sm"><span className="font-semibold text-gray-900">Technique Focus:</span> {exercise.focus}</p>
+                            
+                            {/* Video Placeholder */}
+                            <div className="mt-4 p-4 bg-gray-50 border border-dashed border-gray-300 rounded flex items-center justify-center">
+                                {exercise.videoUrl ? (
+                                    <a href={exercise.videoUrl} target="_blank" className="text-blue-600 hover:underline text-sm font-medium flex items-center gap-2">
+                                        ▶ Watch Exercise Video
+                                    </a>
+                                ) : (
+                                    <span className="text-gray-400 text-sm italic">Video placeholder (URL pending)</span>
+                                )}
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        // --- Main Course View Component ---
+        const CourseView = ({ course }) => {
+            const [searchTerm, setSearchTerm] = useState('');
+
+            // Extract unique categories and filter exercises
+            const filteredExercises = course.exercises.filter(ex => 
+                ex.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            
+            // Group filtered exercises by category
+            const groupedExercises = filteredExercises.reduce((acc, ex) => {
+                if (!acc[ex.category]) acc[ex.category] = [];
+                acc[ex.category].push(ex);
+                return acc;
+            }, {});
+
+            // Standard ballet category order
+            const categoryOrder = ["Barre", "Center", "Adagio", "Petit Allegro", "Allegro", "Grand Allegro", "Pointe"];
+            const sortedCategories = Object.keys(groupedExercises).sort((a, b) => {
+                let indexA = categoryOrder.indexOf(a);
+                let indexB = categoryOrder.indexOf(b);
+                if (indexA === -1) indexA = 99;
+                if (indexB === -1) indexB = 99;
+                return indexA - indexB;
+            });
+
+            return (
+                <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6 animate-fade-in">
+                    
+                    {/* Header Section */}
+                    <header className="mb-10 text-center sm:text-left">
+                        <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+                            <h2 className="text-3xl font-serif font-bold text-byuNavy">{course.title}</h2>
+                            <span className="mt-2 sm:mt-0 text-sm font-semibold tracking-wider uppercase text-byuNavyLight bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
+                                {course.level}
+                            </span>
+                        </div>
+                        <p className="text-gray-600 text-lg">{course.courseNumber}</p>
+                        <p className="mt-4 text-gray-700">{course.description}</p>
+                    </header>
+
+                    {/* Objectives Section */}
+                    {course.objectives && course.objectives.length > 0 && (
+                        <section className="mb-10 bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                            <h3 className="text-xl font-serif font-semibold text-byuNavy mb-4 border-b border-gray-100 pb-2">Learning Objectives</h3>
+                            <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                                {course.objectives.map((obj, i) => <li key={i}>{obj}</li>)}
+                            </ul>
+                        </section>
+                    )}
+
+                    {/* Search & Filter */}
+                    <div className="mb-8">
+                        <div className="relative">
+                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </div>
+                            <input 
+                                type="text" 
+                                placeholder="Search exercises by name..." 
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-byuNavyLight focus:border-byuNavyLight sm:text-sm shadow-sm transition-colors"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Exercise Library grouped by Category */}
+                    <section>
+                        <h3 className="text-2xl font-serif font-semibold text-byuNavy mb-6">Exercise Library</h3>
+                        
+                        {sortedCategories.length === 0 ? (
+                            <p className="text-gray-500 italic text-center py-8">No exercises found matching "{searchTerm}".</p>
+                        ) : (
+                            sortedCategories.map(category => (
+                                <div key={category} className="mb-8">
+                                    <h4 className="text-lg font-semibold text-gray-500 uppercase tracking-wider mb-4 pl-2 border-l-4 border-byuNavyLight">
+                                        {category}
+                                    </h4>
+                                    <div>
+                                        {groupedExercises[category].map((exercise, index) => (
+                                            <ExerciseCard key={index} exercise={exercise} />
+                                        ))}
+                                    </div>
+                                </div>
+                            ))
+                        )}
+                    </section>
+                </div>
+            );
+        };
+
+        // --- Main App Component ---
+        const App = () => {
+            const [activeTabId, setActiveTabId] = useState(CURRICULUM_DATA[0].id);
+            const activeCourse = CURRICULUM_DATA.find(c => c.id === activeTabId);
+
+            return (
+                <div className="min-h-screen flex flex-col">
+                    {/* Top Navigation */}
+                    <nav className="bg-byuNavy text-white shadow-md sticky top-0 z-50">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="flex items-center justify-between h-16 border-b border-white/10">
+                                <h1 className="font-serif text-xl font-bold tracking-wide">BYU Dance | Ballet</h1>
+                            </div>
+                            {/* Tabs */}
+                            <div className="flex overflow-x-auto hide-scrollbar py-1">
+                                <div className="flex space-x-1">
+                                    {CURRICULUM_DATA.map((course) => (
+                                        <button
+                                            key={course.id}
+                                            onClick={() => setActiveTabId(course.id)}
+                                            className={`whitespace-nowrap px-4 py-3 text-sm font-medium transition-colors border-b-4 ${
+                                                activeTabId === course.id
+                                                    ? 'border-white text-white bg-white/10'
+                                                    : 'border-transparent text-gray-300 hover:text-white hover:bg-white/5'
+                                            }`}
+                                        >
+                                            {course.tabTitle}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+
+                    {/* Main Content Area */}
+                    <main className="flex-grow">
+                        {activeCourse ? <CourseView course={activeCourse} /> : <p className="text-center mt-20">Course data not found.</p>}
+                    </main>
+                    
+                    {/* Footer */}
+                    <footer className="bg-white border-t border-gray-200 mt-12 py-6 text-center text-sm text-gray-500">
+                        <p>&copy; {new Date().getFullYear()} Brigham Young University Dance Department</p>
+                        <p className="mt-1 text-xs">Curriculum Reference Tool</p>
+                    </footer>
+                </div>
+            );
+        };
+
+        // Render the app
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+
+    <style>
+        /* Hide scrollbar for nav tabs but keep functionality */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Simple fade-in animation for tab switching */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out;
+        }
+    </style>
+</body>
+</html>

@@ -127,6 +127,9 @@
   .prose-block p:last-child { margin-bottom: 0; }
   .outcomes { margin: 0; padding-left: 22px; color: var(--ink); }
   .outcomes li { margin-bottom: 8px; }
+  .link-tile { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+  .link-tile p { margin-bottom: 6px; }
+  .link-tile .btn { margin-top: 2px; }
   .note {
     margin-top: 14px; font-size: 13px; color: var(--slate);
     border-left: 3px solid var(--gold); padding-left: 12px; font-style: italic;
@@ -330,95 +333,812 @@
    ========================================================================== */
 
 const CURRICULUM = [
-
-  /* ============================ ESSENTIAL EXERCISES ======================== */
-  {
-    code: "Essential", tabSub: "Exercises", title: "Essential Exercises",
-    strand: "Foundation", level: 0,
-    blurb: "The core vocabulary and technique standards that carry through every level. Reference documents plus a growing video library demonstrating each exercise.",
-    folderUrl: "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
-    sections: [
-      { name: "Reference Documents", cards: [
-        { title: "Foundational Vocabulary", tag: "Reference",
-          body: "Master list of essential ballet terminology with definitions.",
-          driveUrl: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-        { title: "Technique Standards", tag: "Reference",
-          body: "Alignment, placement, and execution benchmarks shared across courses.",
-          driveUrl: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-      ]},
-      { name: "Barre", cards: [
-        { title: "Plié", tag: "Barre",
-          body: "Bending of the knees in 1st, 2nd, 4th, and 5th positions. Includes demi and grand plié, often combined with port de bras.",
-          counts: "3/4 or 4/4 · 32–64 counts",
-          focus: "Maintain turnout from the hips, keep heels down in demi-plié, move continuously.",
-          // Sample (Creative Commons) clip demonstrates the working player. Replace with your own.
-          videoUrl: "https://www.youtube.com/watch?v=aqz-KE-bpKQ" },
-        { title: "Tendu", tag: "Barre",
-          body: "Brushing the foot along the floor to a point and closing back to 1st or 5th.",
-          counts: "2/4 or 4/4 · 32 counts",
-          focus: "Lead with the heel going forward and the toe coming back; articulate through the metatarsals.",
-          videoUrl: "" },
-        { title: "Dégagé", tag: "Barre",
-          body: "Battement dégagé / jeté — a brushed accent off the floor, out and in.",
-          counts: "2/4 · brisk",
-          focus: "Crisp dynamic; the energy of dégagé feeds petit allegro.",
-          videoUrl: "" },
-        { title: "Rond de jambe à terre", tag: "Barre",
-          body: "Circular movement of the leg on the floor, en dehors and en dedans.",
-          counts: "3/4 · 32 counts", focus: "Stable pelvis, maximal rotation in the hip socket.",
-          videoUrl: "" },
-        { title: "Frappé", tag: "Barre",
-          body: "Strike from a wrapped sur le cou-de-pied to à la seconde, single and double.",
-          counts: "2/4", focus: "Sharp, articulate strike; quiet supporting side.",
-          videoUrl: "" },
-        { title: "Fondu", tag: "Barre",
-          body: "Battement fondu through cou-de-pied — a single sustained melting movement.",
-          counts: "3/4 · adagio", focus: "Both knees bend and stretch together.",
-          videoUrl: "" },
-        { title: "Grand battement", tag: "Barre",
-          body: "High brush of the working leg, front, side, and back.",
-          counts: "2/4 or polonaise", focus: "Height comes from the brush, not from lifting the hip.",
-          videoUrl: "" },
-      ]},
-      { name: "Center", cards: [
-        { title: "Adagio", tag: "Center",
-          body: "Développé, promenade, and sustained balance.",
-          counts: "3/4 · adagio", focus: "Strength through the standing side; seamless transitions.",
-          videoUrl: "" },
-        { title: "Port de bras", tag: "Center",
-          body: "Carriage of the arms through the classical positions, with épaulement.",
-          counts: "3/4 · 16–32 counts", focus: "Support the arms from the back; lifted chest without rib flare.",
-          videoUrl: "https://www.youtube.com/watch?v=aqz-KE-bpKQ" },
-        { title: "Pirouette en dehors", tag: "Center",
-          body: "A turn outward on one leg from fourth or fifth.",
-          counts: "3/4 or 4/4", focus: "Coordinated arms and a sharp, consistent spot.",
-          videoUrl: "" },
-      ]},
-      { name: "Allegro", cards: [
-        { title: "Échappé sauté", tag: "Allegro", body: "Jumped change to second and fourth.",
-          counts: "2/4", focus: "Full point in the air; controlled demi-plié landing.", videoUrl: "" },
-        { title: "Assemblé", tag: "Allegro", body: "Dessus and dessous.",
-          counts: "2/4", focus: "Brush and gather; land simultaneously in fifth.", videoUrl: "" },
-        { title: "Jeté", tag: "Allegro", body: "Petit jeté with clean landings.",
-          counts: "2/4", focus: "Spring from the floor; arrive on a controlled cou-de-pied.", videoUrl: "" },
-      ]},
-      { name: "Grand Allegro", cards: [
-        { title: "Grand jeté", tag: "Grand Allegro", body: "Full split leap traveling on the diagonal.",
-          counts: "3/4", focus: "Brush the front leg straight; reach the split at the height of the jump.", videoUrl: "" },
-        { title: "Tour jeté", tag: "Grand Allegro", body: "Grand jeté en tournant.",
-          counts: "3/4", focus: "Pass the legs closely; land squarely in arabesque.", videoUrl: "" },
-      ]},
-    ]
-  },
-
-  /* ================================ D190 ================================== */
-  /* Fully populated from the D190 Curriculum Rewrite (with Sample Class).     */
-  {
+{
+  "code": "Essential",
+  "tabSub": "Exercises",
+  "title": "Essential Exercises",
+  "blurb": "The core vocabulary and technique standards that carry through every level. Reference documents plus a growing video library demonstrating each exercise.",
+  "folderUrl": "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
+  "sections": [
+    {
+      "name": "Barre · Battement Tendu & Dégagé",
+      "cards": [
+        {
+          "title": "4’s and 3’s",
+          "body": "• From fifth, one hand on the barre:\n• Four battement tendu devant with outside leg (1-4), three battement tendu à la seconde with inside leg, changing each fifth (5-7), hold (8). Three battement tendu derrière with outside leg (1- 3), four battement tendu à la seconde with the inside leg, changing each fifth (4-7), hold fifth (8). Repeat all reverse."
+        },
+        {
+          "title": "24’s",
+          "body": "• First position, away from the barre:\n• With arms in 2nd position: 24 quick battement dégagé à la seconde (1-8) (1-8) (1-8), plié 1st position (1-2), relevé 1st (3-4), plié (5-6), stretch knees (7-8). Repeat other side.\n• Arms will go through Cecchetti 1st port de bras on relevé."
+        },
+        {
+          "title": "Alan’s 4’s and 3’s",
+          "body": "• From fifth, one hand on the barre:\n• Battement tendu devant (1), à la seconde (2), derrière (3), à la seconde (4), battement tendu devant to plié (5), à la seconde to plié (6), derrière to plié (7), hold fifth derrière in plié (8). Reverse all."
+        },
+        {
+          "title": "Alan’s Battement Dégagé for Jumps",
+          "body": "• From fifth, one hand on the barre:\n• Plié (1), dégagé devant — with strong dynamic out — (2), again (3-4), again (5-6), double battement piqué (+7), close fifth (8). Repeat en croix.\n• Notes:\n• Emphasize the OUT in the dégagé and the melting quality back into plié. Control the plié like you would coming back from a jump."
+        },
+        {
+          "title": "Alan’s Battement Tendu with Plié",
+          "body": "• One hand on the barre, from fifth:\n• Battement tendu devant (1), plié fifth (2), inside leg to battement tendu devant (3), close fifth plié (4), battement tendu à la seconde with outside leg (5), plié to fifth front (6), battement tendu inside leg to à la seconde (7), close fifth front (8). Repeat reverse.\n• Notes:\n• All battement tendu side change fifths.\n• Slow Duple meter.\n• This could also be executed for lower levels facing the barre.\n• Alan repeated this combination at a quicker tempo to challenge the speed and work on the action of the leg coming forward from fifth back for brisé."
+        },
+        {
+          "title": "Alan’s Battement Tendu with Weight Change",
+          "body": "• From fifth, one hand on the barre:\n• Battement tendu à la seconde changé (1-2), battement tendu inside leg devant (3-4), battement tendu derrière (5-6), battement tendu inside leg à la seconde (7-8). Battement Tendu devant (1- 2), battement tendu inside leg derrière (3-4), battement tendu à la seconde closing front (5-6), battement tendu à la seconde closing back (7-8). Repeat all from the derrière (1-8, 1-8"
+        },
+        {
+          "title": "Alan’s Sur le cou-de-pied Battement Tendu",
+          "body": "• From fifth, one hand on the barre:\n• Sur le cou-de-pied devant (1) close fifth (2), battement tendu devant (3), close fifth (4), sur le cou-de-pied devant (+) close fifth (5), battement tendu devant (+), close fifth (6), sur le cou-de- pied devant (+) close fifth (7), battement tendu devant (+), close fifth (8). Repeat en croix.\n• Alecia’s Accent Out and In Battement Tendu:\n• One hand on barre, from fifth:\n• Two battement tendu devant with accent out (1-2), hold battement tendu out (3-4), two battement tendu devant with accent in (5-6), hold fifth (7), one quick battement tendu devant, closing fifth (+8).\n• Repeat with inside leg back and outside leg side. Then: one battement tendu en croix with accent in\n(1-4), and repeat (5-8).\n• Notes:\n• This combination will not reverse.\n• Arms can be utilized however you deem appropriate for your class, but it was shown with the arm in fifth high for the devant, arabesque line for the derrière, and second position for the à la seconde."
+        },
+        {
+          "title": "Battement Tendu with Accent Out",
+          "body": "• One hand on the barre, fifth position:\n• Battement tendu devant ACCENT OUT (1), hold (2), close to fifth quickly (3), hold (4), repeat again to the devant (5-8).\n• Repeat en croix\n• Repeat en croix with battement tendu en fondu, still accent out."
+        },
+        {
+          "title": "Cecchetti Battement Tendu for Jumping",
+          "body": "• One hand to the barre, from fifth:\n• Prepare with Vaganova preparation (7-8). Demi-plié (1-2), straighten and battement tendu devant (3-4), repeat en croix (5-8, 1-8)\n• Close the foot to 5th devant and open it to tendu à la seconde as quickly as possible (1-2), repeat\n6x total (1-8, 1-4), close 5th devant, demi-détourné to second side."
+        },
+        {
+          "title": "Darla’s 7s",
+          "body": "• One or two hands on the barre, from fifth:\n• Seven dégagé à la seconde all closing fifth devant (1-7), hold (8). Repeat with inside leg all closing fifth back (1-7), hold (8). Outside leg dégagé à la seconde 1st to fifth changé (1-2) x4 (3- 8). Repeat with other leg (1-8).\n• This is usually tagged on to another dégagé combination where you may omit the 1st, 5th if needed to round out the phrase.\n• Use this as a precursor for the 5’s and 3’s below."
+        },
+        {
+          "title": "Dégagé Hold 4321",
+          "body": "• One hand on the barre, from fifth, arm in 2nd position:\n• Dégagé devant 3x (1-3), hold and move arm to low 5th (4), dégagé devant 2x (5-6), hold and move arm to first (7), dégagé devant (8). Dégagé devant (1), hold and move arm to 5th (2), dégagé devant x2 (3-4), hold and move arm to 2nd (5), dégagé devant x3 (6-8).\n• Repeat en croix.\n• Optional: do first without the arm, then add the arm\n• Optional: can do this same pattern with frappé."
+        },
+        {
+          "title": "Donnell’s Battement Dégagé",
+          "body": "• From fifth, one hand on the barre:\n• Battement dégagé devant 2x (1-2), petit passé — through sur le cou-de-pied positions — with outside leg (3), battement dégagé à la seconde 2x (4-5), petit passé — through sur le cou-de-pied positions — with outside leg (6), battement dégagé devant (7), battement dégagé à la seconde (8).\n• Reverse\n• Repeat all doing petit passé with inside leg."
+        },
+        {
+          "title": "Flex Dégagé or Marcia’s Flex-Pointe Battement Tendu",
+          "body": "• From fifth, one hand on the barre:\n• Flex dégagé devant to 45* (1-2), close to fifth slowly (3-4), flex dégagé devant (5-6), pointe to battement tendu devant (7), close fifth (8).\n• Repeat en croix.\n• The arm will stay side for the duration of the combination."
+        },
+        {
+          "title": "James Sutton’s 8, 4, 2, 1’s",
+          "body": "• This is a combination that I have done in James’ class in addition to seeing him give it multiple times at RDA and when guest teaching at BYU. I appreciate this fresh take on the ordinary 8421’s.\n• Facing the barre, first position:\n• The legs will do 8 dégagé to first with the right leg, 8 dégagé to first with the left leg, 4 dégagé with the right leg, 4 with the left, 2 with the right, 2 with the left, 1 right, 1 left, 1 right, 1 left."
+        },
+        {
+          "title": "The arms",
+          "body": "• Always begin with the same arm as working leg in fifth high.\n• Always change the arm halfway through the dégagés. So, you would change after the fourth dégagé during 8’s, the 2nd dégagé during 4’s, and after the first dégagé for 2’s.\n• During the 1’s you can choose to do a few different things:\n• Lower the existing fifth en haut arm to the barre slowly over the four counts.\n• You can change the fifth en haut arm every other dégagé.\n• You can change the arms with every change of legs (therefore always having the same working arm and leg).\n• On 8’s:\n• Right arm begins fifth en haut for 4 dégagé R (1-4), change to left arm fifth en haut for 4 dégagé R (5-8). Keep the left arm high for the first 4 dégagé on the left (1-4), and change to right arm fifth high for the second 4 dégagé on left (5-8).\n• On 4’s:\n• Right arm fifth en haut for 2 dégagé R (1-2), switch to left arm fifth en haut (3-4), keep left arm high for 2 dégagé on left (5-6), change to right arm (7-8).\n• On 2’s:\n• Right arm fifth en haut for 1 dégagé (1), change arm (2), repeat left (3-4).\n• For lower level classes, I omit the 1’s and repeat the 2’s twice which is a nice coordination challenge for them as I consider the 2’s the hardest.\n• This should be executed at a tempo that challenges the speed of the legs and quickness of the minds of the students."
+        },
+        {
+          "title": "Katarina’s Dégagé (affectionately, “drop it like it’s hot”)",
+          "body": "• With one hand on the barre, first position (although it could also be executed for lower level dancers facing the barre, at a more moderate tempo):\n• Arm in 2nd position, 8 quick dégagé à la seconde with the outside foot, 8 dégagé à la seconde with the inside foot, 8 quick dégagé à la seconde with the outside foot, quick four count grand plié in first position, and quickly turn to the other side.\n• I remember Katarina giving this exercise frequently to build the speed of the legs with a quick transition of weight. The arm is simply held in 2nd position and can be taken through a 1st port de bras with the grand plié in 1st position if desired."
+        },
+        {
+          "title": "Marcia’s 4, 2, 1 Battement Tendus",
+          "body": "• This exercise can be executed with battement tendu or battement dégagé.\n• One hand on the barre, from fifth:\n• Four battement tendu devant with outside leg (1-4), four battement tendu derrière with inside leg (5- 8). Two battement tendu devant with outside leg (1-2), two battement tendu derrière with inside leg (3-4), battement tendu devant (5), battement tendu derrière (6), battement tendu devant (7), battement tendu derrière (8).\n• Repeat side: four battement tendu à la seconde ALL CLOSING FIFTH FRONT (1-4), repeat with inside leg closing all fifth back (5-8). Repeat with 2’s, closing fifth front with outside leg and fifth back with inside leg (1-4), singles: to first with the outside leg, fourth one closing fifth back (5-8), with Cecchetti 1st port de bras on singles.\n• Repeat all from the derrière.\n• All battement tendus are one count each with the accent in.\n• When starting the tendus to the side, bring the working arm down to en bas, taking two counts to get there.\n• This exercise is also done with the à la seconde battement tendus closing to first instead of fifth (except the last one which will close to fifth)."
+        },
+        {
+          "title": "Marcia’s Battement Dégagé with Battement Piqué",
+          "body": "• From fifth, one hand on the barre:\n• Battement piqué devant x3 (staying out) (1+2), hold out at dégagé height (3-4), close fifth (5), two battement dégagé devant (+6), hold fifth (7-8). Repeat en croix.\n• Marcia progresses this exercise into:\n• Battement piqué devant (1), demi-rond de jambe to battement piqué à la seconde (+), demi-rond de jambe to battement piqué devant (2), hold out at dégagé height (3-4), close fifth (5), battement dégagé à la seconde, closing front (+), battement dégagé devant (6), hold fifth (7-8).\n• Repeat en croix, always starting the battement piqué to the next position in the en croix pattern.\n• Notes:\n• This exercise can be done at lower levels with a moderate tempo and more advanced levels at a quick tempo. Darla Hoover uses this exercise to challenge the speed of her advanced dancers, making it so fast they can barely complete the exercise!"
+        },
+        {
+          "title": "Marcia’s Battement Dégagé with Polonaise",
+          "body": "• From fifth, one hand on the barre, to be executed to a polonaise:\n• Battement dégagé devant (1), pointe to tendu (2), close fifth (3), repeat à la seconde (4-6). Repeat derrière (1-3), repeat à la seconde (4-6). Battement dégagé devant (+1), à la seconde (+2), derrière (+3), à la seconde (+4), devant (+5), à la seconde (+6), derrière (+1), à la seconde (+2), devant (+3), à la seconde (+4), derrière (+5), hold fifth (+6). Repeat all reverse.\n• Notes:\n• Keep the arms simple for this combination so that the students can focus, firstly, on the subdivision of the dégagé and, secondly, on the speed and phrasing."
+        },
+        {
+          "title": "Marcia’s Battement Tendu from Fifth",
+          "body": "• From fifth, one hand on the barre:\n• Battement tendu devant (1), close fifth (2), battement tendu inside leg derrière (3), close (4), battement tendu à la seconde close to first (5-6), battement tendu à la seconde close to fifth back (7-8). Repeat reverse.\n• The arm is held in the 2nd position for the battement tendu devant and derrière. During the two battement tendu side, the arm with execute a Cecchetti 1st port de bras, coordinated to finish with the leg closing fifth.\n• You can also add demi-plié on the closing of the battement tendu devant and derrière."
+        },
+        {
+          "title": "Marcia’s Plié-Plié-Straight Battement Tendu",
+          "body": "• From fifth, one hand on the barre:\n• Battement tendu devant (1-2), close to fifth plié (3-4), battement tendu devant (5), close to fifth plié (6), battement tendu devant (7), close to fifth with straight knees (8). Repeat en croix.\n• Notes:\n• Add Cecchetti 1st port de bras with the two quicker tendus.\n• Focus on the energy of the return of the plié from the bottom of the plié."
+        },
+        {
+          "title": "Marcia’s Slow Tendu from First",
+          "body": "• Facing the barre from first position:\n• Battement tendu à la seconde (1-2), close first (3-4), battement tendu à la seconde (5-6), close fifth back (7-8). Battement tendu à la seconde (1-2), close fifth back (3-4), battement tendu à la seconde (5-6), close first (7-8).\n• Repeat with other leg."
+        },
+        {
+          "title": "Melinda’s Battement Tendu with Pivot",
+          "body": "• With one hand on the barre, fifth position:\n• Battement tendu à la seconde (1), pivot to arabesque (2), pivot back to à la seconde (3), close fifth back (4), battement tendu à la seconde (5), pivot to devant (6), pivot back to à la seconde (7), close fifth front (8).\n• Repeat with battement tendu devant —> à la seconde —> devant and close (1-4), same with\ninside leg battement tendu derrière (5-8).\n• Additionally, you can make the fouetté (pivot) turn away from the barre with #2."
+        },
+        {
+          "title": "Melinda’s Flex Dégagé",
+          "body": "• One hand on the barre, from fifth:\n• Sur le cou-de-pied devant (1), flex foot (2), extend to dégagé devant with flexed foot (3-4), Close to fifth (5-6), flex dégagé devant (7), close fifth (8). Repeat with inside derrière (1-8). Repeat with outside leg side (1-8). Then: battement tendu à la seconde (1-2), plié in 2nd position (3-4), relevé in second (5-6), plié (7), battement tendu and close to fifth back (8).\n• Repeat reverse."
+        },
+        {
+          "title": "Melinda’s Straight Bend Bend Straight Dégagé with Plié",
+          "body": "• One hand on the barre, from fifth:\n• Battement dégagé devant (1-2), close fifth in plié (3-4), battement dégagé devant en fondu (5-6), close fifth in plié (7-8). Battement dégagé devant en fondu (1-2), close fifth with straight knees (3-4), battement dégagé devant with straight knees (5-6), close fifth with straight legs (7-8).\n• Repeat en croix\n• Notes:\n• Use dynamics to emphasis the “out” of the legs and melting into fifth to mimic the work of the legs in jumps.\n• This should be executed at a petit allegro or coda tempo, but of course you can make adjustments as needed for the level of the students."
+        },
+        {
+          "title": "Paul Maley’s Pas de Cheval/Enveloppé",
+          "body": "• One hand on the barre, from fifth:\n• Pas de cheval devant x2 (+1, +2), enveloppé devant closing fifth x2 (+3, +4), pas de cheval devant (+5), enveloppé devant to fifth (+6), demi-plié in fifth (7), stretch knees (8).\n• Notes:\n• Can be repeated in a variety of directions to achieve en croix pattern.\n• Some examples:\n• Simple: perform the pattern in the same direction, repeating en croix\n• Medium: perform all cheval devant, all enveloppés à la seconde. Repeat en croix\n• Complex: changing direction for each movement."
+        },
+        {
+          "title": "PNB 5’s and 3’s",
+          "body": "• One hand on the barre, from fifth:\n• Dégagé à la seconde with outside leg x5 (1-5), dégagé inside leg à la seconde x3 (5-8). Repeat three times through. Then: Demi-plié with outside arm Cecchetti 1st port de bras (1-4), demi-plié inside arm Cecchetti 1st port de bras (5-8).\n• Reverse all.\n• Arm will be in preparatory position throughout dégagé portion.\n• Progress this combination to Simon’s 5’s and 3’s."
+        },
+        {
+          "title": "Royal Ballet Battement Tendu with Dégagé",
+          "body": "• One hand on the barre, from fifth:\n• Battement tendu devant (1-2), again (3-4), demi-rond de jambe en dehors to à la seconde (5-6), hold in 2nd pos (7), close fifth back (8). Repeat reverse (1-8). Four battement tendu à la seconde (1-8). Battement dégagé devant (1-2), à la seconde change (3-4), derrière (5-6), en cloche to devant (&7), close to fifth sous-sus (&), demi-détourné to other side (8).\n• Notes:\n• If you care to extend the combination, you could always close to fifth derrière (instead of the en\ncloche) to reverse the combination.\n• A tango is suggested for this combination."
+        },
+        {
+          "title": "Shayla’s 54321",
+          "body": "• One hand on the barre, from fifth:\n• Five dégagé devant with outside leg (1-5), four dégagé derrière with inside leg (6-1), three dégagé à la seconde (2-4), two dégagé devant with inside leg (5-6), one dégagé derrière with outside leg (7), hold fifth (8). Reverse all."
+        },
+        {
+          "title": "Simon’s 5’s and 3’s",
+          "body": "• One or two hands on the barre, from fifth:\n• Five dégagé devant (1-5), three dégagé à la seconde all closing fifth front (6-8). Repeat (1-8). Then: 3 dégagé devant, five à la seconde. Repeat with the last dégagé à la seconde changing fifths. Reverse all."
+        },
+        {
+          "title": "Simon’s Flex Dégagé",
+          "body": "• Facing the barre, from fifth:\n• Dégagé à la seconde with flexed foot (1-2), close fifth back — dessous (3-4), repeat dessus (5-8).\nRepeat dessous (1-4), battement tendu devant en fondu with inside leg (5-6), lift to 45* devant (7-8). Enveloppé to retiré devant (1-2), fondu sur le cou-de-pied devant (3-4), relevé retiré passé (5-6), hold (7-8). Hold retiré balance (1-6), close to fifth front (7-8). Repeat reverse from the back.\n• Notes:\n• Can be repeated adding relevé with each dégagé side, lift to 45* devant, etc."
+        },
+        {
+          "title": "Simon’s FSFS with Change",
+          "body": "• From fifth, one hand on the barre:\n• Battement tendu devant (1), battement tendu à la seconde no change (2), battement tendu devant (3), battement tendu à la seconde changé (4), repeat derrière (5-8). Battement soutenu à la seconde to fifth with straight knees (1-2), two battement tendu side with change (3-4), battement soutenu à la seconde to fifth with straight knees (5-6), one battement tendu side with change to plié fifth (7), stretch knees (8). Repeat reverse.\n• Notes:\n• Simon: “The movement of the legs comes from rotation. It does not move without first rotating.”"
+        }
+      ]
+    },
+    {
+      "name": "Barre · Rond de Jambe",
+      "cards": [
+        {
+          "title": "Alan’s Slow Rond de jambe at 45*",
+          "body": "• Battement dégagé devant with flexed foot (1-2), close to fifth (3-4), pass inside leg to first (5-6), to fifth front (7-8). Repeat reverse (1-8). On rise: rond de jambe at 45* en dehors FSB, close sous-sus (1-8). Reverse with demi-détourné to second side (1-8). Repeat all on other side.\n• Can also be done with dégagé devant and derrière going to relevé."
+        },
+        {
+          "title": "Bolshoi Rond de jambe en l’air",
+          "body": "• One hand on the barre from fifth:\n• Brush à la seconde (1), toe to knee (2), toe forward — still with knee bent toward knee (3), open to à la seconde (4), repeat (5-8). Repeat again (1-4), lower toe slowly to battement tendu à la seconde (5-6), close fifth (7-8).\n• Notes:\n• Usually performed to a mazurka.\n• En dehors only until students can maintain turnout at the hip."
+        },
+        {
+          "title": "Dana Hanson’s Rond de jambe en l’air",
+          "body": "• See https://balletinform.com/rond-de-jambe-en-lair-combination/ (https://balletinform.com/rond-de-jambe-en-lair-combination/)\n• One hand on the barre, fifth position:\n• Plié fifth (8) to prepare. Relevé retiré développé to pointe à terre devant (+1), relevé retiré passé to pointe à terre derrière (+2), relevé retiré passé to pointe à terre devant (+3), relevé demi-rond de jambe en dehors to à la seconde (+4), single rond de jambe en l’air en dehors (+5), again (+6), double rond de jambe en l'air (+7), close to fifth back plié (+8). Repeat reverse.\n• Notes:\n• Arms will go to fifth en haut to the plié front, arabesque line to the plié derrière, and second position for the rond de jambe en l’air."
+        },
+        {
+          "title": "Marcia’s Rond de jambe à terre #1",
+          "body": "• One hand on the barre, from fifth:\n• Four rond de jambe à terre en dehors (1-4), brush battement relevé lent devant (no plié) (5), quickly retiré passé to arabesque (+6), hold (7), close fifth back (8). Reverse en dedans.\n• Notes:\n• Execute each rond de jambe à terre accenting the à la seconde position.\n• This can be progressed with stronger dancers to include relevé for the retiré passé to derrière or devant."
+        },
+        {
+          "title": "Marcia’s Rond de jambe à terre #2 (Affectionately \"The beautiful one”)",
+          "body": "• One hand on the barre, from fifth, working on directions of the body:\n• Battement tendu en fondu devant towards the barre — croisé — (1), rond de jambe à terre en dehors to battement tendu en fondu croisé derrière (2), rond de jambe à terre en dedans back to battement tendu en fondu devant (3), close fifth en face (4), four rond de jambe à terre en dehors (5-8). Repeat beginning (1-4), grand rond de jambe at 90* en dehors F —> S —> B (5-7), close fifth (8).\n• Reverse."
+        },
+        {
+          "title": "Marcia’s Rond de jambe en l’air",
+          "body": "• With one hand on the barre:\n• Retiré devant (1-2), hold (3-4), open the leg to 90* à la seconde (5), rond de jambe en l’air\nen dehors (+), extend slower (6), hold à la seconde (7), close fifth back (8).\n• Repeat reverse.\n• Repeat on rise.\n• This combination can be progressed to:\n• Double rond de jambe en l’air.\n• Pirouettes replacing retiré positions."
+        },
+        {
+          "title": "Marcia’s Rond de jambe en l'air with Bends",
+          "body": "• One hand on the barre, from fifth:\n• Rise to sous-sus on prep (7-8). Tombé croisé to the barre to sur le cou-de-pied derrière with inside leg (1), piqué to relevé à la seconde en face (2), double rond de jambe en l’air en dehors (3), hold (4), again (5-6), again (7-8). Enveloppé to retiré (1), passé to attitude derrière (2), hold (3-6), allongé to arabesque (7-8). Repeat all reverse.\n• Notes:\n• With the tombé, generously bend the upper body (away from the barre with en dehors, towards the barre with de dedans), arm in fifth en avant.\n• Arm will be à la seconde with rond de jambe en l’air, fifth en haut for attitude balances."
+        },
+        {
+          "title": "Rond de jambe à terre with Battement Relevé Lent",
+          "body": "• One hand on the barre, from fifth:\n• Begin with Vaganova prep (7-8); rond de jambe à terre en dehors (1), battement relevé lent devant (2), fondu devant (3), développé devant (4), repeat en dedans (5-8). Rond de jambe à terre en dehors (1), battement relevé lent devant (2), reverse (3-4) — holding the arabesque on (4) — plié in arabesque (5), quarter promenade en fondu towards the barre (6), quarter promenade en fondu to the other side (7), close fifth (+), Vaganova prep to begin other side."
+        },
+        {
+          "title": "Rond de jambe en l’air (Nick’s Growing Rond de jambe en l’air)",
+          "body": "• Can first be introduced facing the barre, eventually progressed to one hand:\n• Brush à la seconde to 25* (1), rond de jambe en l air en dehors to 25* (2), rond de jambe en l’air en dehors to 45* (3), to 90* (4) , rond de jambe en l'air at 90* (5), rond de jambe en l’air to 45* (6), rond de jambe en l’air to 25*(7), close fifth derrière (8). Reverse all.\n• When students have mastered the combination on flat with varying tempos, you can introduce with relevé, no plié at the beginning — just pressing up."
+        },
+        {
+          "title": "Royal Ballet Rond de jambe à terre",
+          "body": "• One hand on the barre, from fifth:\n• On preparation:\n• Arm breaths — opening from en bas to demi à la seconde and back to en bas — (5-6), Vaganova prep — battement tendu en fondu devant, demi-rond de jambe en dehors to à la seconde — (&7), demi-rond de jambe to derrière (8).\n• Passé par terre devant (1), passé par terre derrière (2), passé par terre devant to rond de jambe a terre en dehors to tendu derrière (3-4), repeat (5-8). Four rond de jambe en dehors a terre (1-4), rond de jambe en dehors at 45* devant (5), à la seconde (6), derrière (7), passé par terre to tendu devant (8). Repeat reverse, omitting final passé par terre and closing fifth devant instead (8).\n• Stretch and balance: Vaganova 3rd port de bras (1-8). Cambré into the barre and away (1-8).\nBalance to finish out the phrase (instructor s choice)."
+        },
+        {
+          "title": "Slow Rond de jambe at 45*",
+          "body": "• Facing the barre, all executed with a flexed foot:\n• Dégagé devant to 45* en fondu (1-2), demi-rond de jambe at 45* to à la seconde (3-4), carry to derrière (5-6), stretch knees as you close fifth derrière (7-8)\n• Repeat en dehors other leg.\n• Repeat en dedans both sides.\n• All of the above should flow without stopping once everything has been introduced appropriately."
+        },
+        {
+          "title": "Vaganova Rond de jambe à terre Preparation",
+          "body": "• One hand on the barre, from first position:\n• Battement tendu en fondu devant, demi-rond de jambe en dehors to à la seconde — (&7), demi-rond de jambe to derrière with stretched bottom knee (8)."
+        }
+      ]
+    },
+    {
+      "name": "Barre · Frappé",
+      "cards": [
+        {
+          "title": "Adam’s Battement Frappé",
+          "body": "• From fifth, one hand on the barre:\n• Battement tendu à la seconde (1), frappé devant (2-3), S (4-5), B (6-7), close fifth on (8).\n• Repeat with double frappé (1-8)\n• Repeat with triple frappé (1-8)\n• Dégagé to 45* à la seconde (1), to fifth plié (2), pirouette en dehors (3-4), hold retiré (5-8), plié fifth back (&).\n• Repeat all reverse.\n• Execute right and left, then: turn back to the first side and repeat with battement serré devant instead of pirouette en dehors, open leg to à la seconde at 45* (8), close fifth derrière on (+).\n• Repeat all reverse.\n• Repeat all left."
+        },
+        {
+          "title": "Battement Frappé",
+          "body": "• One hand on the barre, from fifth, prepare with tendu to à la seconde, holding à la seconde:\n• Battu sur le cou-de-pied derrière (&), beat front (1), demi pointe (2), brush frappé devant (3), hold (4), repeat reverse (5-8). Battu sur le cou-de-pied derrière (&), beat front (1), demi-pointe (2), brush frappé à la seconde (3), hold (4), two single frappé à la seconde, 2 counts each holding the out for as long as you can, (5-6, 7-8).\n• Repeat all reverse.\n• Eventually work this combination up to tempo, then with relevé, then add frappé to pointe a terre, then relevé with frappé to pointe à terre, finally adding with poses at the barre:\n• Double frappé to pointe en fondu in effacé (1), hold (2), same to the effacé derrière (3-4), double frappé to pointe en fondu à la seconde (5-6), two single frappé à la seconde (7-8).\n• Repeat reverse.\n• Repeat with relevé."
+        },
+        {
+          "title": "Charlie’s FSBSS Frappé",
+          "body": "• From fifth, one hand on the barre:\n• Frappé devant (1), frappé à la seconde (2), frappé derrière (3), frappé à la seconde x2 (4-5), reverse: B (6), S (7), F (8), S x2 (1-2), repeat: F (3), S (4), B (5), S x2 (6-7), hold in second position (8). Double frappé devant (1-2), double frappé derrière (3-4), double frappé à la seconde x2 (5-6, 7-8), reverse BFSS (1-8).\n• Reverse all."
+        },
+        {
+          "title": "Charlie’s FSF Frappé",
+          "body": "• From fifth, one hand on the barre:\n• Frappé devant (1), frappé à la seconde (2), frappé devant (3), hold (4), frappé à la seconde (5), frappé devant (6), frappé à la seconde (7), hold (8). Four rond de jambe en l'air en dehors, 2 counts each (1-8). Single frappé devant (1-2), double frappé derrière (3-4), triple frappé derrière (5-6), quad frappé devant (7-8). Double frappé à la seconde (1), single battement piqué à la seconde (2), repeat (3-4), repeat (5-6), battement piqué (7), hold à la seconde (8).\n• Repeat all reverse.\n• Notes:\n• Find a moderate tempo or execute half-time. See Simper/Bott’s “Music For Ballet Class: Musical Diversity and Elegance,” 2016 track #11: Frappé 2/4 “Paddy Whack”\n• This can be used in a simplified version to progress into Darla’s FSF Carry Frappé."
+        },
+        {
+          "title": "Darla’s 2, 4, 6, 7, 8 Frappé",
+          "body": "• One hand on the barre, prep through battement tendu side (7), sur le cou-de-pied wrapped (8).\n• Hold wrap (1), frappé devant (2), hold extended position (3), frappé devant (4), hold (5), frappé devant (6), frappé devant (7), double frappé à la seconde (8). Repeat in an en croix pattern with the double frappé always going to the next position.\n• For challenge, Darla would add the working arm moving to the fifth en haut position on 5 and opening to 2nd position on 7. These counts can vary as you see fit."
+        },
+        {
+          "title": "Darla’s FS Carry Frappé",
+          "body": "• One hand on the barre, prep through battement tendu side (7), sur le cou-de-pied wrapped (8).\n• Frappé devant (1), frappé à la seconde (2), demi-rond de jambe at 45* en dedans S to F (3), frappé à la seconde (4), frappé devant (5), demi-rond de jambe at 45* en dehors F to S (6), double frappé devant (7), hold (8).\n• Repeat in the en croix pattern:\n• S, B, carry, B, S, carry, double side.\n• B, S, carry, S, B, carry, double back.\n• S, F, carry, F, S, carry, double side."
+        },
+        {
+          "title": "Polonaise Battement Frappé",
+          "body": "• One hand on the barre, from fifth:\n• Two frappé devant (1-2), double frappé derrière (3), reverse (4-6). Two frappé side, one double side (1-3) repeat (4-6). Frappé devant x2 double S (1-3), SS double back (4-6). BB double S (1- 3), SS double (4-6).\n• Repeat all from the back, if desired."
+        },
+        {
+          "title": "Simon’s Battement Frappé with Grand Battement",
+          "body": "• From fifth, one hand on the barre:\n• Battement tendu à la seconde (7), pull in to sur le cou-de-pied wrapped (8). Three battement frappé devant (1+2), lower to battement tendu devant (3), close to fifth (4), grand battement devant (5), close fifth (6), grand battement devant (7), close to sur le cou-de-pied wrapped (8). Repeat en croix."
+        }
+      ]
+    },
+    {
+      "name": "Barre · Fondu",
+      "cards": [
+        {
+          "title": "Battement Fondu with Carry",
+          "body": "• One hand on the barre, from fifth\n• Fondu sur le cou-de-pied devant (1), close fifth devant (2), fondu sur le cou-de-pied devant (3), retiré devant (4), fondu sur le cou-de-pied devant (5), extend to 45* devant (6), plié (7), demi- rond de jambe to à la seconde (8).\n• Repeat en croix.\n• Arm will do Cecchetti 1st port de bras with first fondu to fifth. Arm to en bas with fondu, then to first position for the retiré, open arm to seconde with leg, keep arm with carry."
+        },
+        {
+          "title": "Battement Fondu with Carry v.2",
+          "body": "• One hand on the barre, from fifth:\n• Fondu sur le cou-de-pied devant (1), extend to 45* devant (2), demi-plié in position (3), demi- rond de jambe en dehors to à la seconde (4), repeat en croix.\n• Notes:\n• Carry to the next position with emphasis — energy with the open/carry. The working arm will do a Cecchetti first port de bras with each fondu."
+        },
+        {
+          "title": "Battement Fondu, Plié, Relevé",
+          "body": "• One hand on the barre, from fifth:\n• Fondu devant to 45* (1-2), plié (3), relevé (4). Repeat en croix.\n• Notes:\n• You can add relevé where necessary for your level.\n• Additionally, this can be done with a fouetté 1/4 turn:\n• Fondu devant to 45* (1-2), plié (3), fouetté to second position — facing the barre — (4). Repeat this is the en croix pattern."
+        },
+        {
+          "title": "Darla’s Fondu for Ballotté",
+          "body": "• From fifth, one hand on the barre:\n• Sur le cou-de-pied devant with straight leg (1-2), développé devant 45* en fondu (3-4), pull back into sur le cou-de-pied devant (5-6), développé à la seconde to 45* en fondu (7-8). Pull into sur le cou-de-pied derrière (1-2), développé derrière to 45* en fondu (3-4), en cloche to devant (5), derrière (6), devant (7), derrière (8). Reverse all.\n• Notes:\n• Darla says, “Teaching ballotté is always more successful for her when she has first done the above exercise at the barre.”"
+        },
+        {
+          "title": "Marcia’s Battement Fondu with Flexed Foot",
+          "body": "• From fifth, one hand on the barre:\n• Fondu, développé devant (1-2), plié and flex working foot (3), straighten supporting knee and pointe working foot (4), plié (5), relevé (6), close to sous-sus (7), lower to straight knees in fifth (8). Repeat en croix.\n• Notes:\n• Use Cecchetti first port de bras with the first fondu développé in each direction.\n• “No plié in-between. Come down with straight knees.”\n• “You need to feel every position of the arms, not pretend to do it.”"
+        },
+        {
+          "title": "Marcia’s Battement Fondu with Forced Arch",
+          "body": "• With one hand on the barre, fifth position. Working arm in second:\n• Working leg presses to half pointe (1), back heel lifts to demi-pointe — bringing both legs into forced arch position (2), slowly straighten both knees (3-4), fondu sur le cou-de-pied devant (5), extend to relevé 45* devant (6), close sous-sus (7), lower heels with resistance (8).\n• Repeat en croix.\n• When students have mastered the proper work of the legs, add Cecchetti first port de bras with the fondu extends.\n• If executing the port de bras:\n• Allongé the arm from second position on the + of count 4, utilizing the turn of the head to look at the hand."
+        }
+      ]
+    },
+    {
+      "name": "Barre · Grand Battement",
+      "cards": [
+        {
+          "title": "Adam’s Grand Battement",
+          "body": "• From fifth, one hand on the barre:\n• Grand battement devant arm to fifth high (1-2), again (3-4), again (5-6), open outside arm to second position (7), inside arm to fifth high — returning to the barre (+), outside arm to fifth high (8). Repeat en croix.\n• Notes:\n• Executed to a march."
+        },
+        {
+          "title": "Attitude-Straight-Attitude-Straight Grand Battement",
+          "body": "• From fifth, one hand on the barre:\n• Grand battement devant with attitude (1-2), grand battement devant with straight leg (3-4), grand battement devant with attitude devant (5-6), grand battement with straight leg (7-8). Repeat en croix.\n• Notes:\n• Working arm will be in second position for devant and derrière and fifth en haut for à la seconde."
+        },
+        {
+          "title": "Charlie Grand Battement with Demi-détourné",
+          "body": "• From fifth, one hand on the barre:\n• Grand battement devant, closing to plié (+1), demi-détourné towards the barre (2), repeat other side (3-4), grand battement à la seconde no change, closing to plié (+5), demi-détourné towards the barre (+6), repeat other side (7-8). Grand battement derrière with inside leg, closing to plié (+1), demi-détourné towards the barre (2), repeat other side (3-4), grand battement à la seconde changé, closing to plié (+5), demi-détourné away from the barre (+6), grand battement à la seconde NO CHANGE to close back, demi-détourné to other side (7-8).\n• Reverse.\n• Notes:\n• Take arm to fifth high for devant, à la seconde for side, and arabesque line for derrière.\n• Sequence can also be performed S, F, S, B."
+        },
+        {
+          "title": "Debby’s Grand Battements with Polonaise",
+          "body": "• One hand on the barre, from fifth:\n• Grand battement devant (1), tendu (2), close fifth (3), repeat (4-6). Développé devant (1-4),\nlower to tendu devant (5), close fifth (6).\n• Repeat en croix.\n• Can be developed with relevé."
+        },
+        {
+          "title": "Jackie’s Grand Battements",
+          "body": "• One hand on the barre, fifth position:\n• Grand battement devant with accent up (1), close fifth (2), en croix (3-8).\n• Grand battement devant to plié on the out (1), close fifth (2), en croix (3-8).\n• Grand battement devant on relevé (1), close sous-sus (2), en croix (3-8).\n• Grand battement devant with accent in (& 1), hold fifth (2), en croix (3-8)."
+        },
+        {
+          "title": "Royal Ballet Grand Battement (Polonaise)",
+          "body": "• One hand on the barre, from fifth:\n• Grand battement devant (1), to tendu (2), close fifth (3), repeat (4-6). Grand battement devant straight to fifth (1-2), repeat (3-4), tendu à la seconde changé dessous (5-6). Repeat in the derrière (1-6, 1-6). Grand battement à la seconde (1), to tendu (2), close fifth back (3), repeat (4- 6). Grand battement à la seconde straight to fifth (1-2), repeat (3-4), arm allongé (5), lower to en bas (6). Glissé en avant to tendu derrière (1-3), fouetté par terre to other side (4-6), close fifth front on other side (1-3), arm prepares (4-6). Repeat all on other side.\n• Notes:\n• Arm is held in the à la seconde position until the transition to fouetté."
+        }
+      ]
+    },
+    {
+      "name": "Barre · Drills",
+      "cards": [
+        {
+          "title": "ABT’s (RAD) 1/4, 3/4 Pirouette",
+          "body": "• Facing the barre, from fifth:\n• Demi-plié (1), 1/4 pirouette en dehors to one hand on the barre (2), hold retiré (3-4), demi-plié in fifth (5), 3/4 pirouette en dehors back to facing the barre (6), hold (7-8).\n• Notes:\n• This exercise is designed to train the coordination of leaving the head for the beginning of the pirouette — keep the head towards the front throughout the 1/4 turn, and then bring the spot around to the front with the 3/4 pirouette.\n• Repeat all left."
+        },
+        {
+          "title": "Adam’s Punishment",
+          "body": "• From fifth, one hand on the barre:\n• Eight count développé devant (1-8), hold extended position (1-6), battement tendu (7), close fifth (8). Repeat en croix.\n• Notes:\n• Adam Sklute jokingly told the dancers that this would be their punishment if they did not execute the given combination correctly."
+        },
+        {
+          "title": "Assemblé Prep",
+          "body": "• Facing the barre, from fifth with the working leg beginning derrière:\n• Plié fifth (1), tendu en fondu à la seconde (2), close quickly dessus to sous-sus devant (& 3), hold (4), repeat other side (5-8).\n• Begin working dessous immediately."
+        },
+        {
+          "title": "Battement Soutenu",
+          "body": "• From fifth, en croix, 4 counts each — out for two counts, in on 3/7, hold 4/8:\n• Battement soutenu à terre to fifth\n• Battement soutenu à terre to sous-sus\n• Battement soutenu en l’air (45*) to fifth no relevé\n• Battement soutenu en l’air (45*) to sous-sus\n• Add emphasis to the closure of the legs on count 3/7"
+        },
+        {
+          "title": "Battu Prep",
+          "body": "• Facing the barre, from fifth:\n• Pass working foot to first (1-2), return to fifth derrière (3-4), working foot to first (5-6), back to fifth front (7-8). Repeat with other leg in reverse. Develop exercise into the following:\n• Facing the barre, from fifth:\n• With flexed foot on flat, quick beat fifth back (&), front (1), hold (2), quick back (&), front (a), back (3), hold (4), repeat other side (5-8).\n• Repeat with relevé\n• Repeat with entrechat quatre (1), hold plié (2), entrechat six (3), hold plié (4), other side (5-8)."
+        },
+        {
+          "title": "Cookie Batter",
+          "body": "• First position, away from the barre, arms in second position:\n• Keeping both knees stretched and working foot flexed, execute 8 small rond de jambe “à terre” four times (32 counts) and change to the other side\n• Try your best to keep the whole foot on the floor as you do the circles.\n• For the development of the turnout of the leg, thus we only need to do this exercise in the dehors direction, feeling the heel leading the circle around."
+        },
+        {
+          "title": "CPYB (Marcia) Développé Sequence",
+          "body": "• Commonly added on at the end of rond de jambe à terre combinations:\n• Retiré (1-2) to attitude devant (3-4), demi-grand rond de jambe at 90* or higher to attitude side (5-6), extend to à la seconde (7), close fifth back (8).\n• Repeat reverse.\n• Arm goes to fifth high with the leg to attitude devant or derrière.\n• Can be done with plié on the supporting leg as you take the working leg to attitude devant/derrière.\n• Notes:\n• This can also be executed with the following counts:\n• Développé to attitude devant (1-2), carry to attitude side (3-4), développé à la seconde (5-6), battement tendu à la seconde (7), close to fifth derrière (8)."
+        },
+        {
+          "title": "CPYB (Marcia) Stretch",
+          "body": "• Usually added on to combinations of the teacher’s choosing at barre:\n• Vaganova 3rd port de bras with battement tendu devant — en fondu for forward bend, stretch supporting knee for cambré back (1-7), passé par terre to battement tendu derrière (8). Repeat with lunge.\n• Head will not turn in the cambré derrière — look for the wall behind you."
+        },
+        {
+          "title": "Darla’s Échappé",
+          "body": "• ALWAYS executed to a polonaise:\n• Facing the barre:\n• Plié on (6). Échappé relevé in 2nd position (1), close fifth with heels slightly off the floor (2), lower heels the rest of the way down (3). Repeat as needed for phrasing.\n• This exercise is intended to train the dancers to control their landings from relevé or jumps. The heels will touch the ground before escaping out again.\n• Darla used these words as students executed the combination:\n• “Out 1, catch 2, lower 3.”\n• Additionally, when dancers are en pointe, Darla would instruct the students to slide out and in on the pleats of the pointe shoe.\n• This exercise can also be executed with sauté, maintaining the initial intent of the exercise."
+        },
+        {
+          "title": "Darla’s Port de bras (affectionately “Stretchy, Stretch”)",
+          "body": "• Cambré side into the barre (1-4), circle to cambré forward (5-8). Cambré side into the barre (1-4), circle to cambré derrière (5-8)."
+        },
+        {
+          "title": "Développé with Arm Coordination",
+          "body": "• One hand on the barre, from fifth position:\n• Arm prepares with Cecchetti first port de bras (5-8), allongé arm in seconde position (& a), sur le cou-de-pied wrapped arm en bas (1), retiré passé devant arm to first position (2), développé devant arm to fifth high (3), breath and open the arm, closing leg to fifth (& a), arrive to fifth and arm second position (4), arm allongé (& a).\n• Repeat en croix with the arm to fifth high in each position.\n• Emphasize the coordination of the arm, head, and leg arriving to landmarks together.\n• Repeat with rise, closing in sous-sus and staying up in-between F, S, and B."
+        },
+        {
+          "title": "Entrechat Trois",
+          "body": "• Facing the barre, fifth position:\n• Plié fifth on 8 of prep; sous-sus (&), fondu sur le cou-de-pied derrière “locked position” (1), hold (2), close to fifth with stretched knees (3), plié fifth (4), repeat (5-8). Sissonne simple to the sur le cou-de-pied derrière (& 1), hold (2), pas de bourrée de côté dessous (& 3), hold sous-sus (4), plié fifth (5), stretch knees (6), hold (7), plié fifth (8) to repeat all on the other side.\n• Once this has been mastered (you can play with the number of times that you jump instead of sous- sus), add Marcia’s entrechat trois (sissonne simple derrière — see Gail Grant):\n• Plié fifth on 8 of prep; sous-sus (&), fondu sur le cou-de-pied derrière locked position” with front foot (1), hold (2), close to fifth with stretched knees (3), plié fifth (4), repeat other side (5- 8). Repeat with jump on both sides.\n• This is a precursor to a true entrechat trois, without the added battu devant before the change of feet."
+        },
+        {
+          "title": "Fouetté Demi-rond de jambe en tournant Prep",
+          "body": "• One hand on the barre, from fifth:\n• Dégagé en fondu devant (&), demi-rond de jambe to à la seconde en fondu (1), hold (2), stretch supporting knee (3), hold (4), quickly demi-rond de jambe to dégagé en fondu devant (&), demi- rond de jambe to à la seconde en fondu (5), hold (6), relevé (7), hold (8). Repeat F —> S action with relevé to retiré devant or pirouette en dehors (1-4), balance in position of choice.\n• This can be done with use of the écarté derrière in the en dehors.\n• Can do entire progression en dedans."
+        },
+        {
+          "title": "Frog’s Tongue",
+          "body": "• One hand on the barre, from fifth:\n• Pas de cheval devant to plié (1), hold (2-3), close fifth (4), pas de cheval devant NO plié (5), close (6), pas de cheval devant NO plié (7), close (8).\n• Repeat en croix\n• Arm side\n• “Foot should lick the floor as it goes out, quick as can be.”"
+        },
+        {
+          "title": "Glissade Prep",
+          "body": "• Facing the barre, from fifth with the working leg beginning derrière.\n• Plié fifth (1), Tendu en fondu à la seconde (2), relevé 2nd position (&), transition to tendu en fondu in 2nd on other side (3), close fifth and stay down in plié (4), repeat along the barre.\n• On the relevé in second position, tell the students to try and get up on their toenails.\n• Develop the preparation for glissade until you have the following combination:\n• Plié fifth (1), Tendu en fondu à la seconde (2), relevé 2nd position (&), transition to tendu en fondu in 2nd on other side (3), close fifth (4), glissade derrière (& 5), glissade derrière (& 6), one changement (& 7), stretch legs (8). Arms en bas, repeat other side."
+        },
+        {
+          "title": "Gloria’s Ankle Drill",
+          "body": "• One hand on the barre, fifth position:\n• Battement tendu devant (1), pull toes back maintaining pointed toed (2-6), pointe devant (7), close to fifth (8).\n• Repeat à la seconde with the bevel action of the foot, heel coming forward towards the front.\n• Repeat derrière with the heel dropping, maintaining the pointed action.\n• Repeat à la seconde.\n• Notes:\n• This is for the initial drawing back of the foot into the fifth position. It is a teaching point,"
+        },
+        {
+          "title": "not necessarily “correct” technique.",
+          "body": ""
+        },
+        {
+          "title": "Lunges",
+          "body": "• One hand on the barre, from fifth:\n• Battement tendu devant (1), lunge (2), battement tendu devant (3), close to fifth (4), repeat en croix.\n• Arm in second position for front and back and barre hand will come to fifth high with lunge side.\n• Progress to taking 45* and 90* out of lunge\n• Further progress to relevé at 45* and 90*."
+        },
+        {
+          "title": "Marcia’s Demi-pliés Facing the Barre",
+          "body": "• In first position,\n• Demi-plié (1-2), stretch legs (3), hold stiff knees (4), repeat (5-8). Repeat (1-4), relevé no plié (5), lower (6), tendu to next position (7), lower heel (8).\n• Repeat in second position.\n• Repeat with working leg in fifth front.\n• Repeat with working leg in fifth back.\n• Emphasize stiff knees\n• Knees should go over the baby toe."
+        },
+        {
+          "title": "Melinda’s Battement Soutenu",
+          "body": "• One hand on the barre, from fifth:\n• Battement soutenu devant out (1-2), close fifth on flat (3), hold fifth (4), repeat à la seconde (5- 8). Repeat derrière closing to sous-sus, arm to fifth high (1-4), open arm to second with battement soutenu inside leg devant (5-6), close to fifth on flat (7), hold (8). Repeat reverse.\n• Notes:\n• On the reverse, the last battement soutenu derrière will close to pas de bourrée en tournant towards the barre to start other side."
+        },
+        {
+          "title": "Relevé Sauté",
+          "body": "• Facing the barre, beginning in first position:\n• Plié (1), relevé (2), plié (3), relevé (4), plié (5), sauté (&), plié (6), tendu to next position/stretch knees (7), lower heel or close (8).\n• Repeat in 1st, 2nd, 5th, and other 5th. No fourth position.\n• When students have demonstrated all technical requirements of 2 feet to 2 feet, you can add single leg addition:\n• After last fifth position: pick up back foot to sur le cou-de-pied derrière (8), plié (1), relevé (2), plié (3), relevé (4), plié (5), sauté (&), plié (6), pas de bourrée de côté dessous finishing up in sous-sus (7), pick up back foot to sur le cou-de-pied derrière (8).\n• Repeat other side.\n• Repeat both sides again to round out the phrase."
+        },
+        {
+          "title": "Melinda’s Échappé Combination",
+          "body": "• From fifth, en face. Arms prepare to second position on musical preparation:\n• Échappé à la seconde sur les pointes (+1), repeat (+2), échappé à la seconde (+), plié in 2nd (3), relevé in 2nd (+), close 5th as you plié (4), two sous-sus traveling en avant (+5+6) — head looking under into front palm, two sous-sus traveling en arrière (+7+8) — head looking over front arm as you open the arms to second position.\n• Échappé à la seconde — arms to second position (+1), échappé a la quatrième with the same\narm as front leg over the top (+2), repeat échappé à la seconde and a la quatrième (+3+4), retiré passé dessus to plié (+5), sous-sus (6), plié pirouette en dehors (+7, +8).\n• Notes:\n• Melinda begins every center in pointe class with this exercise."
+        },
+        {
+          "title": "Retiré Passés",
+          "body": "• Can be done with one hand on the barre or facing the barre:\n• Quickly pick front foot up to retiré devant (1), hold (2-3), passé to fifth back (4), repeat dessus.\n• Repeat dessous and dessus ending in fifth plié.\n• Repeat with relevé from fifth plié to fifth plié.\n• Repeat staying on relevé and hitting sous-sus at the beginning and end of the retiré passé. Do not plié.\n• Arms stays side throughout.\n• Emphasis on the pathway of the toe up and down the leg.\n• Hold fifth for as long as you can — without being late! — and get to retiré positions as quickly as possible.\n• Bring the toe to the front of the knee immediately in dessus."
+        },
+        {
+          "title": "Royal Ballet Warm-up (affectionately “Swoopy Swoop”)",
+          "body": "• Standing with the back to the barre, in relaxed 2nd position in parallel:\n• Upper body/back circle to the right (1-4), reverse circle of upper body (5-8). Forward fold with demi-plié in the legs (1-4), recover (5-8). Repeat with body circle to the left, stepping to face the barre in first position on the last two counts (1-8), (1-8).\n• Battement tendu devant (1), close (2), battement tendu derrière with other leg (3-4), battement tendu à la seconde (5), close to first (6), battement tendu à la seconde with the other leg (7), close to plié first (8). Cambré side away from working leg (1-2), roll forward to upper back stretch while internally rotating supporting foot to parallel to one hand on the barre (3), twist and open the chest away from the barre as the working arm opens side (4), forward stretch over two parallel legs (5-6), roll back up and recover to facing the barre, first position (7-8). Repeat from battement tendus with other leg."
+        },
+        {
+          "title": "Simon’s Pirouette Drill",
+          "body": "• Facing the barre, from fifth:\n• On preparation, fondu sur le cou-de-pied derrière (7-8). Piqué retiré devant (1), tombé coupé (2), repeat (3-4), piqué retiré devant (5), lower to fourth derrière (6), demi-rond de jambe en dedans (7), tombé coupé fondu sur le cou-de-pied derrière (8). Repeat all (1-8). Repeat a third time with the following change on the last eight: piqué retiré devant (5), lower to fourth derrière (6), demi- rond de jambe en dedans (+), tombé coupé fondu sur le cou-de-pied derrière (7), pas de bourrée under to other side (8)."
+        }
+      ]
+    },
+    {
+      "name": "Center · Battement Tendu & Dégagé",
+      "cards": [
+        {
+          "title": "Adam’s Battement Tendu",
+          "body": "• From croisé fifth devant\n• Battement tendu croisé devant (1-2), battement tendu croisé derrière (3-4), battement tendu à la seconde changé to croisé derrière (5-6), battement tendu croisé devant (7-8). battement tendu croisé derrière (1-2), battement tendu à la seconde changé (3-4), pas de basque to fifth (5-8). Chassé to tendu croisé — arms fourth en haut (1-2), place big fourth (3-4), pirouette en dehors (5-6), place to fourth (7-8). Pull up to sous-sus (1-2), dégagé devant to tombé smaller fourth (3- 4), pirouette en dehors (5-6), to plié fifth back (7-8). Repeat all from other side.\n• Notes:\n• The first fourth position should be a lunge, extended back leg, and the second fourth position will be two bent knees.\n• The second time through the combination you will begin in the small fourth for the pirouette and\nthe tombé forward onto the front leg to a big lunge for the second turn."
+        },
+        {
+          "title": "Battement Tendu with Épaulement and Temps Lié, no transfer of weight",
+          "body": "• En face, fifth position:\n• Battement tendu à la seconde dessous, arms in 2nd, (1-2), repeat other side (3-4), battement tendu à la seconde (&), place foot to 2nd position with épaulement (5), battement tendu (&), close fifth back (6), repeat other side (7-8). Repeat dessous again. Then dessus."
+        },
+        {
+          "title": "Battement Tendu with Pivot",
+          "body": "• Beginning fifth position, croisé.\n• Tendu croisé devant arms fourth en haut (1), close fifth (2), tendu croisé derrière (3), close (4), battement tendu effacé devant and close (5-6), battement tendu effacé derrière and close (7-8). Battement Tendu écarté devant close front (1-2), battement tendu écarté derrière close fifth back (3-4), battement tendu croisé derrière (5), pivot fouetté to the other croisé devant (&), brush to 1st arabesque en fondu (6), pas de bourrée to fifth (& 7), changement de pieds (8).\n• Repeat other side."
+        },
+        {
+          "title": "Battement Dégagé with Piqué Arabesque",
+          "body": "• Beginning fifth, croisé:\n• Turn to effacé on (8); Four dégagé effacé derrière, 2 counts each (1-8). Battement tendu effacé devant en fondu (1-2), piqué first arabesque (3-4), roll down to plié (5-6), pas de bourrée to fifth plié (7), stretch knees and turn to effacé (8).\n• Repeat other side.\n• Progress to sauté arabesque.\n• Progress to arabesque cabriole."
+        },
+        {
+          "title": "Marcia’s 4, 2, 1 Battement Tendu",
+          "body": "• From fifth in croisé:\n• Four battement tendu croisé devant (1-4), four battement tendu croisé derrière (5-8). Two battement tendu croisé devant (1-2), two battement tendu croisé derrière (3-4), one battement tendu croisé devant (5), derrière (6), devant (7), derrière (8). Four battement tendu effacé devant (1-4), four battement tendu effacé derrière (5-8). Two battement tendu effacé devant (1-2), two battement tendu effacé derrière (3-4), one battement tendu effacé devant (5), derrière (6), devant 7, battement tendu écarté devant dessus (8). Repeat all other side.\n• Notes:\n• Arms can range from being used in the en bas position throughout or into big poses (or Cecchetti fourth en haut) positions."
+        },
+        {
+          "title": "Marcia’s Battement Tendu with Piqué Soutenu en Tournant",
+          "body": "• Beginning at one side of the room, fifth croisé:\n• Battement tendu croisé devant (1-2), derrière (3-4), battement tendu effacé devant (5-6), battement tendu écarté derrière dessous (7-8). Step towards front foot straight side to tendu devant en fondu (1-4), piqué soutenu en tournant with arms to fifth high (5-6), hold (7-8). Two piqué soutenu en tournant quicker (1-4), chaînés (5-8). Continue chaînés (1-2) piqué or chassé to first arabesque (3-4), slowly roll down to plié (5-6), run away (7-8).\n• Notes:\n• For lower levels, this can also be executed without the piqué arabesque but a chassé to battement tendu derrière.\n• The second side can be repeated immediately by passing working arabesque leg par terre to fifth croisé to begin other side."
+        },
+        {
+          "title": "Rose’s Adage Battement Tendu",
+          "body": "• From croisé, fifth position:\n• Arms to fifth en haut (1-4), battement tendu croisé devant (5), close fifth (6), open arms (7), lower arms to en bas (8). Arms to fifth en haut (1-4), battement tendu croisé derrière (5), close fifth (6), quarter turn to effacé position with opening the arms (7), lower the arms to en bas (8). Arms to fifth en haut (1-4), battement tendu effacé devant (5), close (6), change inclination of the head (7-8). Battement tendu effacé derrière (1-2), battement tendu écarté devant closing fifth front (3-4), open arms and lower to en bas (5-8).\n• Repeat all on the other side.\n• Notes:\n• This combination is preparatory for Marcia’s battement tendu with piqué soutenu combination (although it is slightly modified).\n• This combination is executed at an adagio tempo, perhaps a 6/8 or 12/8 to help fill the simplicity of the movements."
+        }
+      ]
+    },
+    {
+      "name": "Center · Connective Steps",
+      "cards": [
+        {
+          "title": "Darla’s Slow Battement Fondu with Relevé",
+          "body": "• Beginning fifth position, en face.\n• Pick up front foot (actively!) to sur le cou-de-pied devant (1), hold (2), fondu (3), hold (4), extend to 45* devant en fondu (5-6), stretch supporting knee (7), hold (8). Repeat en croix.\n• This exercise will first be done at the barre.\n• Develop this exercise to relevé in the center."
+        },
+        {
+          "title": "Marcia’s (CPYB) Port de bras",
+          "body": "• From fifth, croisé:\n• Cecchetti first and third port de bras (1-8):\n• From preparatory position, arms to fifth en avant — 1st position — (1), open to second position (2), allongé (3), lower the arms to preparatory position (4);\n• Lift arms to fifth en haut (5), open to second position (6), allongé (7), lower to preparatory position (8).\n• Then:\n• Move arms to fifth en avant — 1st position — (1), lift to fourth en haut with upstage arm (2), burst top arm to open to second position, turn head and look at arm (+), arrive in second position (3), allongé (+), lower arms to preparatory position (4);\n• Repeat fourth en haut port de bras with downstage arm (5-8)."
+        },
+        {
+          "title": "Port de bras",
+          "body": "• Marcia’s\n• 6 Vaganova port de bras (sketches at end of essential exercises p. 43-45)\n• First 4 Cecchetti port de bras."
+        },
+        {
+          "title": "Royal Ballet Battement Temps lié",
+          "body": "• From fifth croisé:\n• Demi-plié (1), pointe to tendu devant en fondu (2), step to the toe — onto straight knee — to tendu derrière (3), close fifth (4). Repeat side with change of feet (5-8).\n• Repeat other side.\n• Repeat traveling en arrière.\n• Notes:\n• Teach the elasticity of the movement so that students understand the use of the plié immediately.\n• Encourage the verticality of the body alignment as they step onto the new foot/weight transfer.\n• You can progress this exercise through until on relevé at 90* — see Vaganova Temps Lié as well. Choose the most appropriate stopping point for your students.\n• Arms:\n• Devant/derrière: arms will move to the preparatory/en bas position with demi-plié, first position/fifth en avant with the tendu en fondu, and fourth en haut with weight transfer. À la seconde: arms will move to the first/fifth en avant position with the demi-plié, open to à la seconde with the tendu en fondu, and stay with the weight transfer. You could consider using fourth en haut (same arm high as new tendu leg) with the weight transfer/step to help students get over on the new supporting leg."
+        },
+        {
+          "title": "Royal Ballet Battement Temps lié en l’air",
+          "body": "• From fifth croisé:\n• Retiré devant (1), développé en fondu at 90* (2), step en avant to attitude derrière (3), close fifth\n(4). Repeat side with changé (5-8).\n• Repeat traveling en arrière\n• Notes:\n• You do not necessarily need to extend to arabesque before closing to fifth. This is a choice for the teacher to make.\n• You can consider closing to fifth from the attitude position on the + of the third count to give your students more time to transition to the next position. Conversely, you can challenge your students by holding through count 4 and closing on the +.\n• Use attitude derrière and devant for the en avant/en arrière and fully stretched knee for the de côté/à la seconde.\n• Coordinate arms, head, and legs. Coordinating these pieces makes the movement fully functional for how they will approach adage and allegro work."
+        },
+        {
+          "title": "Royal Ballet Pas de Bourrée",
+          "body": "• From croisé fifth:\n• Pick up back foot to sur le cou-de-pied derrière en fondu on (8), arms fourth en avant: pas de bourrée dessus x4 (1-8). Pas de bourrée dessus x2 creating one en tournant from original croisé to original croisé (1-4), three quicker pas de bourrée — no en tournant — (+a 5) (+ a 6) (+ a 7), the last one to fifth, sous-sus arms fifth high (+), sur le cou-de-pied derrière en fondu (8).\n• Repeat all beginning on other side.\n• Notes:\n• Arms pass from fourth en avant straight into first position (no 2nd position), into next fourth en avant (same front arm as standing leg).\n• When executing the en tournant, the first pas de bourrée should take you to the next croisé position (quarter of a turn), and the second pas de bourrée should take you to the original croisé (3/4 turn).\n• “Make sure you include your eyes as a big part of the en tournant.\"\n• As a general note — not necessarily applicable to this exercise only — “Avoid paralysis by analysis.” In other words, physically doing the exercise can be more valuable than analyzing the exercise."
+        },
+        {
+          "title": "Royal Ballet Rond de jambe à terre",
+          "body": "• From croisé fifth:\n• Battement tendu en fondu devant (7), open to à la seconde en face with stretched supporting leg\n(8). Rond de jambe à terre en dehors with quarter turn to Vaganova corner 3 (1), rond de jambe staying at corner 3 (2), quarter turn to corner 5 (3), rond de jambe staying at corner 5 (4), quarter turn to corner 7 (5), quarter turn to en face (6), passé par terre to battement relevé lent devant en face, (7), demi-rond de jambe en l'air to à la seconde (8). Rond de jambe en l air en dehors x4 (1- 4), lower leg to tendu à la seconde en fondu (5), glissade de côté changé (6), prepare for other side (7-8).\n• Notes:\n• Make the en tournant happen during the transition from F —> S (en dehors) and B —> S (en\ndedans).\n• In the en dedans, feel that it initiates with the standing leg.\n• When executing an en tournant, emphasize the à la seconde. However, this is not necessarily the way that you want them to emphasize if they are not turning.\n• General note: “If you see the students playing the piano” with their fingers in adage, it means that\ntheir brains are overloaded and they do not know what to do so their fingers start to dance.”"
+        },
+        {
+          "title": "Simon’s Piqué Passé (Pas Marché)",
+          "body": "• From the back of the room, traveling en avant:\n• Pas marché through retiré height passé 8x — 2 counts each (1-8, 1-8)\n• Notes:\n• Arms will stay in second position for 4 pas marché and fifth en haut for 4 pas marché.\n• Can be executed in reverse when students are ready."
+        },
+        {
+          "title": "Simon’s Piqué Passé de côté",
+          "body": "• From the side of the room:\n• Piqué de côté with 1/2 en dedans turn (1), stay and roll down (2), piqué de côté with 1/2 en dehors turn (3), stay and roll down (4), repeat across the room (5-8).\n• Notes:\n• Pas marché with turns across the floor.\n• Arms will transition from fourth en avant to other fourth en avant with each pas marché.\n• Use the same arm rounded en avant as leg lifted in retiré."
+        },
+        {
+          "title": "Vaganova Temps lié",
+          "body": "• Beginning croisé devant:\n• Prep plié on (8). Retiré devant (1), développé croisé devant en fondu (2), step en avant along the croisé, stepping onto a straight leg, to tendu croisé derrière (3), breath of the upper body (4), cambré derrière (5-6), recover (7), close to fifth plié (8).\n• Repeat through the second position en face, with side cambré towards the tendu leg.\n• Repeat all on the other side.\n• Repeat all reverse.\n• Notes:\n• The entire sequence can be done on flat, à terre to begin, with progressions all the way up to petit pirouettes from fifth with full height extension.\n• On the reverse, you will cambré away from the tendu/extended leg. (In essence, you will always cambré back in the croisé positions and the cambrés side will switch from towards the extended leg to away from the extended leg.\n• Focus on the use of the head and upper body throughout the exercise with particular emphasis on the head inclined downstage for the retiré and extension (in the croisé positions) and a change of head, inclined, out to the audience with the step."
+        },
+        {
+          "title": "Vollmar’s Battement Fondu",
+          "body": "• From fifth, en face:\n• *Right leg begins behind* Right leg battement fondu sur le cou-de-pied derrière (1), extend to battement tendu à la seconde — straightening supporting leg (2), plié (3), soutenu to fifth on flat (4), repeat left (5-8).\n• Right leg battement fondu sur le cou-de-pied derrière (1), extend to relevé 45* à la seconde (2), plié (3), soutenu to fifth relevé (4), repeat left (5-8).\n• Right leg battement fondu sur le cou-de-pied derrière (1), extend to relevé 90* à la seconde (2), plié (3), relevé retiré devant (4), repeat left (5-8).\n• Right leg battement fondu sur le cou-de-pied derrière (1), extend to relevé 90* à la seconde (2), fouetté en dedans to arabesque plié (3), fouetté en dehors back to en face à la seconde (4), repeat left (5-8).\n• Notes:\n• Jocelyn Vollmar would give this combination in every pointe class. It incorporates a lot of classical variation choreography into the combination, particularly a slight variation of the woman’s solo from Bournonville’s Flower Festival."
+        }
+      ]
+    },
+    {
+      "name": "Center · Adage",
+      "cards": [
+        {
+          "title": "Darla’s “I Love You”",
+          "body": "• En face, fifth position:\n• Plié fifth (1) double pirouette en dehors from fifth (2), lower the heel down (3-4), port de bras: arms open to the side —> fifth high (5-6), detiré to à la seconde (7), let go (8). Promenade en dehors (1-4), plié in second (5) relevé retiré passé (5-6), to close fifth back (7), stretch knees (8).\n• Repeat on other side.\n• This detiré combination can be done with devant or derrière position, en dehors or en dedans.\n• You can add the following to the end:\n• Battement tendu à la seconde arms to fifth high (1-2), rond de jambe à terre to tendu derrière à la quatrième (3-4), open the arms to first arabesque —take all four counts!— (5-8). Lift the leg to arabesque (1-4), fondu slowly in the arabesque —take all four counts!—(5-8)."
+        },
+        {
+          "title": "Debby’s Cloche",
+          "body": "• From fifth, en face.\n• Battement relevé lent devant (1-2), cloche to derrière (3-4), devant again (5-6), fondu sur le cou- de-pied devant (7-8). Open to à la seconde (1-2), fondu sur le cou-de-pied derrière (3-4), open to derrière (5-6), close fifth back (7-8).\n• Repeat en dedans.\n• Then, en dedans and en dehors on the other leg."
+        },
+        {
+          "title": "Marcia’s Fouetté to Arabesque",
+          "body": "• Beginning en face, fifth position:"
+        },
+        {
+          "title": "À terre",
+          "body": "• Tendu à la seconde, arms to fifth high (1), pivot to 1st arabesque (2), Open arms to first arabesque (3-4), lift to 45* arabesque (5), tendu derrière (6), pivot back to à la seconde (7), close to fifth back (8)\n• Repeat other side"
+        },
+        {
+          "title": "At 90*",
+          "body": "• Développé à la seconde, arms to fifth high (1-4), fouetté to first arabesque, keeping the arms fifth high (5-6), open the arms to arabesque (7-8). Promenade en dedans (1-4), plié in 1st arabesque (5), pas de bourrée to fifth (6), battement tendu à la seconde changing fifths (7-8).\n• Another possible variation:\n• Développé à la seconde, arms to fifth high (1-4), fouetté to first arabesque, keeping the arms fifth high (5-6), open the arms to arabesque (7-8). Promenade en dedans (1-4), plié in 1st arabesque (5), pas de bourrée to fourth lunge croisé (6), petit pirouette en dedans (7), to fifth front plié (8).\n• At 90* make sure you emphasize that the leg must go BACK during the fouetté, not just\nstaying in place.\n• Add on for sauté fouetté prep:\n• After opening the arms to arabesque line (7-8), cloche to devant at 60* or 90*, fouetté."
+        },
+        {
+          "title": "Marcia’s Petit Adage",
+          "body": "• Facing en face, fifth position:\n• Fondu devant (1-2), plié (3), relevé (4), plié (5), piqué to arabesque en avant — arms come to fifth high — (6), staying on rise, demi-rond de jambe en dedans to à la seconde (7), hold in à la seconde on rise (8). Immediately begin other side by bringing à la seconde leg into fondu devant.\n• Notes:\n• This combination can be done without relevé (except for piqué) for intermediate dancers.\n• This combination should also be practiced in the reverse.\n• You can also do this combination without moving the arms to fifth en haut with the piqué."
+        },
+        {
+          "title": "Marcia’s Renversé Adagio",
+          "body": "• From fifth, croisé:\n• Développé croisé devant en fondu to 45* (1-4), carry en fondu to effacé devant (5-6), stretch bottom knee and carry to écarté derrière (7-8). Lift to croisé attitude derrière en fondu (1-4), pas de bourrée to retiré to fifth plié (5-7), battement tendu side changé to other side.\n• Notes:\n• NO en tournant with the pas de bourrée.\n• Simon Ball:\n• “Think of your foot telling you a secret at the end of the renversé.\"\n• “Always pass through arabesque before breaking to attitude derrière.”\n• “Respect the air underneath your leg.”\n• When Simon broke down Marcia’s exercise, he had the students repeat the exercise in 8 counts without a développé to begin — a simply dégagé devant to 45*."
+        },
+        {
+          "title": "Royal Ballet Adage",
+          "body": "• From fifth, en face:\n• Battement tendu devant (1-2), lift — height dependent on student needs — (3-4), lower to battement tendu devant (5-6), allongé arms (7), close fifth (8). Retiré devant (1-2), développé devant (3-4), lower to battement tendu devant (5-6), allongé arms (7), close (8). Repeat à la seconde and derrière. (The phrasing was intentionally left as 3 sets of 8 but it is possible to round out the phrase by doing à la seconde again or any number of things — instructor choice).\n• Notes:\n• This combination could be executed as devant, derrière, and à la seconde (as opposed to F S and B) to give an opportunity for the supporting leg to rest.\n• Arms: first position/fifth en avant (1), open with leg to tendu (2), hold in 2nd until allongé on (7), close to en bas with leg on (8). First position/fifth en avant with retiré, open arms to 2nd with développé, allongé on (7), close to en bas with leg on (8).\n• You might consider including a little turn of the head with the arabesque while en face because it feels more natural/it is awkward to maintain the head to the devant.\n• “Adage is harmony of movement, not a balance exercise.”\n• “What we do in adagio will also influence what they do in grand pirouettes.”"
+        }
+      ]
+    },
+    {
+      "name": "Center · Pirouettes",
+      "cards": [
+        {
+          "title": "Alan’s Pirouette Drill",
+          "body": "• En face, from fifth:\n• Tendu 2nd (1), Plié 2nd (2), pirouette en dehors (3), close 5th devant (4), sous-sus (5), plié (6), pirouette en dehors (7), close 5th derrière (8). Glissé en avant (1), Plié in 4th (2), pirouette en dehors (3), finish lunge back (4), en dedans pirouette (5), close 5th devant (6), détourné (7), other side (8).\n• Repeat with singles, doubles and triples (optional)\n• Stay down throughout execution of balancé.\n• Arm coordination will be: arm to en bas with locked position, first position with “rock,” open to second position with the leg to à la seconde."
+        },
+        {
+          "title": "Attila’s Pirouette En Dehors Drill",
+          "body": "• En face, from fifth:\n• Battement tendu à la quatrième devant (1), plié fourth (2), relevé 45* devant (3), close to fifth plié (4), repeat side with relevé in 2nd position (5-8).\n• Battement tendu à la quatrième derrière (1), plié fourth (2), relevé arabesque at 45* (3), plié in arabesque (4), pas de bourrée en tournant en dehors to en face (5), plié fifth and pirouette en dehors or en dedans (6), close fifth plié back (7), hold/stretch (8).\n• Repeat all on other side.\n• Build this combination with 1/4 turns, 1/2 turns, full turns, and eventually multiple turns."
+        },
+        {
+          "title": "Charlie’s Pirouette en Dedans",
+          "body": "• Charlie would give this combination in company class frequently and usually to an adagio. He would say that he did not want to hear us take off for the pirouette or land from it. I have changed it slightly from its original to fit the needs of our students.\n• Beginning fifth position croisé:\n• Battement tendu croisé devant place to fourth (7-8). Petit pirouette en dedans, arms fifth high (1), close fifth front on other croisé (2), battement tendu croisé devant place to fourth (3-4), petit pirouette en dedans, arms fifth high (5), close fifth front on other croisé (6), battement tendu croisé devant place to fourth (7-8). Repeat en dedans to fifth, battement tendu to fourth, (1-4), petit pirouette en dehors finishing in fifth back (5-6), battement tendu croisé devant to place fourth (7-8). Repeat all other side. You can continue until students run out of space."
+        },
+        {
+          "title": "Christina’s Pirouette Drill",
+          "body": "• From 5th en face, prepare arms Cecchetti 1st:\n• Plié, flat footed passé dessous, close plié 5th derrière, stretch (1-4)\n• repeat left (5-8)\n• plié relevé to retiré devant, close plié 5th devant (1-4)\n• pirouette en dehors, close plié 5th derrière (5-8)\n• repeat all to the left"
+        },
+        {
+          "title": "Darla’s Retiré Passé/Pirouette Preps",
+          "body": "• En face, from fifth:\n• Plié (1) retiré devant (2), hold (3) close fifth back (4), repeat other side (5-8). Repeat with\npirouette en dehors (1-8).\n• Plié (1), relevé retiré (2), développé à la seconde (3), close fifth back (4), repeat other side (5-8). Repeat with pirouette en dehors.\n• Repeat entire exercise en dedans."
+        },
+        {
+          "title": "Debby’s Pirouette Drill",
+          "body": "• From upstage corner, across the floor:\n• Balancé en avant in effacé (1), balancé through écarté derrière (2), waltz turn devant and derrière (3-4), tombé pas de bourrée to 4th plié (5-6), petit pirouette en dehors with arms in 1st/pirouette arms to finish 4th back (7-8). Tombé pas de bourrée to 4th plié (1-2), petit pirouette en dehors with arms fifth high to finish 4th back (3-4), tombé pas de bourrée to 4th plié (5-6), petit pirouette en dehors with both hands on hips (ladies) or downstage hand on hip, upstage arm in 1st (gentlemen) (7-8)."
+        },
+        {
+          "title": "Gloria’s Pirouette with Rond de jambe à terre",
+          "body": "• Gloria would give this combination often, especially when focusing on the weight placement over the ball of the foot. She would also give this combination in the reverse.\n• Beginning fifth position croisé:\n• Three rond de jambe à terre en dehors with 1/8th turns to other croisé (1-3), place to fourth (4), pirouette en dehors (5), ending in sur le cou-de-pied derrière en fondu (6), pas de bourrée en tournant to original position (7), plié fifth (8). Repeat twice more (1-8). See notes about last eight counts below.\n• The arms will generally open to 2nd position with the sur le cou-de-pied derrière position at the end of the pirouette.\n• The last eight counts of this combination can vary, depending on what needs work. I have omitted these last eight counts to be constructed as needed. When constructing these counts, consider if you plan on reversing the combination and plan accordingly."
+        },
+        {
+          "title": "Marcia’s Grand Pirouette en Dedans Progression",
+          "body": "• Tendu croisé devant (1) place fourth croisé (2), relevé arabesque (3), plié (4), hold (5-6), pas de\nbourrée (7), plié fifth (8).\n• Repeat other side.\n• Repeat both sides again.\n• Repeat in à la second.\n• Repeat with attitude derrière.\n• Repeat with attitude devant.\n• Progress to single grand pirouettes in each position.\n• Notes:\n• Marcia always starts with arabesque.\n• Once students have mastered grand pirouette en dedans in à la seconde, you can try adding a fouetté to arabesque at the end of the turn.\n• Once students have mastered grand pirouette en dedans in arabesque, practice a fouetté to à la seconde at the end of the turn, finishing en face with leg in 2nd position to prepare for arabesque turn into petit pirouette en dedans — passing through 2nd position."
+        },
+        {
+          "title": "Marjorie Thompson’s Finale Pirouette with Polonaise",
+          "body": "• See https://balletinform.com/marjorie-thompsons-pirouette-combination/ (https://balletinform.com/marjorie-thompsons-pirouette-combination/)\n• From the back of the room, battement tendu croisé derrière:\n• Piqué first arabesque (1), failli across, step across (2-3), repeat other side (4-6). Piqué retiré de côté to corner 4 (1), failli across, step across (2-3), piqué retiré de côté to corner 6 (4), sous-sus (5), tombé to croisé fourth, prep for en dedans pirouette (6). Demi-rond de jambe fouetté en dedans to attitude derrière (1-2), fondu sur le cou-de-pied derrière (3), développé relevé écarté devant (4), plié fifth croisé (5), sous-sus (6). Tombé to croisé fourth prep for en dehors (1), pirouette en dehors (2-3), land fourth (4-5), cut behind (6). Repeat all other side."
+        },
+        {
+          "title": "Royal Ballet Pirouette from Fifth",
+          "body": "• From fifth, en face:\n• Plié (+), Sous-sus (1), plié (+), retiré relevé (2), plié (+) pirouette (3), plié closing fifth back presenting arms (4).\n• Notes:\n• “Dancers need to have confidence to do pirouettes well — some dancers lose the confidence and it becomes a critical failing of their training.”\n• “I say pirouette, you say, ‘YAY!’”\n• Use visualization techniques.\n• Make pirouettes fun by association."
+        },
+        {
+          "title": "Shayla’s Petit Pirouette en Dedans Drill",
+          "body": "• From the corner, across the floor:\n• Tombé pas de bourrée to fourth (1-2), pirouette en dedans ending in fourth lunge (3-4), pirouette en dehors to fifth (5-6), sous-sus, (7-8).\n• Repeat across the floor.\n• You will do the same amount of en dedans and en dehors. Don’t allow students to do a single en dedans and then multiple en dehors.\n• Build up to multiple pirouettes."
+        },
+        {
+          "title": "Simon’s Grand Pirouette à la seconde Drill",
+          "body": "• En face, from fifth:\n• Battement tendu à la seconde (1), rond de jambe à terre to fourth (2), relevé to 2nd at 90* with quarter turn (3), coupé over (4), pas de bourrée to fourth (5-6), relevé to 2nd at 90* with quarter turn (7), coupé over (8).\n• Repeat around the room with quarter turns.\n• Then add half turns, full, and doubles.\n• Arms will go 2nd with prep tendu, fourth en avant for fourth, at meet in fifth en haut right away with the quarter turn."
+        },
+        {
+          "title": "Sous-sus, Plié, Pirouette",
+          "body": "• From fifth, en face:\n• Plié (1), sous-sus (2), plié (3), relevé retiré passé dessous (4), repeat other side (5-8). Plié (1), sous-sus (2), plié (3), pirouette en dehors, closing fifth back (4), repeat other side (5-8).\n• Notes:\n• This is a staple in the Marcia (CPYB repertoire) and is often also performed in pointe class.\n• This combination is also used to introduce pirouette thrown to écarté with the thrown leg landing in fourth derrière out of the pirouette."
+        }
+      ]
+    },
+    {
+      "name": "Center · Petit Allegro",
+      "cards": [
+        {
+          "title": "#21",
+          "body": "• Beginning in croisé:\n• Entrechat quatre x3, royale. Repeat other side. Entrechat quatre x3, ciseaux to other side. Repeat other side. Entrechat quatre x3, Italian changement with double passé, repeat other side. Then en face entrechat quatre, passé sauté dessous, repeat other side. Then passé sauté dessous x4."
+        },
+        {
+          "title": "Adam’s Warm-up Jump",
+          "body": "• From fifth en face:\n• Two sauté in first — jumping from fifth to first on the first sauté (1-2), relevé in first (3-4), two sauté in seconde (jumping from first to second on first jump) (5-6), relevé in 2nd (7-8). Eight changement with Cecchetti 3rd port de bras (1-8).\n• Repeat other side with reverse of the arms.\n• Repeat again, but with one arm en dedans and one arm en dehors during the eight changements. Left side, reverse arms."
+        },
+        {
+          "title": "Assemblé FSB",
+          "body": "• Assemblé devant traveling en avant (1-2), assemblé à la seconde traveling de côté (3-4), assemblé derrière traveling en arrière (5-6), Cecchetti 1st port de bras (7-8). Repeat other side.\n• The arms will stay in 2nd position throughout the assemblés.\n• Stay down in plié in-between assemblés."
+        },
+        {
+          "title": "Charlie’s Warm-up Jump",
+          "body": "• From fifth, en face:\n• Four changement de pieds (1-4), entrechat trois (5), piqué en arrière to croisé devant (+), plié fifth (6), entrechat trois (7), piqué de côté to à la seconde (+), close fifth plié back (8). Repeat all left."
+        },
+        {
+          "title": "Glissade En Avant, Arrière, etc",
+          "body": "• Facing en face, fifth position:\n• Glissade en avant (1-2), glissade en arrière (3-4), glissade de côté changé — toward front foot — (5-6), two glissade de côté changé — toward front foot — (7-8). Repeat all other side.\n• Notes:\n• The arms will pass through first position with épaulement (inclined inward at hands) for the glissade en avant. Open the arms to second position for the en arrière. Keep the arms in seconde for the glissades through the à la seconde, closing them to en bas with the last glissade side.\n• Darla Hoover: “If the right foot is in front, you should follow the right arm with the head for the front and back. For the side, the head goes to the front foot each time.”\n• If this is the first time that you are introducing glissade en avant and en arrière, make sure you\nreview the 5 pictures of glissade before executing the combination."
+        },
+        {
+          "title": "Marcia’s Favorite Petit Allegro (affectionately “Blah, blah”)",
+          "body": "• Glissade derrière (& 1), jeté dessus (& 2), coupé ballonné de côté (3 & 4), assemblé en arrière (& 5), entrechat trois (6), pas de bourrée de côté dessus (7), changement de pieds (8). Repeat other side.\n• Notes:\n• Marcia also uses the following exercise as a building block for her favorite petit allegro:\n• Glissade, petit jeté dessus, temps levé, pas de chat, pas de bourrée, entrechat quatre, and hold fifth plié."
+        },
+        {
+          "title": "Marcia’s Petit Allegro with Temps Levé",
+          "body": "• From fifth, en face:\n• Glissade de côté with back leg — no change — (1), two petit jeté dessus (2-3), temps levé in sur le cou-de-pied derrière (4), two pas de chat with sur le cou-de-pied leg (5-6), pas de bourrée over (7), entrechat quatre (8). Repeat all other side.\n• Notes:\n• Marcia: “Lick the floor with the foot to sur le cou-de-pied derrière for the pas de bourrée. Toes pointe to each knee in pas de chat.”"
+        },
+        {
+          "title": "Marcia’s Warm-up Jump",
+          "body": "• From fifth, en face:\n• Plié on 8 to prepare; Three changements de pieds (1-3), sissonne simple devant (4), petit emboîté (or petit jeté in Cecchetti) to sur le cou-de-pied derrière x3 (+5, +, 6), assemblé simple (7), entrechat quatre (8). Repeat all other side."
+        },
+        {
+          "title": "Melinda’s Petit Allegro (affectionately Lonely Goatherd)",
+          "body": "• En face, from fifth:\n• Beginning with working leg derrière in fifth:\n• Glissade de côté (+1), soubresaut (+2), glissade de côté (+3), changement de pieds (+4), repeat other side (5-8). Glissade de côté (+1), petit jeté dessus (+2), relevé in sur le cou-de- pied derrière (+3), plié in sur le cou-de-pied derrière (+4), pas de bourrée dessus to sous-sus (+5), plié (6), changement de pieds (+7), hold plié (8). Repeat all other side.\n• Notes:\n• Keep the arms simple for the glissade soubresaut portion at the beginning. For the second half, the arm can come to fourth en avant for the jeté, fourth en haut for the relevé, and open the arm to second position for the plié in sur le cou-de-pied derrière.\n• Melinda: “Petit allegro has to be very picky, but the opposite usually happens — sloppy.”"
+        },
+        {
+          "title": "Melinda’s Soubresaut",
+          "body": "• Croisé, fifth position:\n• Soubresaut four times on the diagonal/croisé (1-4), échappé sauté à la seconde en face (5), two sauté in 2nd position (+6, +7), third sauté closes to fifth back (8). Repeat other side.\n• Notes:\n• Melinda executed this at what she calls “Marcia” speed. In other words, slowly, holding each\nposition in order to work the control of the plié.\n• Melinda: “If you work hard on the small and simple exercises, the harder ones will be a breeze.”\n• It was also during this combination that Melinda talked to the students about applying corrections: “Really work the corrections through your entire class. I know that it is a lot but maybe just take one thing at a time. It is up to you. Make goals! You can’t wait for us (the teacher) to wave the magic wand. It has to be a 50%-50% collaboration here!”"
+        },
+        {
+          "title": "Michael Bearden’s Warm-up Jump",
+          "body": "• From fifth, en face:\n• Sauté in 1st 2x (1-2), échappé sauté to 2nd (3) and close 1st (4), sauté in 2nd 2x (5-6), sauté to 4th (7), sauté to 2nd (8). Sauté in 4th 2x (1-2), sauté to 5th (3), sauté to 4th (4), sauté to 5th (5), 3 changement de pieds (6-8).\n• Repeat left"
+        },
+        {
+          "title": "Retrograde Petit Allegro",
+          "body": "From fifth, en face, from the back of the room:\nGlissade en avant (1), soubresaut en avant (2), sissonne fermée en avant (3), soubresaut en avant (4), assemblé dessus 2x (5-6), entrechat quatre (7), entrechat royale (8).\n• Repeat left.\n• Reverse all.\n• Eventually retrograde the en arrière when students are ready."
+        },
+        {
+          "title": "Royal Ballet Assemblés",
+          "body": "• From 5th croisé, arms preparatory:\n• Assemblé dessus (en face), temps d’arrêt (1-2), repeat (3-4), reverse all (5-8)\n• Glissade derrière, assemblé dessus (1-2), temps d’arrêt (3-4), glissade derrière assemblé dessus (5-6), assemblé croisé derrière (+7), assemblé croisé devant (+8)\n• Notes:\n• The end of glissade is in the air, then the 5th position at the end of glissade is actually the beginning of assemblé."
+        },
+        {
+          "title": "Royal Ballet Assemblé Battu",
+          "body": "• From the back of the room, 5th croisé, arms preparatory:\n• Prepare the arms through 1st to 2nd (7-8)\n• Sissonne en avant through effacé derrière, arms move through preparatory to 1st, Failli through 4th croisé (+1), brush back foot to Dégagé effacé devant and assemblé porté battu (+2), repeat left (3-4), repeat right (5-6), assemblé écarté derrière closing derrière (+7), assemblé écarté devant closing devant (+8)\n• repeat left"
+        },
+        {
+          "title": "Royal Ballet Ballonné",
+          "body": "• From the corner, begin tendu croisé derrière:\n• Ballonné en avant (through effacé) 2x, ballonné composé to tendu effacé derrière, failli (1-4), repeat but close 5th derrière instead of failli (5-8), glissade devant (+1), ballonné dessous (+2), pas de bourrée dessus (3+4), glissade derrière (+5), ballonné dessus (+6), pas de bourrée dessous (+a7), glissé en avant with derrière foot to finish tendu croisé derrière (8).\n• Repeat."
+        },
+        {
+          "title": "Royal Ballet’s Bouncing Sautés",
+          "body": "• Beginning in parallel (6th position), arms bras bas.\n• Plié 4x, each time deeper (1-4), relevé bringing arms to first position (5), open arms to 2nd (6),\nlower to parallel as the arms return to bras bas (7-8).\n• Repeat three times through.\n• Then: relevé with demi port de bras (1-4), turn the feet out (5-6), and lower down to 1st position (7-8).\n• Repeat all in first position."
+        },
+        {
+          "title": "Royal Ballet’s Changements",
+          "body": "• From 5th en face, preparatory arms:\n• Changement with 2 count landing in plié (1-2), repeat 4x total, Changement 2x (1-2), Changement with 2 count landing in plié (3-4), stretch knees (5-6), plié (7-8)\n• Repeat left"
+        },
+        {
+          "title": "Royal Ballet’s Downs and Ups",
+          "body": "• From first, en face:\n• Downs:\n• Plié in first (1-2), sauté (& 3), stretch knees (4). Repeat 2 more times (5-8), (1-4). Then: press to relevé (5), hold (6-8).\n• Go right away into Ups:\n• Plié (1), sauté (+2), hold plié (3), stretch knees (4). Repeat three times through. Then add relevé (same as in downs) to finish out the phrase."
+        },
+        {
+          "title": "Royal Ballet Turning Échappé Sauté",
+          "body": "• From 5th en face:\n• Échappé Sauté to 4th, and close 5th (1-2), Échappé sauté to 2nd, and close 5th (3-4), Échappé sauté to 4th (5), Temps levé with 1/2 turn to face the back of the room in 4th position (6), Temps levé to face the front in 4th position (7), close 5th (8)\n• Échappé sauté to 2nd, and close (1-2), repeat (3-4), échappé sauté with 1/2 turn to face the back in 2nd position (5), close 5th (6), changement with 1/4 turn twice to finish facing front (7-8)."
+        },
+        {
+          "title": "Royal Ballet Glissade",
+          "body": "• From fifth, en face:\n• Note: Glissade devant changé = glissade side starting with the front foot and changing feet. The reverse is glissade derrière changé.\n• Glissade devant change (+1), temps d’arrêt (2), same derrière (3-4), glissade en avant (5), en arrière (6), glissade devant change (7), temps d’arrêt — stretch plié — (8). Arms fourth en avant same arm as leg closing across, same in reverse, then Bournonville demi-seconde (presenting, low) with the en avant and en arrière.\n• Notes:\n• They teach glissade with the toes on the floor at first and then they progress it into a more allegro step.\n• Looking at the best way to start/learning the step: helps develop the feet and keeps it from getting messy.\n• Draw the connection of the glissade to the temps lié especially through the en avant and en arrière.\n• Movement of glissade will always start in demi-plié\n• Quick closure of the second leg\n• Go up and over"
+        },
+        {
+          "title": "Royal Ballet Jetés",
+          "body": "• From 5th en face, arms preparatory:\n• Glissade derrière, petit jeté dessus (1-2), temps levé twice (3-4), pas de bourrée dessus (+a5), repeat all (6-8, 1-2), petit jeté dessus (3), temps levé twice (4-5), pas de bourrée dessus (+a6), changement (+7), temps d’arrêt (+8), repeat left\n• Note: Royal Ballet School wants an emphasis on the 2nd position at the top of petit jeté"
+        },
+        {
+          "title": "Royal Ballet Pas de Chat",
+          "body": "• From tendu croisé derrière, arms preparatory:\n• Ballotté with 1/4 turn to effacé devant (+), temps levé in 1st arabesque (1), Failli to 4th en face (2), pas de chat derrière to 5th (3), pas de chat to coupé dessous, lifting foot to cou-de-pied derrière (4), repeat left (5-8) and continue."
+        },
+        {
+          "title": "Royal Ballet Sissonne Simple",
+          "body": "• From 5th en face:\n• Sissonne simple devant (+1), assemblé dessous (+2), sissonne simple derrière (+3), assemblé dessus (+4), sissonne simple with 1/8 of a turn en dehors (+5), stay en fondu and développé écarté derrière (6), pas de bourrée dessous to finish 5th croisé (+a7), changement to finish 5th en face (+8), repeat left."
+        },
+        {
+          "title": "Royal Ballet Warm-Up Jump",
+          "body": "• From first, en face:\n• Four sautés in 1st (1-4), *make sure you land on both legs*, and then transfer the weight as you tendu à la seconde (5), hold (6), lower the foot to 2nd position (7), plié (8).\n•  Repeat in 2nd.\n• After 2nd position, you can return the tendu back to first and repeat other side, or close to 5th and execute combination with the fifths changing feet."
+        },
+        {
+          "title": "Simon’s ABBA BAAB Petit Allegro",
+          "body": "• From fifth, en face:\n• Assemblé = A, sissonne fermée de côté changé=B\n• Assemblé dessus (+1), sissonne (2), sissonne (3), assemblé dessus (4), sissonne (5), assemblé dessus (6), assemblé dessus (7), sissonne (8). Repeat again.\n• Notes:\n• Should also be executed in the reverse.\n• This can also be done with front and back.\n• Keep arms en bas to start and then add arms for the sissonne when the students have mastered the legs."
+        },
+        {
+          "title": "Simon’s Assemblé Petit Allegro",
+          "body": "• From fifth, en face — executed to a polonaise:\n• Assemblé dessus (1), hold plié (2), repeat (3-4), assemblé dessus (5), changement de pieds (6). Assemblé dessus (1), hold plié (2), repeat (3-4), assemblé dessus (5), temps d’arrêt (6)."
+        },
+        {
+          "title": "Simon’s Battu Prep Small Jumps",
+          "body": "• From fifth, en face:\n• Plié to prep (8). Sauté to first (+1), sauté to fifth (+2), repeat (3-4), repeat (5-6), two changement (7-8). Repeat beginning (1-6), ONE changement, holding the plié at the end (7-8). Repeat other side.\n• Notes:\n• As this is specifically for battu, make the students emphasize the cross of the legs into fifth in the air from first position.\n• This exercise should also be practiced in the reverse to work the opposite cross to the derrière."
+        },
+        {
+          "title": "Sissonne",
+          "body": "• En face from fifth:\n• Plié fifth (8), sissonne ouverte en avant (& 1), hold arabesque (2), battement tendu en fondu (3), close fifth in plié (4), repeat (5-8).\n• You can do this en croix, with a temps d’arrêt between sides.\n• Students should go up like soubresaut and stay in plié between sissonnes."
+        }
+      ]
+    },
+    {
+      "name": "Center · Mezzo & Grand Allegro",
+      "cards": [
+        {
+          "title": "ABT Temps Levé Arabesque, Chassé",
+          "body": "• This can be performed en manège or diagonal, however it is appropriate for your class:\n• Beginning with a small temps levé on the anacrusis of the music (+a), temps levé Cecchetti 3rd arabesque (1), failli through to chassé (with jump) (2), repeat (3-4), continuously through your desired pathway and ending with a clear finish."
+        },
+        {
+          "title": "ABT Tombé Pas de Bourrée Cabriole Devant",
+          "body": "• From the corner of the room, fifth position croisé:\n• Tombé pas de bourrée effacé en avant to corner 1 (Cecchetti) or 2 (Vaganova) (1), cabriole effacé devant (2), repeat (3-4), repeat (5-6), tombé pas de bourrée to fifth. Repeat other side."
+        },
+        {
+          "title": "Adam’s Mezzo Allegro to Polonaise",
+          "body": "• From fifth en face:\n• Échappé à la seconde (1), close to fifth back (2), changement (3), repeat (4-6). Repeat with fourth échappé, 2x (1-6). Sissonne ouverte to attitude derrière traveling to the effacé line — arms fourth en haut — cut coupé assemblé écarté derrière dessous (1-3), repeat other side (4-6). Same en face (1-3), last time, hold attitude derrière and relevé to arabesque.\n• Notes:\n• Sissonne en face arms will be fifth high."
+        },
+        {
+          "title": "Darla’s Side-to-Side Grand Allegro",
+          "body": "• From the upstage corner of the room:\n• Balancé de côté left (1), chassé pas de bourrée (2), saut de chat (3), coupé/cut behind (4), repeat other side (5-8).\n• Notes:\n• You can add different jumps as needed for your class."
+        },
+        {
+          "title": "Marcia’s Grand Allegro from Side to Side",
+          "body": "• From the corner:\n• Prepare battement tendu croisé devant (7), glissade (8), grand jeté (& 1), reach arabesque directly to the glissade on the next side (2), grand jeté (& 3), through first with straight leg to glissade other side (4), continuously.\n• Focus on showing 2nd arabesque on the landing."
+        },
+        {
+          "title": "Trevor Chase (Darla’s G. Allegro)",
+          "body": "• From the upstage corner in B+:\n• Temps levé in 1st arabesque (1), Failli glissade derrière (2) saut de chat (3) Failli and temps levé in retiré derrière (4), Tombé pas de bourrée to 4th plié (5-6), pirouette en dehors (7), close 5th derrière (8).\n• Sous-sus (+1), entrechat six (+2), repeat 3x more (3-8)\n• (gentlemen do a tour en l air instead of the 3rd six)"
+        },
+        {
+          "title": "Typewriter Allegro",
+          "body": "• From fifth, en face towards the back of the room:\n• Glissade derrière (1), assemblé à la seconde dessus (2), sissonne fermée à la seconde de côté (3), repeat (4-6), glissade derrière (7), assemblé à la seconde dessus (8). Repeat other side."
+        }
+      ]
+    },
+    {
+      "name": "Center · Drills",
+      "cards": [
+        {
+          "title": "ABT Grand Jeté Prep",
+          "body": "• Run run prep and chassé"
+        },
+        {
+          "title": "Marcia’s Lunge for Jumps",
+          "body": "• Starting in first position, en face:\n• Battement dégagé à la seconde (1), tombé — lunge — (2), pull/drag other foot to first, staying down in plié (3-4), relevé first (5), plié (6), sauté (+7), stretch knees (8). Repeat other side.\n• Notes:\n• Hands can be on hips to begin teaching.\n• The tombé from the dégagé should make the knee go WAAAY over the toes and then stay down and low as you drag the other foot in.\n• Also consider practicing this through fourth devant and derrière."
+        },
+        {
+          "title": "Marcia’s Pirouette Prep",
+          "body": "• This exercise can be done at the barre:\n• Battement tendu à la seconde (1), plié seconde (2), retiré on flat (3), close fifth back (4), repeat other side (5-8).\n• Progress to retiré relevé\n• Then quarter turns en dehors\n• Then half turns en dehors\n• Full pirouette en dehors.\n• Repeat all progressions in en dedans — consider teaching the en dedans progression after the en dehors before moving onto the next progression."
+        },
+        {
+          "title": "Marcia’s Pirouette Prep to Fourth",
+          "body": "• From fifth, en face:\n• Battement tendu to à la seconde (1), demi-rond de jambe à terre en dehors (+ a), place to fourth plié (2), relevé retiré (3), hold (4), lower to lunge croisé (5-6), temps lié en arrière (+), tendu devant (7), close to fifth en face (8). Repeat all other side.\n• Repeat with pirouette when students are ready."
+        },
+        {
+          "title": "Penguin Jumps",
+          "body": "• Sautés with no pliés to train the resistance and resilience of the foot on the descent.\n• Fast and with accent down."
+        },
+        {
+          "title": "Pirouette thrown to Écarté",
+          "body": "• This is usually added on to a pirouette combination:\n• From a pirouette en dehors (1), stay on relevé as you throw your leg to écarté derrière, land in\nfourth derrière lunge (& 2)."
+        },
+        {
+          "title": "Pirouette with Arabesque Fouetté",
+          "body": "• This is also added on to pirouette exercises:\n• Begin developing this fouetté by drilling retiré to arabesque positions. Begin with retiré on flat to arabesque en fondu. Then retiré relevé, then pirouette en dehors to arabesque en fondu.\n• Once #1 has been fully developed, you will add fouetté en tournant to croisé devant, usually landing in fourth into a petit pirouette en dedans.\n• The leg should get higher to the devant position.\n• The downstage arm in the arabesque position needs to arrive to fourth en haut with the leg.\n• Spot the front and use the head to help the turn come around to the front."
+        },
+        {
+          "title": "Preparation for Fouetté Rond de jambe en tournant",
+          "body": "• From fifth position en face:\n• Battement tendu à la seconde (1), demi-rond de jambe à terre en dehors to fourth (2), petit pirouette en dehors (3), land croisé devant en fondu at 45* (4), hold (5-6), battement tendu à la seconde (7), close fifth back (8). Repeat other side.\n• After this has been mastered, introduce the same exercise opening to second position en fondu.\n• Then, add both together: battement tendu à la seconde (1), demi-rond de jambe à terre en dehors to fourth (2), petit pirouette en dehors (3), land croisé devant en fondu at 45* (4), demi grand rond de jambe at 45* to à la seconde en face (5), hold (6), stretch supporting knee (7), close fifth back (8).\n• Repeat other side.\n• Then progress to add pirouette en dehors after the hold in 2nd position in #2, finishing in fifth position derrière.\n• Lastly, add pirouette en dehors after the front, side action, landing in fifth back.\n• Keep adding turns.\n• Never let students skip through the front to side action.\n• Play with dividing the room and forcing the students to hold the front position or side position while the other side of the room goes."
+        },
+        {
+          "title": "Royal Ballet’s Allegro Prep",
+          "body": "• From the back of the room/straight across the room. Done to a tango/habanera:\n• Tombé en avant (&), rond de jambe at 45* the working leg en dedans (1), 2 runs (& 2), repeat left (3-4).\n• Continue across the floor, keeping the arms in 2nd position.\n• Reverse all (moving en arrière).\n• It is important that the weight transfer happens the moment that you tombé, not tombé and then transfer when you rond de jambe.\n• Take a risk!"
+        },
+        {
+          "title": "Royal Ballet Lunges",
+          "body": "• En Face, from first, triple meter:\n• Plié preparation, arms to first (8), dégagé devant a la quatrième, arms to 2nd position (1), lunge, arms to first (2), dégagé, arms to 2nd (3), close to plié first, arms to first (4). Repeat other leg devant (5-8).\n• Repeat side with the arms coming to Spanish fourth on the lunge.\n• Repeat derrière."
+        },
+        {
+          "title": "Shayla’s Arabesque Circles (rag)",
+          "body": "• From 5th en face, arms in preparatory:\n• Chassé en avant to relevé arabesque, arms 5th high (+8)\n• Fondu in arabesque (1), relevé in arabesque (2), repeat (3-4)\n• Repeat all, faster (+5, +6), pas de bourrée dessous with quarter turn to the right (+a7), chassé en avant to relevé arabesque on the other leg, arms 5th high (+8)\n• Repeat turning a complete circle to the right. The last pas de bourrée to finish the circle is a pas de bourrée derrière to change legs."
+        },
+        {
+          "title": "Tour Jeté Prep",
+          "body": "• At barre, with inside leg battement tendu devant, then repeated in the center during grand allegro:\n• Chassé en avant (8), brush outside leg devant (1), jump, flip to arabesque (& 2), hold (3-4) battement tendu derrière (5-6), fouetté to tendu devant — starting position (7), chassé (8).\n• “Slide, jump, slide and brush to front, change arabesque, tendu, and switch”"
+        },
+        {
+          "title": "Water Bottle Test",
+          "body": "• If students use their arms too much in Petit allegro, have them hold a water bottle between their arms in bras bas while jumping to feel the water moving."
+        }
+      ]
+    },
+    {
+      "name": "Port de Bras — Video References",
+      "cards": [
+        {
+          "title": "Vaganova Port de Bras",
+          "body": "Video examples of the Vaganova port de bras.",
+          "videoUrl": "https://www.youtube.com/watch?v=l05IvkdJMTQ"
+        },
+        {
+          "title": "Vaganova Port de Bras (with explanation)",
+          "body": "Video examples of the Vaganova port de bras with explanation.",
+          "videoUrl": "https://www.youtube.com/watch?v=_kAUTRrrmqQ&t=227s"
+        },
+        {
+          "title": "Cecchetti Port de Bras I–VIII",
+          "body": "Video examples of the Cecchetti port de bras, I through VIII.",
+          "videoUrl": "https://www.youtube.com/watch?v=vYcUmGr8T_8&t=389s"
+        }
+      ]
+    }
+  ]
+},
+{
     code: "D190", tabSub: "Beginning", title: "Non-Major Beginning Ballet",
-    strand: "Beginning · Non-major", level: 1,
+    level: 1,
     blurb: "Introductory ballet technique for students with little to no prior training: beginning vocabulary, alignment, coordination, musicality, and studio practice. Dance majors with limited ballet experience may also begin here.",
     folderUrl: "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
-    overview: [
+    syllabusUrl: "https://drive.google.com/REPLACE_SYLLABUS_LINK",
+    sampleClassUrl: "D190_Sample_Class.pdf",
+    pedagogy: [
       "Instruction at this level emphasizes the acquisition of basic ballet technique, supported by proper alignment through the core, back, and pelvis; muscular engagement of turnout; focused alignment of the hips, knees, ankles, and feet; musicality; dynamic quality in movement; and clear, engaged port de bras. Instructors should use simple exercises that build progressively toward these goals. Most barre exercises should face the barre until students show enough postural organization, muscular engagement, and alignment to work safely with one hand.",
       "In the center, arm work should stay simple, coordinated, and supportive of correct alignment — demi-seconde, hands on shoulders, hands on hips, or fifth en bas. More advanced arm coordination is introduced gradually, as students can maintain placement and coordination. Dedicated port de bras exercises may move through positions that are still developing; there the goal is to introduce artistry, arm placement, and coordinated movement rather than to expect full mastery.",
       "When appropriate, hands on the shoulders is preferable to hands on hips, as it encourages upper-body engagement and builds strength through the back, shoulders, and arms. Toward the end of the semester, fifth en bas, fifth en avant, fifth en haut, and second positions may be used more consistently.",
@@ -455,14 +1175,10 @@ const CURRICULUM = [
 "• Pirouette preparation (repeat barre exercise without relevé)\n" +
 "• Sautés (2 to 2)\n" +
 "• Glissade / assemblé preparation\n" +
-"• Locomotor / across the floor" },
-        { title: "Pedagogical Approach", tag: "Guide",
-          body:
-"Emphasize basic technique built on alignment through the core, back, and pelvis; engaged turnout; aligned hips, knees, ankles, and feet; musicality; dynamic quality; and clear port de bras.\n\n" +
-"Most barre work faces the barre until students can safely work with one hand. Keep center arms simple (demi-seconde, hands on shoulders, hands on hips, fifth en bas). Hands on the shoulders is generally preferable to hands on hips, as it encourages upper-body engagement and back strength." },
+"• Locomotor / across the floor" }
       ]},
 
-      { name: "Exercises", cards: [
+      { name: "Vocabulary", cards: [
         { title: "1. Cross Training / Floor Work", tag: "Conditioning",
           body:
 "Instructor-created, simple, targeted exercises to address noted weaknesses. Possible options:\n" +
@@ -557,174 +1273,503 @@ const CURRICULUM = [
 "• Skips; marches; trots; pony trots (progressing to pas de chat)\n" +
 "• Codified chassé; polka; modified mazurka; polonaise\n" +
 "• Simple pas de basque (not the rond de jambe version); balancé; step en manège" },
-      ]},
-
-      { name: "Sample Class", sub: "Early to Mid-Semester · 50 minutes · 2× / week", cards: [
-        { title: "Barre · Foot Progressions (Warm-up)", tag: "Barre",
-          counts: "2/4 Slow March (moderate)",
-          body:
-"Facing the barre, 6th position; arms prepare to the barre.\n" +
-"1–2  Right foot to half-pointe, hold\n" +
-"3–4  Right foot to pointed toe, hold\n" +
-"5–6  Right foot to half-pointe, hold\n" +
-"7–8  Lower heel to 6th\n" +
-"1–8  Repeat left\n" +
-"1–4 / 5–8  Repeat right, then left, half-time\n" +
-"1–2  Demi-plié in 6th  ·  3–4  Relevé  ·  5–6  Demi-plié in 6th  ·  7–8  Stretch knees\n" +
-"Repeat all beginning on the left." },
-        { title: "Barre · Demi-plié", tag: "Barre",
-          counts: "4/4 Adagio (plié) Pavane",
-          body: "Facing the barre, 1st position; arms prepare to the barre.\nMarcia's demi-plié in 1st, 2nd, 5th, and the other 5th." },
-        { title: "Barre · Battement Tendu", tag: "Barre",
-          counts: "Moderate",
-          body:
-"Facing the barre, 1st position.\n" +
-"1–2  Tendu devant, right (arrive with energy and stay)\n" +
-"3–4  Close to first (arrive with energy and stay)\n" +
-"5–8, 1–8  Repeat en croix  ·  Repeat all on left\n\n" +
-"Nearer mid-semester (one hand / fifth position), add:\n" +
-"1–2  Tendu devant with plié on the supporting leg  ·  3–4  Close to first  ·  5–8, 1–8  Repeat en croix" },
-        { title: "Barre · Battement Dégagé", tag: "Barre",
-          body:
-"Same combination as battement tendu; quicker dégagés may be added through à la seconde. For example:\n" +
-"+1–2  Dégagé à la seconde (+), close first (1), hold (2)\n" +
-"+3–8  Repeat ×3  ·  1–8  Repeat all with the other leg" },
-        { title: "Barre · Ronds de Jambe", tag: "Barre",
-          body:
-"From first, facing the barre.\n" +
-"1  Tendu devant  ·  2–3  Carry to à la seconde  ·  4  Close to first\n" +
-"5–8  Demi-rond de jambe en dehors, seconde to derrière\n" +
-"1–4  Full rond de jambe en dehors: F(1) S(2) B(3), close first (4)\n" +
-"5–6  Relevé with straight knees  ·  7–8  Lower to first\n" +
-"— or — 5–6 tendu à la seconde, retiré devant  ·  7–8 point to tendu, close first\n" +
-"Repeat left. En dedans may be incorporated as needed." },
-        { title: "Barre · Battement Frappé", tag: "Barre",
-          body:
-"From first; hands on the barre; prepare to wrapped sur le cou-de-pied.\n" +
-"1  Strike to à la seconde  ·  2–3  Hold  ·  4  Return to sur le cou-de-pied  ·  5–8  Repeat (continue)\n" +
-"1–2  Point to tendu à la seconde  ·  3–4  Close to first  ·  5–8  Prepare the left side\n" +
-"Repeat all on the other side." },
-        { title: "Barre · Grand Battement", tag: "Barre",
-          counts: "Polonaise",
-          body:
-"From first; one hand on the barre, working arm across the chest to the opposite shoulder.\n" +
-"Grand battement devant → tendu devant → close first  ·  4–6 hold in first\n" +
-"Repeat devant; repeat à la seconde; repeat devant; repeat à la seconde\n" +
-"1–3  Battement soutenu à la seconde  ·  4–6  Close to sous-sus devant\n" +
-"1–3  Demi-détourné (1–2), demi-plié in fifth (3)  ·  4–6  Tendu à la seconde, close first\n" +
-"Repeat all on the other side." },
-        { title: "Barre · Adage", tag: "Adagio",
-          body:
-"From first; one hand to the barre, working arm across the chest.\n" +
-"1–2  Dégagé en l'air devant  ·  3  Lower to tendu devant  ·  4  Close first\n" +
-"5–6  Dégagé en l'air seconde  ·  7  Lower to tendu seconde  ·  8  Fouetté à terre en dedans to face the barre, ending tendu derrière\n" +
-"1–2  Dégagé en l'air derrière  ·  3  Lower to tendu derrière  ·  4  Demi-plié in tendu derrière\n" +
-"5  Close to sous-sus  ·  6  ¼ demi-détourné  ·  7  Demi-plié in fifth  ·  8  Slide front foot to first with straight knees\n" +
-"Repeat all on the other side." },
-        { title: "Barre · Relevé / Sauté / Pirouette Preparation", tag: "Barre",
-          body:
-"Begin fifth, right leg derrière; arms prepare to the barre.\n" +
-"1–2  Demi-plié in fifth  ·  3–4  Tendu à la seconde in demi-plié  ·  5–6  Sous-sus devant  ·  7  Demi-plié in fifth  ·  8  Stretch knees\n" +
-"Repeat other side, then both sides again.\n" +
-"Then execute with assemblé dessus — continuing from the sous-sus, or restarting with jumps." },
-        { title: "Centre · Port de Bras", tag: "Center",
-          body:
-"Cecchetti 1st and 3rd port de bras, en face in fifth.\n" +
-"1–4  Cecchetti 1st  ·  5–8  Repeat (×4 total)\n" +
-"Cecchetti 3rd ×4.\n" +
-"Insert a change of legs in the last 4 counts to begin the other side, or stop the music to change." },
-        { title: "Centre · Battement Tendu", tag: "Center",
-          body: "Repeat the same exercise as battement tendu at the barre, en face." },
-        { title: "Centre · Grand Battement", tag: "Center",
-          counts: "Polonaise",
-          body:
-"As at the barre with slight alteration:\n" +
-"Tendu devant → grand battement devant → lower to tendu devant  ·  4–6 close first and hold\n" +
-"Repeat devant; repeat à la seconde; repeat all on the other side." },
-        { title: "Centre · Adage", tag: "Adagio",
-          body:
-"As at the barre, with port de bras that coordinates upper and lower body.\n" +
-"1–8  Same as barre\n" +
-"1–3  Dégagé en l'air derrière, lower to tendu derrière (3)\n" +
-"4  Fouetté à terre en dehors to tendu à la seconde\n" +
-"5–6  Temps lié de côté through second, tendu à la seconde other side  ·  7–8  Close first, prepare arms\n" +
-"Repeat all on the other side." },
-        { title: "Centre · Pirouette Preparation", tag: "Center",
-          body:
-"From first.\n" +
-"1–2  Tendu à la seconde, retiré devant  ·  3–4  Tendu à la seconde, close first  ·  5–8  Repeat\n" +
-"1  Tendu à la seconde  ·  2–4  Demi-plié in second, hold  ·  5–6  Retiré devant, hold  ·  7–8  Tendu à la seconde, close first\n" +
-"Repeat at least 2× through each side." },
-        { title: "Centre · Warm-up Jump / Sautés", tag: "Allegro",
-          body:
-"From first.\n" +
-"1  Tendu à la seconde, right  ·  2  Lunge onto the right (right plié, left straight)\n" +
-"3–4  Keeping the right plié, draw the left to first demi-plié  ·  5  Relevé in first  ·  6  Demi-plié in first\n" +
-"+7  Sauté in first, land in demi-plié  ·  8  Stretch knees\n" +
-"Repeat left, then both sides again." },
-        { title: "Centre · Allegro 2 (Bouncing Sautés)", tag: "Allegro",
-          body:
-"From first (adjusted from Royal Ballet's Bouncing Sautés).\n" +
-"1–4  Four demi-pliés in first, progressively deeper\n" +
-"+5–6  Sauté in first (+5), hold demi-plié (6)  ·  7–8  Stretch knees  ·  Repeat ×2\n" +
-"1–4  Tendu to à la seconde  ·  5–8  Lower heel, prepare to repeat in second position." },
-        { title: "Centre · Glissade / Assemblé", tag: "Allegro",
-          body: "Repeat the same exercise as at the barre." },
-        { title: "Centre · Locomotor / Across the Floor", tag: "Locomotor",
-          body: "Polka step en diagonal, en avant through quatrième devant." },
-      ]},
+      ]}
     ]
   },
-
-  /* ======================= REMAINING COURSES (placeholders) =============== */
-  /* Same card structure as D190 — replace the placeholder cards with real    */
-  /* content and Drive links as it becomes available.                         */
-  makeCourse("D290", "Beginning", "Accelerated Beginning Ballet", "Beginning · Accelerated",
-    "An accelerated path through beginning technique for students progressing quickly. Replace this with the official D290 description."),
-  makeCourse("D291", "Technique 1", "Ballet Technique 1", "Technique 1",
-    "First course in the major technique sequence. Replace with the official D291 description."),
-  makeCourse("D293", "Technique 2", "Ballet Technique 2", "Technique 2",
-    "Continued technique development. Replace with the official D293 description."),
-  makeCourse("D390", "Technique 3", "Ballet Technique 3", "Technique 3",
-    "Intermediate–advanced technique. Replace with the official D390 description."),
-  makeCourse("D391", "Technique 4", "Ballet Technique 4", "Technique 4",
-    "Advanced technique and artistry. Replace with the official D391 description."),
-  makeCourse("D392", "Pointe 1", "Ballet Pointe 1", "Pointe 1",
-    "Introduction to pointe technique. Replace with the official D392 description."),
-  makeCourse("D393", "Pointe 2", "Ballet Pointe 2", "Pointe 2",
-    "Continued pointe technique. Replace with the official D393 description."),
-  makeCourse("D398", "Company", "Theatre Ballet Studio Company", "Theatre · Company",
-    "Studio company repertoire, rehearsal, and performance. Replace with the official D398 description."),
-  makeCourse("D490", "Technique 5", "Ballet Technique 5", "Technique 5",
-    "Pre-professional technique. Replace with the official D490 description."),
-  makeCourse("D494", "Pointe/Var.", "Ballet Pointe / Variations", "Pointe · Variations",
-    "Advanced pointe work and classical variations. Replace with the official D494 description."),
-  makeCourse("D498", "Theatre", "Theatre Ballet", "Theatre Ballet",
-    "Performance and repertoire. Replace with the official D498 description."),
-];
-
-/* Helper that builds a placeholder course with the standard sections.
-   Delete this and write the course out in full (like D190) when you add content. */
-function makeCourse(code, tabSub, title, strand, blurb) {
-  return {
-    code, tabSub, title, strand,
-    blurb,
-    folderUrl: "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
-    sections: [
-      { name: "Course Materials", cards: [
-        { title: "Course Syllabus", tag: "Syllabus",
-          body: "Schedule, grading, attendance, and learning outcomes.",
-          driveUrl: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-        { title: "Exercise List", tag: "Exercise List",
-          body: "Sequence of exercises and combinations taught this term.",
-          driveUrl: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-        { title: "Assessment Rubric", tag: "Assessment",
-          body: "Criteria for technique evaluations.",
-          driveUrl: "https://drive.google.com/file/d/REPLACE_FILE_ID/view" },
-      ]},
-    ]
-  };
+{
+  "code": "D290",
+  "tabSub": "Beginning",
+  "title": "Accelerated Beginning Ballet",
+  "blurb": "Accelerated path through beginning ballet technique — building strength, coordination, and musicality.",
+  "folderUrl": "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
+  "syllabusUrl": "https://drive.google.com/REPLACE_SYLLABUS_LINK",
+  "sampleClassUrl": "https://drive.google.com/REPLACE_SAMPLE_CLASS_LINK",
+  "sections": [
+    {
+      "name": "Required Combinations",
+      "cards": [
+        {
+          "title": "Barre",
+          "body": "• Marcia’s Demi-pliés Facing the Barre, #18 p. 23\n• Battement Soutenu, #4 p. 20\n• Marcia’s Slow Tendu from First, #22 p. 8\n• Assemblé Prep, #3 p. 20\n• Cecchetti Battement Tendu for Jumping, #10 p. 5\n• Glissade Prep, #15 p. 22\n• ABT’s (RAD) ¼, ¾ Pirouette, #1 p. 20"
+        },
+        {
+          "title": "Grand Allegro",
+          "body": "• ABT Grand Jeté Prep, #1 p. 41\n• ABT Temps Levé Arabesque, Chassé, #1 p. 40"
+        },
+        {
+          "title": "Petit Allegro (choose 2)",
+          "body": "• Adam’s Warm-up Jump, #2 p. 35 — Only first half.\n• Omit port de bras if needed  Simon’s Battu Prep Small Jumps, #27 p. 39\n• Melinda’s Soubresaut, #10 p. 36 — With reverse\n• Sissonne, #28 p. 39 Only en avant"
+        },
+        {
+          "title": "Pirouettes",
+          "body": "• Marcia’s Pirouette Prep, #3 p. 41 — Only en dehors for midterm, add en dedans for final\n• Sous-sus, Plié, Pirouette, #13 p. 34 Only en dehors for midterm, add en dedans for final"
+        },
+        {
+          "title": "Adage",
+          "body": "• Royal Ballet Battement Temps lié, #4 p. 27 — 4x4 (Darla’s\n• Slow Battement Fondu with Relevé), #1 p. 27 — Executed on flat in center\n• Royal Ballet Adage, #6 p. 31"
+        },
+        {
+          "title": "Port de bras",
+          "body": "• Marcia’s (CPYB) Port de bras, #2 p. 27 Cecchetti 1 and 3, p. 44"
+        }
+      ]
+    },
+    {
+      "name": "Additional Vocabulary",
+      "cards": [
+        {
+          "title": "Grand Allegro",
+          "body": "• ABT Grand Jeté Prep, #1 p. 41"
+        },
+        {
+          "title": "Petit Allegro",
+          "body": "• Changement de pieds with quarter and half turns\n• Coupé\n• Échappé sauté à la seconde, with battu on closure\n• Use a temps d’arrêt separating opening and closing of échappé until sequencing is mastered\n• Galop (unstructured chassé)\n• Glissade de côté\n• Grand changement\n• Sissonne fermée at 45* en avant\n• Soubresaut, en place and with travel\n• Temps levé in sur le cou-de-pied positions/45* positions"
+        },
+        {
+          "title": "Batterie",
+          "body": "• Entrechat quatre"
+        },
+        {
+          "title": "Pirouettes",
+          "body": "• Pirouettes from fifth position (en dedans and en dehors)\n• Pirouettes from second position (en dedans and en dehors)"
+        },
+        {
+          "title": "Additional Turning Steps",
+          "body": "• Battement soutenu en tournant\n• Full détourné en tournant"
+        },
+        {
+          "title": "Linking Steps",
+          "body": "• Balancé de côté\n• Coupé\n• Pas chassé\n• Pas de bourrée (variations as suitable for the level)"
+        },
+        {
+          "title": "Temps lié",
+          "body": "• Tombé"
+        },
+        {
+          "title": "Movement Steps",
+          "body": "• Balletic Polka\n• Emboîté par terre in pointe tendu (spring points or pointe heels)"
+        }
+      ]
+    }
+  ]
+},
+{
+  "code": "D291",
+  "tabSub": "Technique 1",
+  "title": "Ballet Technique 1",
+  "blurb": "First course in the major ballet technique sequence.",
+  "folderUrl": "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
+  "syllabusUrl": "https://drive.google.com/REPLACE_SYLLABUS_LINK",
+  "sampleClassUrl": "https://drive.google.com/REPLACE_SAMPLE_CLASS_LINK",
+  "sections": [
+    {
+      "name": "Required Combinations",
+      "cards": [
+        {
+          "title": "Barre",
+          "body": "• Melinda’s Battement Soutenuo, #19 p. 23\n• Or — Frog’s Tongue, #14 p. 22\n• Marcia’s Plié-Plié-Straight Battement Tendu ,#21 p. 8\n• 24’s, #2 p. 4\n• Battement Frappé, #2 p. 14\n• Battement Fondu, Plié, Relevé, #3 p. 16\n• With rise at 45*\n• Battu Prep (2nd iteration), #5 p. 20"
+        },
+        {
+          "title": "Grand Allegro",
+          "body": "• Tour Jeté Prep, #12 p. 43"
+        },
+        {
+          "title": "Petit Allegro (choose 2)",
+          "body": "• Glissade En Avant, Arrière, etc., #5 p. 35 — Or\n• Royal Ballet Glissade, #20 p. 38\n• Simon’s ABBA BAAB Petit Allegro, #25 p. 39 — Omit arms and reverse\n• Marcia’s Petit Allegro with Temps Levé, #7 p. 36\n• Royal Ballet Sissonne Simple, #23 p. 38"
+        },
+        {
+          "title": "Pirouettes",
+          "body": "• Darla’s Retiré Passé/Pirouette Preps, #5 p. 32 — Omit developpés\n• Marcia’s Pirouette Prep to Fourth (midterm), #4 p. 41\n• Alan’s Pirouette Drill (final), #1 p. 32 Omit final en dedans"
+        },
+        {
+          "title": "Adage",
+          "body": "• Vaganova Temps lié, #10 p. 29\n• (Midterm) Relevé retiré to à terre, step en avant (Final) Relevé retiré to 45* devant, step en avant Omit cambré if appropriate 4x4 (Darla’s Slow Battement Fondu with Relevé), #1 p. 27\n• (Midterm) On flat to 45* (Final) On rise to 45* Rose’s Adage Battement Tendu, #7 p. 26"
+        },
+        {
+          "title": "Port de bras",
+          "body": "• Vaganova 1, p. 44"
+        }
+      ]
+    },
+    {
+      "name": "Additional Vocabulary",
+      "cards": [
+        {
+          "title": "General",
+          "body": "• All vocabulary found in previous level(s) and…"
+        },
+        {
+          "title": "Grand Allegro",
+          "body": "• Grand jeté"
+        },
+        {
+          "title": "Petit Allegro",
+          "body": "• Assemblé dessus and dessous\n• Continuous échappé sauté à la seconde, with battu on closure\n• Glissade devant, derrière\n• Glissade changé dessus and dessous\n• Jeté dessus and dessous\n• Pas de chat\n• Sissonne fermée at 45* de côté and en arrière"
+        },
+        {
+          "title": "Batterie",
+          "body": "• Marcia’s entrechat trois #12 p. 22\n• Entrechat royale\n• Sissonne simple\n• Assemblé simple"
+        },
+        {
+          "title": "Pirouettes",
+          "body": "• Pirouettes from 4th position, en dehors and en dedans\n• Add preparatory positions as needed"
+        },
+        {
+          "title": "Additional turning steps",
+          "body": "• Piqué soutenu/pas glissade en tournant\n• Piqué tour en dehors/dedans"
+        },
+        {
+          "title": "Linking Steps",
+          "body": "• Balancé en avant and en arrière"
+        },
+        {
+          "title": "Movement Steps",
+          "body": "• Mazurka\n• D293 — Updated Curriculum"
+        }
+      ]
+    }
+  ]
+},
+{
+  "code": "D293",
+  "tabSub": "Technique 2",
+  "title": "Ballet Technique 2",
+  "blurb": "Continued development of ballet technique, speed, and complexity.",
+  "folderUrl": "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
+  "syllabusUrl": "https://drive.google.com/REPLACE_SYLLABUS_LINK",
+  "sampleClassUrl": "https://drive.google.com/REPLACE_SAMPLE_CLASS_LINK",
+  "sections": [
+    {
+      "name": "Required Combinations",
+      "cards": [
+        {
+          "title": "Barre",
+          "body": "• Melinda’s Battement Tendu with Pivot, #23 p. 8\n• Or — Alan’s Battement Dégagé for Jumps, #4 p. 4\n• Marcia’s Rond de jambe #2 (the beautiful one), #5 p. 11\n• Polonaise Battement Frappé, #7 p. 15\n• Executed at a moderate tempo\n• Omit double frappé as needed for your class\n• Battement Fondu with Carry, #1 p. 16\n• Add relevé as needed for your class"
+        },
+        {
+          "title": "Grand Allegro",
+          "body": "• Darla’s Side-to-Side Grand Allegro, #4 p. 40"
+        },
+        {
+          "title": "Petit Allegro (choose 2)",
+          "body": "• Marcia’s Warm-up Jump, #8 p. 36 — Or\n• Melinda’s Soubresaut, #10 p. 36\n• Marcia’s Favorite Petit Allegro (Blah-blah), #6 p. 35 — Building version\n• Royal Ballet Jetés, #21 p. 38\n• Royal Ballet Assemblés, #13 p. 37"
+        },
+        {
+          "title": "Pirouettes",
+          "body": "• Christina’s Pirouette Drill (midterm), #4 p. 32\n• Debby’s Pirouette Drill, #6 p. 33\n• Marcia’s Grand Pirouette en Dedans Progression, #8 p. 33 Preparation only or full turn"
+        },
+        {
+          "title": "Adage",
+          "body": "• Vaganova Temps Lié with relevé at 45* (midterm), #10 p. 29\n• Vaganova Temps Lié with relevé at 90* (final), #10 p. 29\n• Debby’s Cloche, #2 p. 30 — Or\n• Marcia’s Fouetté to Arabesque at 90* (executed at 60*), #3 p. 30"
+        },
+        {
+          "title": "Port de bras",
+          "body": "• Marcia’s (midterm), #2 p. 27 Or Cecchetti 1 and 3, p. 44 Vaganova 3 and 2 (Final), p. 44-46 Could add Vaganova 4 as well"
+        }
+      ]
+    },
+    {
+      "name": "Additional Vocabulary",
+      "cards": [
+        {
+          "title": "General",
+          "body": "• All vocabulary found in previous level(s) and…"
+        },
+        {
+          "title": "Grand Allegro",
+          "body": "• Grand assemblé devant and à la seconde with elancé\n• Grand jeté croisé en avant\n• Grand jeté développé en avant\n• Grand jeté entrelacé\n• Grand sauté fouetté"
+        },
+        {
+          "title": "Petit Allegro",
+          "body": "• Assemblé coupé (or assemblé simple)\n• Assemblé devant and derrière\n• Ballonné\n• Ballotté par terre\n• Échappé à la seconde finishing on one leg\n• Échappé sauté à la quatrième (fourth)\n• Échappé sauté à la seconde with battu\n• Emboîté in cou-de-pied (petit jeté in Cecchetti syllabus)\n• Italian changement\n• Passé sauté\n• Sissonne fermée à la seconde dessus and dessous\n• Sissonne ouverte to 45* en avant and en arrière\n• Sissonne simple (temps levé from 2 feet to 1 foot)"
+        },
+        {
+          "title": "Batterie",
+          "body": "• Entrechat trois\n• Adding simple battu to petit allegro jumps where appropriate for class"
+        },
+        {
+          "title": "Pirouettes",
+          "body": "• Pirouettes from 4th position, en dehors and en dedans\n• Add fifth en haut positions in pirouettes\n• Add preparatory positions as needed\n• En dedans with the use of fouetté to retiré\n• Work double pirouettes en dehors and en dedans"
+        },
+        {
+          "title": "Additional turning steps",
+          "body": "• Chaînés (tour chaînés déboulés)"
+        },
+        {
+          "title": "Linking Steps",
+          "body": "• Balancé en avant and en arrière\n• Failli\n• Pas de bourrée with en tournant (where appropriate)\n• Waltz turn (pas de basque en avant en tournant)\n• Balancé en tournant"
+        },
+        {
+          "title": "Adage",
+          "body": "• Grand fouetté\n• Any other vocabulary needed for required exercises at modest leg height\n• D390 — Updated Curriculum"
+        }
+      ]
+    }
+  ]
+},
+{
+  "code": "D390",
+  "tabSub": "Technique 3",
+  "title": "Ballet Technique 3",
+  "blurb": "Intermediate–advanced technique with growing artistry.",
+  "folderUrl": "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
+  "syllabusUrl": "https://drive.google.com/REPLACE_SYLLABUS_LINK",
+  "sampleClassUrl": "https://drive.google.com/REPLACE_SAMPLE_CLASS_LINK",
+  "sections": [
+    {
+      "name": "Required Combinations",
+      "cards": [
+        {
+          "title": "Barre",
+          "body": "• Alan’s Battement Tendu with Weight Change, #6 p. 4\n• Or Alan’s Battement Dégagé for Jumps, #4 p. 4\n• Alan’s Slow Rond de jambe at 45* (on relevé), #1 p. 11\n• Rond de jambe à terre with Battement Relevé Lent, #8 p. 12\n• Battement Fondu with Carry with Relevé, #1 p. 16\n• Bolshoi Rond de jambe en l’air, #2 p. 11"
+        },
+        {
+          "title": "Grand Allegro",
+          "body": "• Instructor led combination using appropriate vocabulary."
+        },
+        {
+          "title": "Petit Allegro (choose 2)",
+          "body": "• Melinda’s Petit Allegro, #9 p. 36\n• Retrograde Petit Allegro, #12 p. 37\n• Royal Ballet Pas de Chat, #22 p. 38\n• Simon’s Battu Prep Small Jumps, #27 p. 39"
+        },
+        {
+          "title": "Pirouettes",
+          "body": "• Prep for fouetté rond de jambe en tournant, #8 p. 42\n• Alan’s Pirouette Drill, #1 p. 32\n• Charlie’s Pirouette en Dedans, #3 p. 32\n• Debby’s Pirouette Drill, #6 p. 33 Grand pirouette: Instructor led combination using appropriate vocabulary."
+        },
+        {
+          "title": "Adage",
+          "body": "• Royal Ballet Battement Temps Lié en l’air, #5 p. 27\n• Royal Ballet Rond de jambe à terre, #7 p. 28\n• Marcia’s Renversé Adage, #5 p. 31 Port de Bras*:* Vaganova 4 and 5, p. 45-46 Instructor led combination using appropriate vocabulary."
+        }
+      ]
+    },
+    {
+      "name": "Additional Vocabulary",
+      "cards": [
+        {
+          "title": "General",
+          "body": "• All vocabulary found in previous level(s) and…"
+        },
+        {
+          "title": "Grand Allegro",
+          "body": "• Sissonne ouverte/fermée to 90*\n• Grand assemblé porté (elancé)\n• Grand jeté en tournant"
+        },
+        {
+          "title": "Allegro",
+          "body": "• Assemblé élancé (as petit first, then added as grand)\n• Assemblé en avant and en arrière\n• Ballonné en place with battu at 45*\n• Ballotté at 45*\n• Brisé dessus and dessous\n• Cabriole devant\n• Chassé coupé en tournant en diagonal and en manège\n• Chassé en tournant\n• Demi-contretemps (second half of full contretemps)\n• Double Assemblé\n• Échappé à la quatrième\n• Échappé closing with 3 beats\n• Entrechat cinque\n• Sissonne changé fermée\n• Sissonne changé ouverte\n• Sissonne développé ouverte at 45* with and without travel\n• Sissonne retombé/doublé\n• Temps de cuisse (Italian and French style)\n• Moderate tempo"
+        },
+        {
+          "title": "Pirouettes",
+          "body": "• Consecutive pirouettes from fifth (moderate tempo)"
+        },
+        {
+          "title": "Linking Steps",
+          "body": "• Waltz turn (pas de basque en avant en tournant)\n• Sissonne tombé\n• Pas de basque à terre\n• To be executed at a moderate tempo showing each position\n• Balancé en tournant"
+        },
+        {
+          "title": "Adage",
+          "body": "• Grand fouetté relevé\n• Demi-grand rond de jambe en dehors\n• Grand rond de jambe en dehors\n• Fouetté à la seconde to arabesque at full height\n• D391 — Updated Curriculum"
+        }
+      ]
+    }
+  ]
+},
+{
+  "code": "D391",
+  "tabSub": "Technique 4",
+  "title": "Ballet Technique 4",
+  "blurb": "Advanced technique, batterie, and turning vocabulary.",
+  "folderUrl": "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
+  "syllabusUrl": "https://drive.google.com/REPLACE_SYLLABUS_LINK",
+  "sampleClassUrl": "https://drive.google.com/REPLACE_SAMPLE_CLASS_LINK",
+  "sections": [
+    {
+      "name": "Required Combinations",
+      "cards": [
+        {
+          "title": "Barre",
+          "body": "• Alecia’s Accent out and in battement tendu, #8 p. 5\n• Or Alan’s sur le cou-de-pied Battement Tendu, #7 p. 5\n• Or Melinda’s Straight Bend Bend Straight Dégagé with Plié, #25 p. 8\n• Charlie’s FSBSS Frappé, #3 p. 14\n• Dana Hanson’s Rond de jambe en l’air, #3 p. 11\n• Jackie’s Grand battements, #5 p. 18"
+        },
+        {
+          "title": "Grand Allegro",
+          "body": "• Trevor Chase, #6 p. 40\n• Feel free to exchange entrechat six for entrechat royale or entrechat quatre as needed for your class"
+        },
+        {
+          "title": "Petit Allegro (choose 2)",
+          "body": "• Royal Ballet turning Échappé sauté, #19 p. 38\n• Marcia’s Favorite Petit Allegro (Blah-blah), #6 p. 35\n• Charlie’s Warm-up Jump, #4 p. 35\n• “#21”, #1 p. 35"
+        },
+        {
+          "title": "Pirouettes",
+          "body": "• Marjorie Thompson’s Finale Pirouette with Polonaise, #9 p. 33\n• Gloria’s Pirouette with Rond de jambe à terre, #7 p. 33"
+        },
+        {
+          "title": "Adage",
+          "body": "• Marcia’s Petit Adage, #4 p. 30\n• Darla’s “I Love You,” #1 p. 30"
+        },
+        {
+          "title": "Port de bras",
+          "body": "• Vaganova 6, p. 46"
+        }
+      ]
+    },
+    {
+      "name": "Additional Vocabulary",
+      "cards": [
+        {
+          "title": "Grand Allegro",
+          "body": "• Assemblé en tournant\n• Grand jeté de côté\n• Grand jeté in attitude devant and derrière (emboîté)\n• Grand pas de chat développé\n• Grand sissonne développé ouverte\n• Grand sissonne retombé/doublé\n• Saut de basque\n• Sissonne fondu (grand sissonne landing on one leg sur le cou-de-pied derrière, for example)"
+        },
+        {
+          "title": "Allegro",
+          "body": "• Adding battu to all jeté and assemblé\n• Ballonné traveling en avant de suite\n• Ballotté at 90*\n• Bournonville pas de basque en l’air\n• Brisé dessus and dessous, execute de suite\n• Brisé volé\n• Cabriole en arrière and de côté\n• Demi-contretemps (first half of full contretemps)\n• Échappé à la seconde à la quatrième en tournant\n• Échappé battu beating on opening and closure (Italian and Russian styles)\n• Emboîté at 45* and 60*\n• Emboîté en tournant — one foot to other foot\n• Entrechat six\n• Entrechat six de côté (assemblé with three beats)\n• Jeté fermé\n• Jeté passé\n• Rond de jambe en l’air sauté\n• Sissonne failli"
+        },
+        {
+          "title": "Pirouettes",
+          "body": "• Double pirouette en dedans with and without the use of fouetté\n• Double pirouette en dehors finishing with the leg at full height à la quatrième devant, à la quatrième derrière, and à la seconde\n• Double pirouettes en dehors from 2nd position\n• Grand fouetté effacé en face\n• Grand pirouette en dedans in attitude and arabesque\n• Grand Pirouette en dehors 60*, singles\n• Petit pirouettes ending in open positions fouetté rond de jambe en tournant\n• Single pirouette à la seconde en dehors and en dedans\n• Single pirouettes from 5th de suite, moderate tempo"
+        },
+        {
+          "title": "Linking Steps",
+          "body": "• Contretemps\n• Demi and full"
+        },
+        {
+          "title": "Adage",
+          "body": "• Demi-grand rond de jambe en dedans and grand rond de jambe en dedans\n• Enveloppé and développé en tournant en dehors and en dedans\n• Jeté d’adage en avant, en arrière, de côté (in all directions of the body)\n• D490 — Updated Curriculum"
+        }
+      ]
+    }
+  ]
+},
+{
+  "code": "D392",
+  "tabSub": "Pointe 1",
+  "title": "Ballet Pointe 1",
+  "blurb": "Introduction to pointe technique.",
+  "folderUrl": "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
+  "syllabusUrl": "https://drive.google.com/REPLACE_SYLLABUS_LINK",
+  "sampleClassUrl": "https://drive.google.com/REPLACE_SAMPLE_CLASS_LINK",
+  "sections": [
+    {
+      "name": "Vocabulary",
+      "cards": [
+        {
+          "title": "Curriculum coming soon",
+          "body": "This level's curriculum has not been added to the hub yet. Use the Course Syllabus link above for the official document."
+        }
+      ]
+    }
+  ]
+},
+{
+  "code": "D393",
+  "tabSub": "Pointe 2",
+  "title": "Ballet Pointe 2",
+  "blurb": "Continued pointe technique.",
+  "folderUrl": "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
+  "syllabusUrl": "https://drive.google.com/REPLACE_SYLLABUS_LINK",
+  "sampleClassUrl": "https://drive.google.com/REPLACE_SAMPLE_CLASS_LINK",
+  "sections": [
+    {
+      "name": "Vocabulary",
+      "cards": [
+        {
+          "title": "Curriculum coming soon",
+          "body": "This level's curriculum has not been added to the hub yet. Use the Course Syllabus link above for the official document."
+        }
+      ]
+    }
+  ]
+},
+{
+  "code": "D398",
+  "tabSub": "Company",
+  "title": "Theatre Ballet Studio Company",
+  "blurb": "Studio company repertoire, rehearsal, and performance.",
+  "folderUrl": "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
+  "syllabusUrl": "https://drive.google.com/REPLACE_SYLLABUS_LINK",
+  "sampleClassUrl": "https://drive.google.com/REPLACE_SAMPLE_CLASS_LINK",
+  "sections": [
+    {
+      "name": "Vocabulary",
+      "cards": [
+        {
+          "title": "Curriculum coming soon",
+          "body": "This level's curriculum has not been added to the hub yet. Use the Course Syllabus link above for the official document."
+        }
+      ]
+    }
+  ]
+},
+{
+  "code": "D490",
+  "tabSub": "Technique 5",
+  "title": "Ballet Technique 5",
+  "blurb": "D490 is “off syllabus” — any material in the Essential Exercises may be used to design an appropriate exam. The list below is a menu of possible vocabulary, not a required set.",
+  "folderUrl": "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
+  "syllabusUrl": "https://drive.google.com/REPLACE_SYLLABUS_LINK",
+  "sampleClassUrl": "https://drive.google.com/REPLACE_SAMPLE_CLASS_LINK",
+  "sections": [
+    {
+      "name": "Additional Vocabulary",
+      "cards": [
+        {
+          "title": "Allegro",
+          "body": "• All vocabulary from previous levels\n• Assemblé en tournant double\n• Ballonné piqué\n• Ballotté in various forms\n• Cabriole fouetté and fouetté cabriole\n• Ciseaux\n• Contretemps (full)\n• Coupé jeté en tournant\n• Double rond de jambe sauté from 5th position at full height\n• Double cabriole from 5th position\n• Emboîté en tournant\n• Entrechat quatre volé\n• Entrechat six en tournant\n• Gargouillade in its various forms\n• Grand battement sauté passé développé\n• Grand jeté en tournant en dedans\n• Grand jeté à la seconde\n• Grand jeté entrelacé with fouetté\n• Grand jeté entrelacé battu\n• Jeté, rond de jambe sauté (single or double) en dedans and en dehors\n• Pas de bourrée en tournant jeté\n• Pas de poisson\n• Revoltade (men)\n• Sissonne battu\n• Saut de basque\n• Sissonne retombé\n• Sissonne en tournant\n• Temps de flèche"
+        },
+        {
+          "title": "Pirouettes",
+          "body": "• All vocabulary from previous levels\n• Développé en tournant\n• Double pirouette à la secondee en dehors and en dedans\n• Double pirouette en dehors and en dedans from grand plié\n• Double pirouette in attitude and arabesque en dehors and en dedans\n• Double pirouette en dehors and en dedans, finishing in all of the open positions\n• Relevé pirouettes à la seconde, holding arms in second position throughout\n• Fouetté rond de jambe en dehors and en dedans\n• Grand pirouettes in open positions 90*\n• Grand pirouettes sautillées\n• Grand pirouettes finished with fouetté to another pose\n• Grand fouetté relevé en tournant\n• Grand pirouette en dehors\n• 90* singles\n• Italian Fouetté\n• Piqué en tournant in open positions at 90*\n• Pirouette en dehors with fouetté to attitude, arabesque or à la seconde\n• Pirouette en dehors finishing in arabesque, with fouetté en tournant en dehors to croisé or effacé\n• Renversé"
+        },
+        {
+          "title": "Adage",
+          "body": "• All vocabulary from previous levels\n• Crescent attitude tilt, to be shown in croisé\n• Double pirouette d’adage in all positions\n• Grand rond de jambe relevé to arabesque or attitude\n• Incorporate jumps from two feet to two feet, one foot to two feet, and two feet to one foot\n• Incorporate jumps from one foot to the other\n• Multiple pirouettes d’adage\n• Promenade in penché de côté\n• Promenade sur la demi-pointe\n• Renversé en dehors and en dedans"
+        },
+        {
+          "title": "Center Barre",
+          "body": "• Port de Bras:\n• All six Vaganova port de bras\n• Battement tendu and dégagé:\n• With en tournant\n• Grand Battement:\n• In all 8 directions of the body\n• Introduce pirouettes and tours chaînés déboulés\n• Rond de jambe à terre:\n• Include jumps from two feet to two feet\n• Battement Fondus:\n• Add demi-pointe\n• Add tombé\n• Add eight directions of the body\n• Pirouette d’adage\n• Introduce promenade sur la demi-pointe\n• Battement Frappés:\n• Perform frappés to all eight directions of the body\n• Use fouetté en tournant à terre\n• Introduce use of demi-pointe\n• Petit Battements sur le cou-de-pied:\n• Introduce use of demi-pointe\n• Use simple adage ending and incorporate pirouettes\n• Progression of Study for Petit Pirouettes and Grand Pirouettes"
+        }
+      ]
+    }
+  ]
+},
+{
+  "code": "D494",
+  "tabSub": "Pointe/Var.",
+  "title": "Ballet Pointe / Variations",
+  "blurb": "Advanced pointe work and classical variations.",
+  "folderUrl": "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
+  "syllabusUrl": "https://drive.google.com/REPLACE_SYLLABUS_LINK",
+  "sampleClassUrl": "https://drive.google.com/REPLACE_SAMPLE_CLASS_LINK",
+  "sections": [
+    {
+      "name": "Vocabulary",
+      "cards": [
+        {
+          "title": "Curriculum coming soon",
+          "body": "This level's curriculum has not been added to the hub yet. Use the Course Syllabus link above for the official document."
+        }
+      ]
+    }
+  ]
+},
+{
+  "code": "D498",
+  "tabSub": "Theatre",
+  "title": "Theatre Ballet",
+  "blurb": "Performance and repertoire.",
+  "folderUrl": "https://drive.google.com/drive/folders/REPLACE_FOLDER_ID",
+  "syllabusUrl": "https://drive.google.com/REPLACE_SYLLABUS_LINK",
+  "sampleClassUrl": "https://drive.google.com/REPLACE_SAMPLE_CLASS_LINK",
+  "sections": [
+    {
+      "name": "Vocabulary",
+      "cards": [
+        {
+          "title": "Curriculum coming soon",
+          "body": "This level's curriculum has not been added to the hub yet. Use the Course Syllabus link above for the official document."
+        }
+      ]
+    }
+  ]
 }
+];
 
 /* ============================================================================
    ║  APP LOGIC  —  no need to edit below this line                          ║
@@ -786,12 +1831,6 @@ function buildCard(card) {
   const head = el("button", "card-head");
   head.type = "button";
   head.setAttribute("aria-expanded", "false");
-  if (card.tag) {
-    const tag = txt("span", "card-tag", card.tag);
-    const c = TYPE_COLOR[card.tag];
-    if (c) tag.style.color = c;
-    head.appendChild(tag);
-  }
   head.appendChild(txt("span", "card-title", card.title));
   head.appendChild(el("span", null, ICONS.chevron));
 
@@ -874,6 +1913,16 @@ function buildCard(card) {
   return wrap;
 }
 
+function linkTile(title, desc, url, label) {
+  const block = el("div", "prose-block link-tile");
+  block.appendChild(txt("h3", null, title));
+  if (desc) block.appendChild(txt("p", null, desc));
+  const a = el("a", "btn btn-primary", (label || "Open") + " " + ICONS.external);
+  a.href = url; a.target = "_blank"; a.rel = "noopener";
+  block.appendChild(a);
+  return block;
+}
+
 function buildPanel(course) {
   const panel = el("section", "panel");
   panel.setAttribute("role", "tabpanel");
@@ -885,17 +1934,9 @@ function buildPanel(course) {
   left.appendChild(txt("h2", null, course.title));
   if (course.blurb) left.appendChild(txt("p", "desc", course.blurb));
   head.appendChild(left);
-  if (course.strand) head.appendChild(txt("span", "strand", course.strand));
   panel.appendChild(head);
 
-  // Overview
-  if (course.overview && course.overview.length) {
-    const block = el("div", "prose-block");
-    block.appendChild(txt("h3", null, "Course Overview"));
-    course.overview.forEach(p => block.appendChild(txt("p", null, p)));
-    panel.appendChild(block);
-  }
-  // Outcomes
+  // Learning Outcomes tile
   if (course.outcomes && course.outcomes.length) {
     const block = el("div", "prose-block");
     block.appendChild(txt("h3", null, "Learning Outcomes"));
@@ -905,6 +1946,17 @@ function buildPanel(course) {
     if (course.outcomesNote) block.appendChild(txt("div", "note", course.outcomesNote));
     panel.appendChild(block);
   }
+  // Pedagogical Approach tile (follows Learning Outcomes)
+  if (course.pedagogy && course.pedagogy.length) {
+    const block = el("div", "prose-block");
+    block.appendChild(txt("h3", null, "Pedagogical Approach"));
+    course.pedagogy.forEach(p => block.appendChild(txt("p", null, p)));
+    panel.appendChild(block);
+  }
+  // Course Syllabus tile
+  if (course.syllabusUrl) panel.appendChild(linkTile("Course Syllabus",
+    "Open the official course syllabus for the most current outcomes, schedule, and policies.",
+    course.syllabusUrl, "Open syllabus"));
 
   // Toolbar
   const toolbar = el("div", "toolbar");
@@ -933,6 +1985,11 @@ function buildPanel(course) {
     section.cards.forEach(c => cards.appendChild(buildCard(c)));
     panel.appendChild(cards);
   });
+
+  // Sample Class tile
+  if (course.sampleClassUrl) panel.appendChild(linkTile("Sample Class",
+    "Open the full sample class (barre and centre) for this level.",
+    course.sampleClassUrl, "Open sample class"));
 
   // Empty state
   const empty = el("div", "empty",
